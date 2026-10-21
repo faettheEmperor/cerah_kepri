@@ -26,7 +26,7 @@ Panduan menjalankan aplikasi secara lokal di Windows tersedia di [PANDUAN-MENJAL
    C:\xampp\php\php.exe artisan schedule:work
    ```
 
-   Scheduler akan mengambil data setiap jam dan menghapus snapshot yang lebih lama dari 24 jam. Untuk server, jalankan `C:\xampp\php\php.exe artisan schedule:run` setiap menit melalui penjadwal sistem. Di Windows, gunakan Task Scheduler untuk menjalankan perintah tersebut.
+   Scheduler mengambil prakiraan cuaca dan laut setiap 30 menit, menghapus snapshot yang lebih lama dari 24 jam setiap jam, serta memperbarui data historis iklim setiap bulan. Untuk server, jalankan `C:\xampp\php\php.exe artisan schedule:run` setiap menit melalui penjadwal sistem. Di Windows, gunakan Task Scheduler untuk menjalankan perintah tersebut.
 
 ## Endpoint
 
@@ -38,4 +38,11 @@ Waktu disimpan dan ditampilkan dalam zona `Asia/Jakarta`. Snapshot cuaca dan lau
 
 ## Sumber data
 
-Data prakiraan berasal dari [Open-Meteo Weather API](https://open-meteo.com/en/docs) dan [Marine API](https://open-meteo.com/en/docs/marine-weather-api). Tampilkan atribusi Open-Meteo pada antarmuka publik sesuai ketentuan lisensi dan penggunaan layanan.
+Data prakiraan cuaca, kualitas udara PM2.5, dan laut berasal dari [Open-Meteo](https://open-meteo.com/). Data historis harian curah hujan dan suhu bersumber dari arsip model ERA5 melalui Open-Meteo. Titik koordinat wilayah menjadi estimasi berbasis lokasi, bukan pengukuran stasiun cuaca di setiap kelurahan. Tampilkan atribusi Open-Meteo pada antarmuka publik dan tinjau ketentuan lisensi/penggunaan sebelum deployment.
+
+## Cakupan dan batasan
+
+- Prakiraan darat disimpan untuk Kota Tanjungpinang, empat kecamatan, dan 18 kelurahan yang terdaftar di seeder.
+- Prakiraan laut menggunakan satu titik representatif tingkat kota; data ini tidak merinci kondisi perairan tiap kelurahan.
+- Insight musim dihitung dari arsip hujan dan suhu yang tersedia. Hasilnya merupakan ringkasan historis, bukan prediksi resmi musim atau peringatan cuaca.
+- Saran aktivitas dibuat dari ambang parameter cuaca dan kualitas udara. Informasi ini bukan advis keselamatan resmi untuk pelayaran maupun penerbangan.

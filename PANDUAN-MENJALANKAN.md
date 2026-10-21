@@ -47,7 +47,7 @@ cd C:\xampp\htdocs\cerahv1
 & "C:\xampp\php\php.exe" artisan schedule:work
 ```
 
-Biarkan terminal ini terbuka juga. Sinkronisasi Open-Meteo dan pembersihan data terjadwal berjalan setiap pergantian jam. Pesan `No scheduled commands are ready to run` berarti jadwal berikutnya belum jatuh tempo; itu normal.
+Biarkan terminal ini terbuka juga. Sinkronisasi Open-Meteo berjalan setiap 30 menit, pembersihan snapshot berjalan setiap jam, dan sinkronisasi historis berjalan setiap bulan. Pesan `No scheduled commands are ready to run` berarti jadwal berikutnya belum jatuh tempo; itu normal.
 
 ### 5. Ambil data saat itu juga (opsional)
 
