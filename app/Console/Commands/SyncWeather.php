@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Carbon\Carbon;
+use App\Services\ProcessingLog;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -10,183 +11,239 @@ use Throwable;
 
 class SyncWeather extends Command
 {
-    protected $signature = 'weather:sync';
-    protected $description = 'Ambil kondisi saat ini dan prakiraan Open-Meteo untuk wilayah Tanjungpinang';
+    protected $signature = 'weather:sync {--region= : Sinkronkan satu wilayah berdasarkan kode wilayah}';
+    protected $description = 'Ambil kondisi cuaca dan prakiraan Open-Meteo untuk seluruh atau satu wilayah Kepulauan Riau';
 
     public function handle(): int
     {
-        $failed = false;
-        $failed |= ! $this->syncSource('weather', fn () => $this->syncWeather());
-        if (DB::table('regions')->where('code', '21.72')->exists()) {
-            $failed |= ! $this->syncSource('marine', fn () => $this->syncMarine());
+        $regionCode = trim((string) $this->option('region'));
+        $regionCode = $regionCode !== '' ? $regionCode : null;
+        if ($regionCode !== null && ! DB::table('regions')->where('code', $regionCode)->where('active', true)->exists()) {
+            $this->error("Wilayah aktif dengan kode {$regionCode} tidak ditemukan.");
+
+            return self::FAILURE;
         }
+
+        $failed = false;
+        $failed |= ! $this->syncSource('weather', fn () => $this->syncWeather($regionCode));
 
         return $failed ? self::FAILURE : self::SUCCESS;
     }
 
     private function syncSource(string $source, callable $callback): bool
     {
-        $startedAt = now();
-        $runId = DB::table('weather_sync_runs')->insertGetId([
-            'source' => $source,
-            'started_at' => $startedAt,
-            'status' => 'running',
-            'created_at' => $startedAt,
-            'updated_at' => $startedAt,
-        ]);
+        $scope = trim((string) $this->option('region')) ?: 'Seluruh wilayah aktif';
+        $runId = ProcessingLog::start('weather', $scope);
 
         try {
-            $records = $callback();
-            DB::table('weather_sync_runs')->where('id', $runId)->update([
-                'finished_at' => now(),
-                'status' => 'succeeded',
-                'records_written' => $records,
-                'updated_at' => now(),
-            ]);
-            $this->info("{$source}: {$records} baris disimpan.");
+            $result = $callback();
+            $metrics = is_array($result) ? $result : ['processed' => 1, 'succeeded' => 1, 'failed' => 0, 'written' => (int) $result];
+            ProcessingLog::finish($runId, $metrics['processed'], $metrics['succeeded'], $metrics['failed'], $metrics['written']);
+            $this->info("{$source}: {$metrics['written']} baris disimpan; {$metrics['succeeded']}/{$metrics['processed']} berhasil, {$metrics['failed']} gagal.");
 
             return true;
         } catch (Throwable $exception) {
             report($exception);
-            DB::table('weather_sync_runs')->where('id', $runId)->update([
-                'finished_at' => now(),
-                'status' => 'failed',
-                'error_message' => mb_substr($exception->getMessage(), 0, 60000),
-                'updated_at' => now(),
-            ]);
+            ProcessingLog::fail($runId, $exception, 1);
             $this->error("{$source}: {$exception->getMessage()}");
 
             return false;
         }
     }
 
-    private function syncWeather(): int
+    private function syncWeather(?string $regionCode = null): array
     {
-        $regions = DB::table('regions')->where('active', true)->orderBy('code')->get();
-        $latitude = $regions->pluck('latitude')->implode(',');
-        $longitude = $regions->pluck('longitude')->implode(',');
+        $regionsQuery = DB::table('regions')->where('active', true)->orderBy('code');
+        if ($regionCode !== null) {
+            $regionsQuery->where('code', $regionCode);
+        }
+        $regions = $regionsQuery->get();
+        if ($regions->isEmpty()) {
+            throw new \RuntimeException('Belum ada wilayah aktif. Jalankan seeder wilayah Kepulauan Riau terlebih dahulu.');
+        }
         $variables = [
             'temperature_2m', 'relative_humidity_2m', 'apparent_temperature', 'precipitation',
             'rain', 'precipitation_probability', 'weather_code', 'wind_speed_10m',
             'wind_direction_10m', 'visibility', 'uv_index', 'soil_moisture_0_to_1cm',
             'et0_fao_evapotranspiration', 'is_day',
         ];
-        $airVariables = ['pm2_5'];
-
-        $response = Http::acceptJson()->timeout(45)->retry(3, 1000)->get('https://api.open-meteo.com/v1/forecast', [
-            'latitude' => $latitude,
-            'longitude' => $longitude,
-            'current' => implode(',', [
-                'temperature_2m', 'relative_humidity_2m', 'apparent_temperature', 'precipitation',
-                'rain', 'weather_code', 'wind_speed_10m', 'wind_direction_10m', 'visibility', 'uv_index', 'is_day',
-            ]),
-            'hourly' => implode(',', $variables),
-            'daily' => 'sunrise,sunset',
-            'forecast_days' => 7,
-            'forecast_hours' => 168,
-            'timezone' => 'Asia/Jakarta',
-            'wind_speed_unit' => 'kmh',
-        ])->throw();
-
-        $airResponse = Http::acceptJson()->timeout(45)->retry(3, 1000)->get('https://air-quality-api.open-meteo.com/v1/air-quality', [
-            'latitude' => $latitude,
-            'longitude' => $longitude,
-            'current' => 'pm2_5',
-            'hourly' => implode(',', $airVariables),
-            'forecast_hours' => 168,
-            'timezone' => 'Asia/Jakarta',
-        ])->throw();
-
-        $payload = $response->json();
-        $airPayload = $airResponse->json();
-        $locations = isset($payload[0]) ? $payload : [$payload];
-        $airLocations = isset($airPayload[0]) ? $airPayload : [$airPayload];
+        $airVariables = ['pm2_5', 'us_aqi'];
         $fetchedAt = now();
-        $rows = [];
+        $written = 0;
+        // Keep requests spread out. The free Open-Meteo limit is applied by IP,
+        // so a second manual/scheduled run can otherwise exhaust it quickly.
+        $batches = $regions->chunk(10);
 
-        foreach ($regions->values() as $index => $region) {
-            $data = $locations[$index] ?? null;
-            $airData = $airLocations[$index] ?? [];
-            if (! is_array($data) || empty($data['current']['time'])) {
-                throw new \RuntimeException("Respons cuaca untuk {$region->name} tidak lengkap.");
-            }
+        foreach ($batches as $batchIndex => $batch) {
+            $latitude = $batch->pluck('latitude')->implode(',');
+            $longitude = $batch->pluck('longitude')->implode(',');
+            $weatherPayload = $this->openMeteoGet('https://api.open-meteo.com/v1/forecast', [
+                'latitude' => $latitude,
+                'longitude' => $longitude,
+                'current' => implode(',', [
+                    'temperature_2m', 'relative_humidity_2m', 'apparent_temperature', 'precipitation',
+                    'rain', 'weather_code', 'wind_speed_10m', 'wind_direction_10m', 'visibility', 'uv_index', 'is_day',
+                ]),
+                'hourly' => implode(',', $variables),
+                'daily' => 'sunrise,sunset',
+                'forecast_days' => 7,
+                'forecast_hours' => 168,
+                'timezone' => 'Asia/Jakarta',
+                'wind_speed_unit' => 'kmh',
+            ], $regionCode === null);
+            // Avoid sending the weather and air-quality requests back-to-back.
+            sleep(2);
+            $airPayload = $this->openMeteoGet('https://air-quality-api.open-meteo.com/v1/air-quality', [
+                'latitude' => $latitude,
+                'longitude' => $longitude,
+                'current' => implode(',', $airVariables),
+                'hourly' => implode(',', $airVariables),
+                'forecast_hours' => 168,
+                'timezone' => 'Asia/Jakarta',
+            ], $regionCode === null);
 
-            $current = $data['current'];
-            $current['pm2_5'] = $airData['current']['pm2_5'] ?? null;
-            $daily = $data['daily'] ?? [];
-            $today = substr($current['time'], 0, 10);
-            $dailyIndex = array_search($today, $daily['time'] ?? [], true);
-            $current['sunrise'] = $dailyIndex === false ? null : ($daily['sunrise'][$dailyIndex] ?? null);
-            $current['sunset'] = $dailyIndex === false ? null : ($daily['sunset'][$dailyIndex] ?? null);
-            $rows[] = $this->weatherRow($region->code, 'current', $current['time'], $fetchedAt, $current);
-
-            $hourly = $data['hourly'] ?? [];
-            $airHourly = $airData['hourly'] ?? [];
-            foreach ($hourly['time'] ?? [] as $hourIndex => $time) {
-                $hour = [];
-                foreach ($variables as $variable) {
-                    $hour[$variable] = $hourly[$variable][$hourIndex] ?? null;
+            $locations = $this->normalizeLocations($weatherPayload, $batch->count());
+            $airLocations = $this->normalizeLocations($airPayload, $batch->count());
+            $rows = [];
+            foreach ($batch->values() as $index => $region) {
+                $data = $locations[$index] ?? null;
+                $airData = $airLocations[$index] ?? [];
+                if (! is_array($data) || empty($data['current']['time'])) {
+                    throw new \RuntimeException("Respons cuaca untuk {$region->name} tidak lengkap (kelompok ".($batchIndex + 1).').');
                 }
-                $airForecastIndex = array_search($time, $airHourly['time'] ?? [], true);
-                $hour['pm2_5'] = $airForecastIndex === false ? null : ($airHourly['pm2_5'][$airForecastIndex] ?? null);
-                $date = substr($time, 0, 10);
-                $forecastDailyIndex = array_search($date, $daily['time'] ?? [], true);
-                $hour['sunrise'] = $forecastDailyIndex === false ? null : ($daily['sunrise'][$forecastDailyIndex] ?? null);
-                $hour['sunset'] = $forecastDailyIndex === false ? null : ($daily['sunset'][$forecastDailyIndex] ?? null);
-                $rows[] = $this->weatherRow($region->code, 'forecast', $time, $fetchedAt, $hour);
+
+                $current = $data['current'];
+                $current['pm2_5'] = $airData['current']['pm2_5'] ?? null;
+                $current['us_aqi'] = $airData['current']['us_aqi'] ?? null;
+                $daily = $data['daily'] ?? [];
+                $today = substr($current['time'], 0, 10);
+                $dailyIndex = array_search($today, $daily['time'] ?? [], true);
+                $current['sunrise'] = $dailyIndex === false ? null : ($daily['sunrise'][$dailyIndex] ?? null);
+                $current['sunset'] = $dailyIndex === false ? null : ($daily['sunset'][$dailyIndex] ?? null);
+                $rows[] = $this->weatherRow($region->code, 'current', $current['time'], $fetchedAt, $current);
+
+                $hourly = $data['hourly'] ?? [];
+                $airHourly = $airData['hourly'] ?? [];
+                $airIndexes = array_flip($airHourly['time'] ?? []);
+                foreach ($hourly['time'] ?? [] as $hourIndex => $time) {
+                    $hour = [];
+                    foreach ($variables as $variable) {
+                        $hour[$variable] = $hourly[$variable][$hourIndex] ?? null;
+                    }
+                    $airForecastIndex = $airIndexes[$time] ?? null;
+                    $hour['pm2_5'] = $airForecastIndex === null ? null : ($airHourly['pm2_5'][$airForecastIndex] ?? null);
+                    $hour['us_aqi'] = $airForecastIndex === null ? null : ($airHourly['us_aqi'][$airForecastIndex] ?? null);
+                    $date = substr($time, 0, 10);
+                    $forecastDailyIndex = array_search($date, $daily['time'] ?? [], true);
+                    $hour['sunrise'] = $forecastDailyIndex === false ? null : ($daily['sunrise'][$forecastDailyIndex] ?? null);
+                    $hour['sunset'] = $forecastDailyIndex === false ? null : ($daily['sunset'][$forecastDailyIndex] ?? null);
+                    $rows[] = $this->weatherRow($region->code, 'forecast', $time, $fetchedAt, $hour);
+                }
+            }
+
+            foreach (array_chunk($rows, 500) as $chunk) {
+                DB::table('weather_observations')->insert($chunk);
+            }
+            $written += count($rows);
+            $this->line('Kelompok '.($batchIndex + 1).'/'.$batches->count().': '.$batch->count().' wilayah diproses.');
+
+            if ($batchIndex + 1 < $batches->count()) {
+                sleep(3);
             }
         }
 
-        foreach (array_chunk($rows, 500) as $chunk) {
-            DB::table('weather_observations')->insert($chunk);
+        // The page only reads the latest forecast run. Keep current observations
+        // for the requested one-day history, but discard superseded 7-day runs.
+        $oldForecasts = DB::table('weather_observations')->where('kind', 'forecast')->where('fetched_at', '<', $fetchedAt);
+        if ($regionCode !== null) {
+            $oldForecasts->where('region_code', $regionCode);
         }
+        $oldForecasts->delete();
 
-        return count($rows);
+        return ['processed' => $regions->count(), 'succeeded' => $regions->count(), 'failed' => 0, 'written' => $written];
     }
 
-    private function syncMarine(): int
+    private function normalizeLocations(array $payload, int $expected): array
     {
-        $city = DB::table('regions')->where('code', '21.72')->first();
-        $response = Http::acceptJson()->timeout(45)->retry(3, 1000)->get('https://marine-api.open-meteo.com/v1/marine', [
-            'latitude' => $city->latitude,
-            'longitude' => $city->longitude,
-            'current' => implode(',', ['wave_height', 'wave_direction', 'wave_period', 'sea_surface_temperature']),
-            'hourly' => implode(',', [
-                'wave_height', 'wave_direction', 'wave_period', 'wind_wave_height', 'swell_wave_height',
-                'sea_surface_temperature', 'ocean_current_velocity', 'ocean_current_direction',
-            ]),
-            'forecast_hours' => 168,
-            'timezone' => 'Asia/Jakarta',
-            'length_unit' => 'metric',
-            'wind_speed_unit' => 'kmh',
-        ])->throw();
-
-        $data = $response->json();
-        $fetchedAt = now();
-        $rows = [];
-        if (! empty($data['current']['time'])) {
-            $rows[] = $this->marineRow('current', $data['current']['time'], $fetchedAt, $data['current']);
+        $locations = isset($payload[0]) && is_array($payload[0]) ? $payload : [$payload];
+        if (count($locations) !== $expected) {
+            throw new \RuntimeException('Open-Meteo mengembalikan '.count($locations)." lokasi; seharusnya {$expected}.");
         }
 
-        $hourly = $data['hourly'] ?? [];
-        foreach ($hourly['time'] ?? [] as $index => $time) {
-            $hour = [];
-            foreach ([
-                'wave_height', 'wave_direction', 'wave_period', 'wind_wave_height', 'swell_wave_height',
-                'sea_surface_temperature', 'ocean_current_velocity', 'ocean_current_direction',
-            ] as $variable) {
-                $hour[$variable] = $hourly[$variable][$index] ?? null;
+        return array_values($locations);
+    }
+
+    /**
+     * Make an Open-Meteo request with a retry delay that respects HTTP 429.
+     * The public endpoint asks callers to wait at least one minute when the
+     * minute-level limit is reached.
+     */
+    private function openMeteoGet(string $url, array $query, bool $retryRateLimit = true): array
+    {
+        $maxAttempts = 5;
+
+        for ($attempt = 1; $attempt <= $maxAttempts; $attempt++) {
+            try {
+                $response = Http::acceptJson()->timeout(90)->get($url, $query);
+            } catch (Throwable $exception) {
+                if ($attempt === $maxAttempts) {
+                    throw $exception;
+                }
+
+                $delay = min(30, 3 * $attempt);
+                $this->warn("Open-Meteo belum merespons; mencoba lagi dalam {$delay} detik ({$attempt}/{$maxAttempts}).");
+                sleep($delay);
+                continue;
             }
-            $rows[] = $this->marineRow('forecast', $time, $fetchedAt, $hour);
+
+            if ($response->status() === 429) {
+                if (! $retryRateLimit) {
+                    $response->throw();
+                }
+                if ($attempt === $maxAttempts) {
+                    $response->throw();
+                }
+
+                $delay = $this->retryAfterSeconds($response->header('Retry-After'));
+                $this->warn("Batas permintaan Open-Meteo tercapai; menunggu {$delay} detik lalu mencoba kelompok yang sama ({$attempt}/{$maxAttempts}).");
+                sleep($delay);
+                continue;
+            }
+
+            if ($response->serverError() && $attempt < $maxAttempts) {
+                $delay = min(30, 3 * $attempt);
+                $this->warn("Open-Meteo sedang mengalami gangguan; mencoba lagi dalam {$delay} detik ({$attempt}/{$maxAttempts}).");
+                sleep($delay);
+                continue;
+            }
+
+            $response->throw();
+            $payload = $response->json();
+            if (! is_array($payload)) {
+                throw new \RuntimeException('Open-Meteo mengembalikan respons JSON yang tidak valid.');
+            }
+
+            return $payload;
         }
 
-        if ($rows === []) {
-            throw new \RuntimeException('Respons prakiraan laut kosong.');
+        throw new \RuntimeException('Permintaan ke Open-Meteo gagal setelah beberapa kali dicoba.');
+    }
+
+    private function retryAfterSeconds(?string $retryAfter): int
+    {
+        if ($retryAfter !== null && is_numeric($retryAfter)) {
+            return max(60, (int) ceil((float) $retryAfter));
         }
 
-        DB::table('marine_observations')->insert($rows);
+        if ($retryAfter !== null) {
+            try {
+                return max(60, now()->diffInSeconds(Carbon::parse($retryAfter), false));
+            } catch (Throwable) {
+                // Fall through to Open-Meteo's documented 60-second wait.
+            }
+        }
 
-        return count($rows);
+        return 60;
     }
 
     private function weatherRow(string $regionCode, string $kind, string $time, mixed $fetchedAt, array $data): array
@@ -206,6 +263,7 @@ class SyncWeather extends Command
             'precipitation_probability' => $data['precipitation_probability'] ?? null,
             'visibility_m' => $data['visibility'] ?? null,
             'pm2_5_ug_m3' => $data['pm2_5'] ?? null,
+            'us_aqi' => $data['us_aqi'] ?? null,
             'sunrise_at' => empty($data['sunrise']) ? null : Carbon::parse($data['sunrise'], 'Asia/Jakarta'),
             'sunset_at' => empty($data['sunset']) ? null : Carbon::parse($data['sunset'], 'Asia/Jakarta'),
             'apparent_temperature_c' => $data['apparent_temperature'] ?? null,
@@ -217,23 +275,4 @@ class SyncWeather extends Command
         ];
     }
 
-    private function marineRow(string $kind, string $time, mixed $fetchedAt, array $data): array
-    {
-        return [
-            'region_code' => '21.72',
-            'kind' => $kind,
-            'valid_at' => Carbon::parse($time, 'Asia/Jakarta'),
-            'fetched_at' => $fetchedAt,
-            'wave_height_m' => $data['wave_height'] ?? null,
-            'wave_direction_deg' => $data['wave_direction'] ?? null,
-            'wave_period_s' => $data['wave_period'] ?? null,
-            'wind_wave_height_m' => $data['wind_wave_height'] ?? null,
-            'swell_wave_height_m' => $data['swell_wave_height'] ?? null,
-            'sea_surface_temperature_c' => $data['sea_surface_temperature'] ?? null,
-            'ocean_current_kmh' => $data['ocean_current_velocity'] ?? null,
-            'ocean_current_direction_deg' => $data['ocean_current_direction'] ?? null,
-            'created_at' => $fetchedAt,
-            'updated_at' => $fetchedAt,
-        ];
-    }
 }

@@ -14,10 +14,9 @@ class PruneWeather extends Command
     {
         $cutoff = now()->subDay();
         $weather = DB::table('weather_observations')->where('fetched_at', '<', $cutoff)->delete();
-        $marine = DB::table('marine_observations')->where('fetched_at', '<', $cutoff)->delete();
-        $runs = DB::table('weather_sync_runs')->where('started_at', '<', $cutoff)->delete();
+        $logs = DB::table('processing_logs')->where('started_at', '<', now()->subDays(90))->delete();
 
-        $this->info("Dihapus: {$weather} cuaca, {$marine} laut, {$runs} catatan sinkronisasi.");
+        $this->info("Dihapus: {$weather} snapshot cuaca berusia lebih dari 24 jam dan {$logs} log proses berusia lebih dari 90 hari.");
 
         return self::SUCCESS;
     }

@@ -6,14 +6,13 @@ use Illuminate\Support\Carbon;
 
 class ActivityAdvice
 {
-    public function forWeather(?object $weather, ?object $marine = null): array
+    public function forWeather(?object $weather): array
     {
         if (! $weather) {
             return [];
         }
 
         $chance = (int) ($weather->rain_chance_24h ?? $weather->precipitation_probability ?? 0);
-        $eveningChance = (int) ($weather->evening_rain_probability ?? $chance);
         $nightChance = (int) ($weather->night_rain_probability ?? $chance);
         $rainNow = $this->value($weather, 'rain_mm');
         $maxHourlyRain = $this->value($weather, 'max_rain_hourly_mm', $rainNow ?? 0);
@@ -26,24 +25,19 @@ class ActivityAdvice
         $uv = $this->value($weather, 'uv_index');
         $pm25 = $this->value($weather, 'max_pm2_5_24h', $this->value($weather, 'pm2_5_ug_m3'));
         $storm = (bool) ($weather->storm_expected_24h ?? in_array((int) ($weather->weather_code ?? 0), [95, 96, 99], true));
-        $wave = $this->value($marine, 'wave_height_m');
-        $peakEvening = $this->hour($weather->evening_rain_at ?? $weather->peak_rain_at ?? null);
         $peakNight = $this->hour($weather->night_rain_at ?? null);
         $heavyRain = $maxHourlyRain > 20;
         $windKnots = $wind / 1.852;
         $coastalCode = (string) ($weather->region_code ?? '');
         $coastalCodes = ['21.72.03.1001', '21.72.03.1003', '21.72.03.1004', '21.72.03.1005', '21.72.04.1004', '21.72.04.1005'];
         $isCoastal = ($weather->region_type ?? null) === 'city' || in_array($coastalCode, $coastalCodes, true);
-        $rainReason = $this->rainReason($weather, $chance, $peakEvening);
-
         $advice = [];
 
         if ($isCoastal) {
-            $crossingRisk = $wind >= 37 || ($wave !== null && $wave >= 1.5) || ($visibility !== null && $visibility < 1000) || $heavyRain || $storm;
+            $crossingRisk = $wind >= 37 || ($visibility !== null && $visibility < 1000) || $heavyRain || $storm;
             $crossingReason = $this->joinReasons([
                 'angin '.number_format($wind, 1, ',', '.').' km/jam ('.number_format($windKnots, 1, ',', '.').' knot)',
                 $windDirection === null ? null : 'arah angin '.$windDirection,
-                $wave === null ? null : 'gelombang '.number_format($wave, 1, ',', '.').' m',
                 $visibility === null ? null : 'jarak pandang '.number_format($visibility / 1000, 1, ',', '.').' km',
                 'hujan per jam maks. '.number_format($maxHourlyRain, 1, ',', '.').' mm',
                 $storm ? 'potensi badai petir' : null,
@@ -51,9 +45,9 @@ class ActivityAdvice
             $advice['penyeberangan_pompong'] = $this->item(
                 $crossingRisk ? 'waspada' : 'informasi',
                 $crossingRisk
-                    ? 'Penyeberangan Tanjungpinang–Penyengat/Kampung Bugis dapat perlu berteduh. Tunda bila operator menghentikan layanan dan pastikan kondisi langsung sebelum berangkat.'
-                    : 'Belum ada pemicu ambang pada prakiraan titik ini. Tetap konfirmasi jadwal dan kondisi laut kepada operator pompong.',
-                $crossingReason.' · Data laut ini indikasi umum, bukan izin berlayar.'
+                    ? 'Cuaca berpotensi mengganggu penyeberangan Tanjungpinang–Penyengat/Kampung Bugis. Ikuti arahan operator dan tunda perjalanan bila layanan dihentikan.'
+                    : 'Prakiraan belum menunjukkan kondisi cuaca darat yang melewati ambang waspada. Tetap konfirmasi jadwal dan kondisi langsung kepada operator pompong.',
+                $crossingReason.' · Periksa kondisi langsung dan konfirmasi layanan operator sebelum menyeberang.'
             );
 
             $fishingRisk = $wind >= 37 || $storm;
@@ -87,13 +81,6 @@ class ActivityAdvice
             ])
         );
 
-        $commuteRisk = $eveningChance >= 50 || $heavyRain || $storm;
-        $advice['komuter_roda_dua'] = $this->item(
-            $commuteRisk ? 'waspada' : 'baik',
-            $commuteRisk ? 'Siapkan jas hujan, hindari berteduh di badan jalan, dan waspadai genangan di ruas cekung sekitar Batu IX/Melayu Kota Piring saat hujan lebat.' : 'Prakiraan belum menunjukkan pemicu hujan sore yang kuat; tetap cek pembaruan sebelum pulang.',
-            $this->joinReasons(['peluang hujan sore maks. '.$eveningChance.'%'.($peakEvening ? ' sekitar '.$peakEvening : ''), 'hujan per jam maks. '.number_format($maxHourlyRain, 1, ',', '.').' mm', $storm ? 'potensi badai petir' : null])
-        );
-
         if ($isCoastal) {
             $culinaryRisk = $nightChance >= 50 || $wind >= 37 || $heavyRain;
             $advice['kuliner_tepi_laut'] = $this->item(
@@ -112,18 +99,27 @@ class ActivityAdvice
             $this->joinReasons(['PM2.5 '.($pm25 === null ? 'belum tersedia' : number_format($pm25, 1, ',', '.').' µg/m³'.($airRisk ? ' (melewati 55,4)' : '')), 'peluang hujan maks. '.$chance.'%', $feels === null ? null : 'terasa '.number_format($feels, 1, ',', '.').'°C', $uv === null ? null : 'indeks UV '.number_format($uv, 1, ',', '.'), $storm ? 'potensi badai petir' : null])
         );
 
-        $constructionRisk = $heavyRain || $storm || ($rainTotal >= 30 && (int) ($weather->rain_hours_over_1mm ?? 0) >= 3);
-        $advice['konstruksi_lapangan'] = $this->item(
-            $constructionRisk ? 'waspada' : 'baik',
-            $constructionRisk ? 'Pertimbangkan menghentikan pengecoran atau penggalian terbuka; amankan pekerja dari petir, tanah becek, dan lereng pematangan lahan yang rawan.' : 'Belum ada pemicu hujan ekstrem atau badai petir pada prakiraan; evaluasi kondisi lapangan langsung.',
-            $this->joinReasons(['hujan per jam maks. '.number_format($maxHourlyRain, 1, ',', '.').' mm', 'akumulasi hujan prakiraan 24 jam '.number_format($rainTotal, 1, ',', '.').' mm', $storm ? 'potensi badai petir' : null])
-        );
-
-        $laundryRisk = $chance >= 40 || $maxHourlyRain >= 1 || ($humidity !== null && $humidity >= 80);
-        $advice['jemuran_pakaian'] = $this->item(
-            $laundryRisk ? 'waspada' : 'baik',
-            $laundryRisk ? 'Jemur di tempat beratap atau angkat sebelum berangkat kerja; pantau pembaruan cuaca berkala agar pakaian tidak kehujanan.' : 'Peluang hujan relatif rendah untuk menjemur di luar, tetapi cuaca dapat berubah cepat.',
-            $this->joinReasons(['peluang hujan maks. '.$chance.'%'.($peakEvening ? ' sore sekitar '.$peakEvening : ''), 'kelembapan maks. '.($humidity === null ? '—' : number_format($humidity, 0, ',', '.').'%'), 'hujan per jam maks. '.number_format($maxHourlyRain, 1, ',', '.').' mm'])
+        $soilMoisture = $this->value($weather, 'soil_moisture_0_1cm');
+        $temperature = $this->value($weather, 'temperature_c');
+        $agricultureRisk = $storm || $heavyRain || $rainTotal >= 30;
+        $soilIsDry = $soilMoisture !== null && $soilMoisture < 0.15;
+        $agricultureStatus = $agricultureRisk ? 'waspada' : ($soilIsDry ? 'saran' : (($soilMoisture === null && $rainTotal === 0 && $chance === 0) ? 'informasi' : 'baik'));
+        $agricultureMessage = $agricultureRisk
+            ? 'Tunda pemupukan atau penyemprotan, dan pastikan bedengan serta saluran kebun memiliki drainase yang baik saat hujan lebat atau badai diprakirakan.'
+            : ($soilIsDry
+                ? 'Kelembapan tanah lapisan atas cenderung rendah. Prioritaskan penyiraman secukupnya pada pagi atau sore dan sesuaikan dengan hujan setempat.'
+                : 'Cuaca belum menunjukkan pemicu hujan ekstrem. Atur penyiraman dan pemupukan kebun sayur mengikuti kondisi tanah serta hujan aktual di lahan.');
+        $advice['pertanian_sayur'] = $this->item(
+            $agricultureStatus,
+            $agricultureMessage,
+            $this->joinReasons([
+                'peluang hujan maks. '.$chance.'%',
+                'akumulasi hujan 24 jam '.number_format($rainTotal, 1, ',', '.').' mm',
+                'hujan per jam maks. '.number_format($maxHourlyRain, 1, ',', '.').' mm',
+                $soilMoisture === null ? 'kelembapan tanah belum tersedia' : 'kelembapan tanah lapisan atas '.number_format($soilMoisture * 100, 0, ',', '.').'%',
+                $temperature === null ? null : 'suhu '.number_format($temperature, 1, ',', '.').'°C',
+                $storm ? 'potensi badai petir' : null,
+            ])
         );
 
         return $advice;
@@ -152,19 +148,14 @@ class ActivityAdvice
         return ['Utara', 'Timur Laut', 'Timur', 'Tenggara', 'Selatan', 'Barat Daya', 'Barat', 'Barat Laut'][((int) round($degrees / 45)) % 8];
     }
 
-    private function rainReason(object $weather, int $chance, ?string $time): string
-    {
-        $probability = 'peluang hujan maks. '.$chance.'%'.($time ? ' sekitar '.$time : ' dalam 24 jam');
-        $amount = isset($weather->max_rain_hourly_mm)
-            ? ' · hujan per jam maks. '.number_format((float) $weather->max_rain_hourly_mm, 1, ',', '.').' mm'
-            : '';
-
-        return $probability.$amount;
-    }
-
     private function joinReasons(array $parts): string
     {
-        return implode(' · ', array_values(array_filter($parts, fn ($part) => $part !== null && $part !== '')));
+        $reasons = array_values(array_filter($parts, fn ($part) => $part !== null && $part !== ''));
+
+        return implode(' · ', array_map(
+            fn (string $part) => mb_strtoupper(mb_substr($part, 0, 1)).mb_substr($part, 1),
+            $reasons,
+        ));
     }
 
     private function item(string $status, string $message, string $reason): array

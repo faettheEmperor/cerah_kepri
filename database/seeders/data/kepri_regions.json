@@ -1,0 +1,4042 @@
+[
+  {
+    "code": "21",
+    "name": "Kepulauan Riau",
+    "type": "province",
+    "parent_code": null,
+    "latitude": 1.481003,
+    "longitude": 105.404926
+  },
+  {
+    "code": "21.01",
+    "name": "Kabupaten Bintan",
+    "type": "regency",
+    "parent_code": "21",
+    "latitude": 1.007625,
+    "longitude": 104.703811
+  },
+  {
+    "code": "21.02",
+    "name": "Kabupaten Karimun",
+    "type": "regency",
+    "parent_code": "21",
+    "latitude": 0.825534,
+    "longitude": 103.531073
+  },
+  {
+    "code": "21.03",
+    "name": "Kabupaten Natuna",
+    "type": "regency",
+    "parent_code": "21",
+    "latitude": 3.782119,
+    "longitude": 108.26034
+  },
+  {
+    "code": "21.04",
+    "name": "Kabupaten Lingga",
+    "type": "regency",
+    "parent_code": "21",
+    "latitude": -0.221837,
+    "longitude": 104.526948
+  },
+  {
+    "code": "21.05",
+    "name": "Kabupaten Kepulauan Anambas",
+    "type": "regency",
+    "parent_code": "21",
+    "latitude": 3.087639,
+    "longitude": 106.064551
+  },
+  {
+    "code": "21.71",
+    "name": "Kota Batam",
+    "type": "city",
+    "parent_code": "21",
+    "latitude": 0.963001,
+    "longitude": 104.063557
+  },
+  {
+    "code": "21.72",
+    "name": "Kota Tanjung Pinang",
+    "type": "city",
+    "parent_code": "21",
+    "latitude": 0.919581,
+    "longitude": 104.487064
+  },
+  {
+    "code": "21.01.04",
+    "name": "Gunung Kijang",
+    "type": "district",
+    "parent_code": "21.01",
+    "latitude": 1.030612,
+    "longitude": 104.60738
+  },
+  {
+    "code": "21.01.06",
+    "name": "Bintan Timur",
+    "type": "district",
+    "parent_code": "21.01",
+    "latitude": 0.861703,
+    "longitude": 104.570227
+  },
+  {
+    "code": "21.01.07",
+    "name": "Bintan Utara",
+    "type": "district",
+    "parent_code": "21.01",
+    "latitude": 1.083458,
+    "longitude": 104.253148
+  },
+  {
+    "code": "21.01.08",
+    "name": "Teluk Bintan",
+    "type": "district",
+    "parent_code": "21.01",
+    "latitude": 1.042594,
+    "longitude": 104.455137
+  },
+  {
+    "code": "21.01.09",
+    "name": "Tambelan",
+    "type": "district",
+    "parent_code": "21.01",
+    "latitude": 0.870422,
+    "longitude": 107.434866
+  },
+  {
+    "code": "21.01.10",
+    "name": "Teluk Sebong",
+    "type": "district",
+    "parent_code": "21.01",
+    "latitude": 1.139211,
+    "longitude": 104.419387
+  },
+  {
+    "code": "21.01.12",
+    "name": "Toapaya",
+    "type": "district",
+    "parent_code": "21.01",
+    "latitude": 1.022741,
+    "longitude": 104.548527
+  },
+  {
+    "code": "21.01.13",
+    "name": "Mantang",
+    "type": "district",
+    "parent_code": "21.01",
+    "latitude": 0.776366,
+    "longitude": 104.593317
+  },
+  {
+    "code": "21.01.14",
+    "name": "Bintan Pesisir",
+    "type": "district",
+    "parent_code": "21.01",
+    "latitude": 0.859602,
+    "longitude": 104.726387
+  },
+  {
+    "code": "21.01.15",
+    "name": "Seri Kuala Lobam",
+    "type": "district",
+    "parent_code": "21.01",
+    "latitude": 1.037897,
+    "longitude": 104.302231
+  },
+  {
+    "code": "21.02.01",
+    "name": "Moro",
+    "type": "district",
+    "parent_code": "21.02",
+    "latitude": 0.756346,
+    "longitude": 103.701707
+  },
+  {
+    "code": "21.02.02",
+    "name": "Kundur",
+    "type": "district",
+    "parent_code": "21.02",
+    "latitude": 0.690068,
+    "longitude": 103.445179
+  },
+  {
+    "code": "21.02.03",
+    "name": "Karimun",
+    "type": "district",
+    "parent_code": "21.02",
+    "latitude": 1.000149,
+    "longitude": 103.427611
+  },
+  {
+    "code": "21.02.04",
+    "name": "Meral",
+    "type": "district",
+    "parent_code": "21.02",
+    "latitude": 1.014925,
+    "longitude": 103.377035
+  },
+  {
+    "code": "21.02.05",
+    "name": "Tebing",
+    "type": "district",
+    "parent_code": "21.02",
+    "latitude": 1.079262,
+    "longitude": 103.38941
+  },
+  {
+    "code": "21.02.06",
+    "name": "Buru",
+    "type": "district",
+    "parent_code": "21.02",
+    "latitude": 0.891232,
+    "longitude": 103.467248
+  },
+  {
+    "code": "21.02.07",
+    "name": "Kundur Utara",
+    "type": "district",
+    "parent_code": "21.02",
+    "latitude": 0.788029,
+    "longitude": 103.442357
+  },
+  {
+    "code": "21.02.08",
+    "name": "Kundur Barat",
+    "type": "district",
+    "parent_code": "21.02",
+    "latitude": 0.776116,
+    "longitude": 103.381069
+  },
+  {
+    "code": "21.02.09",
+    "name": "Durai",
+    "type": "district",
+    "parent_code": "21.02",
+    "latitude": 0.559428,
+    "longitude": 103.636183
+  },
+  {
+    "code": "21.02.10",
+    "name": "Meral Barat",
+    "type": "district",
+    "parent_code": "21.02",
+    "latitude": 1.074645,
+    "longitude": 103.337903
+  },
+  {
+    "code": "21.02.11",
+    "name": "Ungar",
+    "type": "district",
+    "parent_code": "21.02",
+    "latitude": 0.662763,
+    "longitude": 103.508817
+  },
+  {
+    "code": "21.02.12",
+    "name": "Belat",
+    "type": "district",
+    "parent_code": "21.02",
+    "latitude": 0.819104,
+    "longitude": 103.486154
+  },
+  {
+    "code": "21.02.13",
+    "name": "Selat Gelam",
+    "type": "district",
+    "parent_code": "21.02",
+    "latitude": 0.935122,
+    "longitude": 103.433359
+  },
+  {
+    "code": "21.02.14",
+    "name": "Sugie Besar",
+    "type": "district",
+    "parent_code": "21.02",
+    "latitude": 0.83136,
+    "longitude": 103.824132
+  },
+  {
+    "code": "21.03.04",
+    "name": "Midai",
+    "type": "district",
+    "parent_code": "21.03",
+    "latitude": 3.054704,
+    "longitude": 107.752292
+  },
+  {
+    "code": "21.03.05",
+    "name": "Bunguran Barat",
+    "type": "district",
+    "parent_code": "21.03",
+    "latitude": 3.824256,
+    "longitude": 108.141727
+  },
+  {
+    "code": "21.03.06",
+    "name": "Serasan",
+    "type": "district",
+    "parent_code": "21.03",
+    "latitude": 2.520615,
+    "longitude": 109.00875
+  },
+  {
+    "code": "21.03.07",
+    "name": "Bunguran Timur",
+    "type": "district",
+    "parent_code": "21.03",
+    "latitude": 3.907467,
+    "longitude": 108.34471
+  },
+  {
+    "code": "21.03.08",
+    "name": "Bunguran Utara",
+    "type": "district",
+    "parent_code": "21.03",
+    "latitude": 4.039009,
+    "longitude": 108.107777
+  },
+  {
+    "code": "21.03.09",
+    "name": "Subi",
+    "type": "district",
+    "parent_code": "21.03",
+    "latitude": 2.928028,
+    "longitude": 108.842877
+  },
+  {
+    "code": "21.03.10",
+    "name": "Pulau Laut",
+    "type": "district",
+    "parent_code": "21.03",
+    "latitude": 4.710291,
+    "longitude": 107.967048
+  },
+  {
+    "code": "21.03.11",
+    "name": "Pulau Tiga",
+    "type": "district",
+    "parent_code": "21.03",
+    "latitude": 3.634608,
+    "longitude": 108.110161
+  },
+  {
+    "code": "21.03.15",
+    "name": "Bunguran Timur Laut",
+    "type": "district",
+    "parent_code": "21.03",
+    "latitude": 4.027621,
+    "longitude": 108.246296
+  },
+  {
+    "code": "21.03.16",
+    "name": "Bunguran Tengah",
+    "type": "district",
+    "parent_code": "21.03",
+    "latitude": 3.89982,
+    "longitude": 108.269432
+  },
+  {
+    "code": "21.03.18",
+    "name": "Bunguran Selatan",
+    "type": "district",
+    "parent_code": "21.03",
+    "latitude": 3.742892,
+    "longitude": 108.282739
+  },
+  {
+    "code": "21.03.19",
+    "name": "Serasan Timur",
+    "type": "district",
+    "parent_code": "21.03",
+    "latitude": 2.513327,
+    "longitude": 109.085249
+  },
+  {
+    "code": "21.03.20",
+    "name": "Bunguran Batubi",
+    "type": "district",
+    "parent_code": "21.03",
+    "latitude": 3.870637,
+    "longitude": 108.163963
+  },
+  {
+    "code": "21.03.21",
+    "name": "Pulau Tiga Barat",
+    "type": "district",
+    "parent_code": "21.03",
+    "latitude": 3.668236,
+    "longitude": 108.083441
+  },
+  {
+    "code": "21.03.22",
+    "name": "Suak Midai",
+    "type": "district",
+    "parent_code": "21.03",
+    "latitude": 3.00047,
+    "longitude": 107.792628
+  },
+  {
+    "code": "21.03.23",
+    "name": "Pulau Panjang",
+    "type": "district",
+    "parent_code": "21.03",
+    "latitude": 2.718698,
+    "longitude": 108.776266
+  },
+  {
+    "code": "21.03.24",
+    "name": "Pulau Seluan",
+    "type": "district",
+    "parent_code": "21.03",
+    "latitude": 4.135081,
+    "longitude": 107.854814
+  },
+  {
+    "code": "21.04.01",
+    "name": "Singkep",
+    "type": "district",
+    "parent_code": "21.04",
+    "latitude": -0.522832,
+    "longitude": 104.512842
+  },
+  {
+    "code": "21.04.02",
+    "name": "Lingga",
+    "type": "district",
+    "parent_code": "21.04",
+    "latitude": -0.18878,
+    "longitude": 104.5612
+  },
+  {
+    "code": "21.04.03",
+    "name": "Senayang",
+    "type": "district",
+    "parent_code": "21.04",
+    "latitude": 0.092042,
+    "longitude": 104.618959
+  },
+  {
+    "code": "21.04.04",
+    "name": "Singkep Barat",
+    "type": "district",
+    "parent_code": "21.04",
+    "latitude": -0.467798,
+    "longitude": 104.373422
+  },
+  {
+    "code": "21.04.05",
+    "name": "Lingga Utara",
+    "type": "district",
+    "parent_code": "21.04",
+    "latitude": -0.115227,
+    "longitude": 104.668588
+  },
+  {
+    "code": "21.04.06",
+    "name": "Singkep Pesisir",
+    "type": "district",
+    "parent_code": "21.04",
+    "latitude": -0.422039,
+    "longitude": 104.525868
+  },
+  {
+    "code": "21.04.07",
+    "name": "Lingga Timur",
+    "type": "district",
+    "parent_code": "21.04",
+    "latitude": -0.259592,
+    "longitude": 104.845723
+  },
+  {
+    "code": "21.04.08",
+    "name": "Selayar",
+    "type": "district",
+    "parent_code": "21.04",
+    "latitude": -0.30222,
+    "longitude": 104.442539
+  },
+  {
+    "code": "21.04.09",
+    "name": "Singkep Selatan",
+    "type": "district",
+    "parent_code": "21.04",
+    "latitude": -0.576707,
+    "longitude": 104.426683
+  },
+  {
+    "code": "21.04.10",
+    "name": "Kepulauan Posek",
+    "type": "district",
+    "parent_code": "21.04",
+    "latitude": -0.380515,
+    "longitude": 104.199538
+  },
+  {
+    "code": "21.04.11",
+    "name": "Katang Bidare",
+    "type": "district",
+    "parent_code": "21.04",
+    "latitude": 0.413996,
+    "longitude": 104.460053
+  },
+  {
+    "code": "21.04.12",
+    "name": "Temiang Pesisir",
+    "type": "district",
+    "parent_code": "21.04",
+    "latitude": 0.299077,
+    "longitude": 104.392097
+  },
+  {
+    "code": "21.04.13",
+    "name": "Bakung Serumpun",
+    "type": "district",
+    "parent_code": "21.04",
+    "latitude": 0.109196,
+    "longitude": 104.408421
+  },
+  {
+    "code": "21.05.01",
+    "name": "Siantan",
+    "type": "district",
+    "parent_code": "21.05",
+    "latitude": 3.199619,
+    "longitude": 106.235137
+  },
+  {
+    "code": "21.05.02",
+    "name": "Palmatak",
+    "type": "district",
+    "parent_code": "21.05",
+    "latitude": 3.343001,
+    "longitude": 106.318082
+  },
+  {
+    "code": "21.05.03",
+    "name": "Siantan Timur",
+    "type": "district",
+    "parent_code": "21.05",
+    "latitude": 3.138497,
+    "longitude": 106.335641
+  },
+  {
+    "code": "21.05.04",
+    "name": "Siantan Selatan",
+    "type": "district",
+    "parent_code": "21.05",
+    "latitude": 2.972934,
+    "longitude": 106.160873
+  },
+  {
+    "code": "21.05.05",
+    "name": "Jemaja Timur",
+    "type": "district",
+    "parent_code": "21.05",
+    "latitude": 2.919327,
+    "longitude": 105.768678
+  },
+  {
+    "code": "21.05.06",
+    "name": "Jemaja",
+    "type": "district",
+    "parent_code": "21.05",
+    "latitude": 2.960628,
+    "longitude": 105.711456
+  },
+  {
+    "code": "21.05.07",
+    "name": "Siantan Tengah",
+    "type": "district",
+    "parent_code": "21.05",
+    "latitude": 3.258218,
+    "longitude": 106.277006
+  },
+  {
+    "code": "21.05.08",
+    "name": "Siantan Utara",
+    "type": "district",
+    "parent_code": "21.05",
+    "latitude": 3.337934,
+    "longitude": 106.202951
+  },
+  {
+    "code": "21.05.09",
+    "name": "Jemaja Barat",
+    "type": "district",
+    "parent_code": "21.05",
+    "latitude": 3.096499,
+    "longitude": 105.673148
+  },
+  {
+    "code": "21.05.10",
+    "name": "Kute Siantan",
+    "type": "district",
+    "parent_code": "21.05",
+    "latitude": 3.322343,
+    "longitude": 106.258385
+  },
+  {
+    "code": "21.71.01",
+    "name": "Belakang Padang",
+    "type": "district",
+    "parent_code": "21.71",
+    "latitude": 1.044135,
+    "longitude": 103.815912
+  },
+  {
+    "code": "21.71.02",
+    "name": "Batu Ampar",
+    "type": "district",
+    "parent_code": "21.71",
+    "latitude": 1.16941,
+    "longitude": 104.010826
+  },
+  {
+    "code": "21.71.03",
+    "name": "Sekupang",
+    "type": "district",
+    "parent_code": "21.71",
+    "latitude": 1.1016,
+    "longitude": 103.962165
+  },
+  {
+    "code": "21.71.04",
+    "name": "Nongsa",
+    "type": "district",
+    "parent_code": "21.71",
+    "latitude": 1.105323,
+    "longitude": 104.124466
+  },
+  {
+    "code": "21.71.05",
+    "name": "Bulang",
+    "type": "district",
+    "parent_code": "21.71",
+    "latitude": 0.970419,
+    "longitude": 103.933251
+  },
+  {
+    "code": "21.71.06",
+    "name": "Lubuk Baja",
+    "type": "district",
+    "parent_code": "21.71",
+    "latitude": 1.13384,
+    "longitude": 104.006812
+  },
+  {
+    "code": "21.71.07",
+    "name": "Sei Beduk",
+    "type": "district",
+    "parent_code": "21.71",
+    "latitude": 1.050373,
+    "longitude": 104.060286
+  },
+  {
+    "code": "21.71.08",
+    "name": "Galang",
+    "type": "district",
+    "parent_code": "21.71",
+    "latitude": 0.790339,
+    "longitude": 104.203035
+  },
+  {
+    "code": "21.71.09",
+    "name": "Bengkong",
+    "type": "district",
+    "parent_code": "21.71",
+    "latitude": 1.156813,
+    "longitude": 104.03619
+  },
+  {
+    "code": "21.71.10",
+    "name": "Batam Kota",
+    "type": "district",
+    "parent_code": "21.71",
+    "latitude": 1.118295,
+    "longitude": 104.058322
+  },
+  {
+    "code": "21.71.11",
+    "name": "Sagulung",
+    "type": "district",
+    "parent_code": "21.71",
+    "latitude": 1.021941,
+    "longitude": 103.98706
+  },
+  {
+    "code": "21.71.12",
+    "name": "Batu Aji",
+    "type": "district",
+    "parent_code": "21.71",
+    "latitude": 1.061266,
+    "longitude": 103.945784
+  },
+  {
+    "code": "21.72.01",
+    "name": "Tanjung Pinang Barat",
+    "type": "district",
+    "parent_code": "21.72",
+    "latitude": 0.91544,
+    "longitude": 104.446807
+  },
+  {
+    "code": "21.72.02",
+    "name": "Tanjung Pinang Timur",
+    "type": "district",
+    "parent_code": "21.72",
+    "latitude": 0.926701,
+    "longitude": 104.510476
+  },
+  {
+    "code": "21.72.03",
+    "name": "Tanjung Pinang Kota",
+    "type": "district",
+    "parent_code": "21.72",
+    "latitude": 0.958811,
+    "longitude": 104.456083
+  },
+  {
+    "code": "21.72.04",
+    "name": "Bukit Bestari",
+    "type": "district",
+    "parent_code": "21.72",
+    "latitude": 0.876983,
+    "longitude": 104.487113
+  },
+  {
+    "code": "21.01.04.1005",
+    "name": "Kawal",
+    "type": "village",
+    "parent_code": "21.01.04",
+    "latitude": 1.003751,
+    "longitude": 104.614266
+  },
+  {
+    "code": "21.01.04.2001",
+    "name": "Gunung Kijang",
+    "type": "village",
+    "parent_code": "21.01.04",
+    "latitude": 0.939103,
+    "longitude": 104.617992
+  },
+  {
+    "code": "21.01.04.2002",
+    "name": "Malang Rapat",
+    "type": "village",
+    "parent_code": "21.01.04",
+    "latitude": 1.117385,
+    "longitude": 104.585685
+  },
+  {
+    "code": "21.01.04.2003",
+    "name": "Teluk Bakau",
+    "type": "village",
+    "parent_code": "21.01.04",
+    "latitude": 1.047265,
+    "longitude": 104.61907
+  },
+  {
+    "code": "21.01.06.1008",
+    "name": "Kijang Kota",
+    "type": "village",
+    "parent_code": "21.01.06",
+    "latitude": 0.853032,
+    "longitude": 104.600299
+  },
+  {
+    "code": "21.01.06.1009",
+    "name": "Sungai Lekop",
+    "type": "village",
+    "parent_code": "21.01.06",
+    "latitude": 0.896735,
+    "longitude": 104.589387
+  },
+  {
+    "code": "21.01.06.1010",
+    "name": "Gunung Lengkuas",
+    "type": "village",
+    "parent_code": "21.01.06",
+    "latitude": 0.86821,
+    "longitude": 104.553406
+  },
+  {
+    "code": "21.01.06.1011",
+    "name": "Sungai Enam",
+    "type": "village",
+    "parent_code": "21.01.06",
+    "latitude": 0.832017,
+    "longitude": 104.572352
+  },
+  {
+    "code": "21.01.07.1001",
+    "name": "Tanjung Uban Kota",
+    "type": "village",
+    "parent_code": "21.01.07",
+    "latitude": 1.073506,
+    "longitude": 104.221492
+  },
+  {
+    "code": "21.01.07.1002",
+    "name": "Tanjung Uban Utara",
+    "type": "village",
+    "parent_code": "21.01.07",
+    "latitude": 1.098754,
+    "longitude": 104.247652
+  },
+  {
+    "code": "21.01.07.1003",
+    "name": "Tanjung Uban Selatan",
+    "type": "village",
+    "parent_code": "21.01.07",
+    "latitude": 1.063229,
+    "longitude": 104.235543
+  },
+  {
+    "code": "21.01.07.1011",
+    "name": "Tanjung Uban Timur",
+    "type": "village",
+    "parent_code": "21.01.07",
+    "latitude": 1.065179,
+    "longitude": 104.255494
+  },
+  {
+    "code": "21.01.07.2005",
+    "name": "Lancang Kuning",
+    "type": "village",
+    "parent_code": "21.01.07",
+    "latitude": 1.0817,
+    "longitude": 104.274906
+  },
+  {
+    "code": "21.01.08.1006",
+    "name": "Tembeling Tanjung",
+    "type": "village",
+    "parent_code": "21.01.08",
+    "latitude": 1.001181,
+    "longitude": 104.472564
+  },
+  {
+    "code": "21.01.08.2001",
+    "name": "Bintan Buyu",
+    "type": "village",
+    "parent_code": "21.01.08",
+    "latitude": 1.077871,
+    "longitude": 104.468041
+  },
+  {
+    "code": "21.01.08.2002",
+    "name": "Pangkil",
+    "type": "village",
+    "parent_code": "21.01.08",
+    "latitude": 0.831807,
+    "longitude": 104.361678
+  },
+  {
+    "code": "21.01.08.2003",
+    "name": "Penaga",
+    "type": "village",
+    "parent_code": "21.01.08",
+    "latitude": 1.057929,
+    "longitude": 104.404465
+  },
+  {
+    "code": "21.01.08.2004",
+    "name": "Pengujan",
+    "type": "village",
+    "parent_code": "21.01.08",
+    "latitude": 1.015379,
+    "longitude": 104.37824
+  },
+  {
+    "code": "21.01.08.2005",
+    "name": "Tembeling",
+    "type": "village",
+    "parent_code": "21.01.08",
+    "latitude": 1.042704,
+    "longitude": 104.499893
+  },
+  {
+    "code": "21.01.09.1001",
+    "name": "Teluk Sekuni",
+    "type": "village",
+    "parent_code": "21.01.09",
+    "latitude": 0.995306,
+    "longitude": 107.4741
+  },
+  {
+    "code": "21.01.09.2002",
+    "name": "Batu Lepuk",
+    "type": "village",
+    "parent_code": "21.01.09",
+    "latitude": 0.972981,
+    "longitude": 107.468718
+  },
+  {
+    "code": "21.01.09.2003",
+    "name": "Kampung Hilir",
+    "type": "village",
+    "parent_code": "21.01.09",
+    "latitude": 1.04917,
+    "longitude": 107.482132
+  },
+  {
+    "code": "21.01.09.2004",
+    "name": "Kampung Melayu",
+    "type": "village",
+    "parent_code": "21.01.09",
+    "latitude": 0.955633,
+    "longitude": 107.547741
+  },
+  {
+    "code": "21.01.09.2005",
+    "name": "Pulau Mentebung",
+    "type": "village",
+    "parent_code": "21.01.09",
+    "latitude": 0.596872,
+    "longitude": 107.136658
+  },
+  {
+    "code": "21.01.09.2006",
+    "name": "Pulau Pinang",
+    "type": "village",
+    "parent_code": "21.01.09",
+    "latitude": 0.648178,
+    "longitude": 106.98111
+  },
+  {
+    "code": "21.01.09.2007",
+    "name": "Kukup",
+    "type": "village",
+    "parent_code": "21.01.09",
+    "latitude": 1.030072,
+    "longitude": 107.461868
+  },
+  {
+    "code": "21.01.09.2008",
+    "name": "Pengikik",
+    "type": "village",
+    "parent_code": "21.01.09",
+    "latitude": 0.131121,
+    "longitude": 107.286829
+  },
+  {
+    "code": "21.01.10.1007",
+    "name": "Kota Baru",
+    "type": "village",
+    "parent_code": "21.01.10",
+    "latitude": 1.135377,
+    "longitude": 104.360216
+  },
+  {
+    "code": "21.01.10.2001",
+    "name": "Berakit",
+    "type": "village",
+    "parent_code": "21.01.10",
+    "latitude": 1.201416,
+    "longitude": 104.562199
+  },
+  {
+    "code": "21.01.10.2002",
+    "name": "Ekang Anculai",
+    "type": "village",
+    "parent_code": "21.01.10",
+    "latitude": 1.101892,
+    "longitude": 104.387995
+  },
+  {
+    "code": "21.01.10.2003",
+    "name": "Pengudang",
+    "type": "village",
+    "parent_code": "21.01.10",
+    "latitude": 1.153213,
+    "longitude": 104.517044
+  },
+  {
+    "code": "21.01.10.2004",
+    "name": "Sebong Lagoi",
+    "type": "village",
+    "parent_code": "21.01.10",
+    "latitude": 1.16676,
+    "longitude": 104.396125
+  },
+  {
+    "code": "21.01.10.2005",
+    "name": "Sebong Pereh",
+    "type": "village",
+    "parent_code": "21.01.10",
+    "latitude": 1.107743,
+    "longitude": 104.308832
+  },
+  {
+    "code": "21.01.10.2006",
+    "name": "Sri Bintan",
+    "type": "village",
+    "parent_code": "21.01.10",
+    "latitude": 1.123484,
+    "longitude": 104.453534
+  },
+  {
+    "code": "21.01.12.1004",
+    "name": "Toapaya Asri",
+    "type": "village",
+    "parent_code": "21.01.12",
+    "latitude": 0.990806,
+    "longitude": 104.54834
+  },
+  {
+    "code": "21.01.12.2001",
+    "name": "Toapaya",
+    "type": "village",
+    "parent_code": "21.01.12",
+    "latitude": 1.028509,
+    "longitude": 104.548566
+  },
+  {
+    "code": "21.01.12.2002",
+    "name": "Toapaya Utara",
+    "type": "village",
+    "parent_code": "21.01.12",
+    "latitude": 1.085172,
+    "longitude": 104.542377
+  },
+  {
+    "code": "21.01.12.2003",
+    "name": "Toapaya Selatan",
+    "type": "village",
+    "parent_code": "21.01.12",
+    "latitude": 0.950083,
+    "longitude": 104.55944
+  },
+  {
+    "code": "21.01.13.2001",
+    "name": "Mantang Baru",
+    "type": "village",
+    "parent_code": "21.01.13",
+    "latitude": 0.762897,
+    "longitude": 104.513708
+  },
+  {
+    "code": "21.01.13.2002",
+    "name": "Mantang Besar",
+    "type": "village",
+    "parent_code": "21.01.13",
+    "latitude": 0.754224,
+    "longitude": 104.60132
+  },
+  {
+    "code": "21.01.13.2003",
+    "name": "Mantang Lama",
+    "type": "village",
+    "parent_code": "21.01.13",
+    "latitude": 0.803922,
+    "longitude": 104.596965
+  },
+  {
+    "code": "21.01.13.2004",
+    "name": "Dendun",
+    "type": "village",
+    "parent_code": "21.01.13",
+    "latitude": 0.781972,
+    "longitude": 104.50125
+  },
+  {
+    "code": "21.01.14.2001",
+    "name": "Kelong",
+    "type": "village",
+    "parent_code": "21.01.14",
+    "latitude": 0.866203,
+    "longitude": 104.675924
+  },
+  {
+    "code": "21.01.14.2002",
+    "name": "Mapur",
+    "type": "village",
+    "parent_code": "21.01.14",
+    "latitude": 0.993142,
+    "longitude": 104.825007
+  },
+  {
+    "code": "21.01.14.2003",
+    "name": "Numbing",
+    "type": "village",
+    "parent_code": "21.01.14",
+    "latitude": 0.760136,
+    "longitude": 104.724734
+  },
+  {
+    "code": "21.01.14.2004",
+    "name": "Air Gelubi",
+    "type": "village",
+    "parent_code": "21.01.14",
+    "latitude": 0.879829,
+    "longitude": 104.637248
+  },
+  {
+    "code": "21.01.15.1003",
+    "name": "Teluk Lobam",
+    "type": "village",
+    "parent_code": "21.01.15",
+    "latitude": 1.028163,
+    "longitude": 104.27017
+  },
+  {
+    "code": "21.01.15.1005",
+    "name": "Tanjung Permai",
+    "type": "village",
+    "parent_code": "21.01.15",
+    "latitude": 1.046349,
+    "longitude": 104.239093
+  },
+  {
+    "code": "21.01.15.2001",
+    "name": "Busung",
+    "type": "village",
+    "parent_code": "21.01.15",
+    "latitude": 1.016718,
+    "longitude": 104.314012
+  },
+  {
+    "code": "21.01.15.2002",
+    "name": "Teluk Sasah",
+    "type": "village",
+    "parent_code": "21.01.15",
+    "latitude": 1.002394,
+    "longitude": 104.243305
+  },
+  {
+    "code": "21.01.15.2004",
+    "name": "Kuala Sempang",
+    "type": "village",
+    "parent_code": "21.01.15",
+    "latitude": 1.058485,
+    "longitude": 104.333637
+  },
+  {
+    "code": "21.02.01.1003",
+    "name": "Moro",
+    "type": "village",
+    "parent_code": "21.02.01",
+    "latitude": 0.787167,
+    "longitude": 103.688536
+  },
+  {
+    "code": "21.02.01.1010",
+    "name": "Moro Timur",
+    "type": "village",
+    "parent_code": "21.02.01",
+    "latitude": 0.772281,
+    "longitude": 103.709311
+  },
+  {
+    "code": "21.02.01.2004",
+    "name": "Pauh",
+    "type": "village",
+    "parent_code": "21.02.01",
+    "latitude": 0.817497,
+    "longitude": 103.6863
+  },
+  {
+    "code": "21.02.01.2009",
+    "name": "Jang",
+    "type": "village",
+    "parent_code": "21.02.01",
+    "latitude": 0.715531,
+    "longitude": 103.721371
+  },
+  {
+    "code": "21.02.01.2014",
+    "name": "Pulau Moro",
+    "type": "village",
+    "parent_code": "21.02.01",
+    "latitude": 0.734125,
+    "longitude": 103.675689
+  },
+  {
+    "code": "21.02.02.1001",
+    "name": "Tanjung Batu Barat",
+    "type": "village",
+    "parent_code": "21.02.02",
+    "latitude": 0.687499,
+    "longitude": 103.436178
+  },
+  {
+    "code": "21.02.02.1002",
+    "name": "Tanjung Batu Kota",
+    "type": "village",
+    "parent_code": "21.02.02",
+    "latitude": 0.663483,
+    "longitude": 103.461087
+  },
+  {
+    "code": "21.02.02.1009",
+    "name": "Gading Sari",
+    "type": "village",
+    "parent_code": "21.02.02",
+    "latitude": 0.648815,
+    "longitude": 103.442639
+  },
+  {
+    "code": "21.02.02.2004",
+    "name": "Sungai Sebesi",
+    "type": "village",
+    "parent_code": "21.02.02",
+    "latitude": 0.697991,
+    "longitude": 103.454997
+  },
+  {
+    "code": "21.02.02.2005",
+    "name": "Sungai Ungar",
+    "type": "village",
+    "parent_code": "21.02.02",
+    "latitude": 0.721529,
+    "longitude": 103.461486
+  },
+  {
+    "code": "21.02.02.2006",
+    "name": "Lubuk",
+    "type": "village",
+    "parent_code": "21.02.02",
+    "latitude": 0.671905,
+    "longitude": 103.415813
+  },
+  {
+    "code": "21.02.03.1001",
+    "name": "Tanjung Balai",
+    "type": "village",
+    "parent_code": "21.02.03",
+    "latitude": 0.999537,
+    "longitude": 103.428004
+  },
+  {
+    "code": "21.02.03.1002",
+    "name": "Teluk Air",
+    "type": "village",
+    "parent_code": "21.02.03",
+    "latitude": 0.9958,
+    "longitude": 103.440887
+  },
+  {
+    "code": "21.02.03.1003",
+    "name": "Sungai Lakam Timur",
+    "type": "village",
+    "parent_code": "21.02.03",
+    "latitude": 1.002814,
+    "longitude": 103.419324
+  },
+  {
+    "code": "21.02.03.1006",
+    "name": "Lubuk Semut",
+    "type": "village",
+    "parent_code": "21.02.03",
+    "latitude": 1.004639,
+    "longitude": 103.434008
+  },
+  {
+    "code": "21.02.03.1007",
+    "name": "Tanjung Balai Kota",
+    "type": "village",
+    "parent_code": "21.02.03",
+    "latitude": 0.992413,
+    "longitude": 103.433815
+  },
+  {
+    "code": "21.02.03.1008",
+    "name": "Sungai Lakam Barat",
+    "type": "village",
+    "parent_code": "21.02.03",
+    "latitude": 1.000522,
+    "longitude": 103.413181
+  },
+  {
+    "code": "21.02.04.1001",
+    "name": "Meral Kota",
+    "type": "village",
+    "parent_code": "21.02.04",
+    "latitude": 0.997281,
+    "longitude": 103.395762
+  },
+  {
+    "code": "21.02.04.1002",
+    "name": "Baran Barat",
+    "type": "village",
+    "parent_code": "21.02.04",
+    "latitude": 1.00339,
+    "longitude": 103.401802
+  },
+  {
+    "code": "21.02.04.1003",
+    "name": "Sungai Raya",
+    "type": "village",
+    "parent_code": "21.02.04",
+    "latitude": 1.022483,
+    "longitude": 103.377198
+  },
+  {
+    "code": "21.02.04.1006",
+    "name": "Baran Timur",
+    "type": "village",
+    "parent_code": "21.02.04",
+    "latitude": 1.006092,
+    "longitude": 103.407786
+  },
+  {
+    "code": "21.02.04.1007",
+    "name": "Sungai Pasir",
+    "type": "village",
+    "parent_code": "21.02.04",
+    "latitude": 1.001059,
+    "longitude": 103.385911
+  },
+  {
+    "code": "21.02.04.1008",
+    "name": "Parit Benut",
+    "type": "village",
+    "parent_code": "21.02.04",
+    "latitude": 1.025036,
+    "longitude": 103.358722
+  },
+  {
+    "code": "21.02.05.1001",
+    "name": "Tebing",
+    "type": "village",
+    "parent_code": "21.02.05",
+    "latitude": 1.030828,
+    "longitude": 103.419077
+  },
+  {
+    "code": "21.02.05.1002",
+    "name": "Teluk Uma",
+    "type": "village",
+    "parent_code": "21.02.05",
+    "latitude": 1.04182,
+    "longitude": 103.404073
+  },
+  {
+    "code": "21.02.05.1003",
+    "name": "Kapling",
+    "type": "village",
+    "parent_code": "21.02.05",
+    "latitude": 1.011099,
+    "longitude": 103.424727
+  },
+  {
+    "code": "21.02.05.1004",
+    "name": "Pamak",
+    "type": "village",
+    "parent_code": "21.02.05",
+    "latitude": 1.044298,
+    "longitude": 103.387055
+  },
+  {
+    "code": "21.02.05.1008",
+    "name": "Harjosari",
+    "type": "village",
+    "parent_code": "21.02.05",
+    "latitude": 1.024849,
+    "longitude": 103.4057
+  },
+  {
+    "code": "21.02.05.2007",
+    "name": "Pongkar",
+    "type": "village",
+    "parent_code": "21.02.05",
+    "latitude": 1.10977,
+    "longitude": 103.379476
+  },
+  {
+    "code": "21.02.06.1001",
+    "name": "Buru",
+    "type": "village",
+    "parent_code": "21.02.06",
+    "latitude": 0.892752,
+    "longitude": 103.497506
+  },
+  {
+    "code": "21.02.06.1002",
+    "name": "Lubuk Puding",
+    "type": "village",
+    "parent_code": "21.02.06",
+    "latitude": 0.888835,
+    "longitude": 103.513361
+  },
+  {
+    "code": "21.02.06.2003",
+    "name": "Tanjung Hutan",
+    "type": "village",
+    "parent_code": "21.02.06",
+    "latitude": 0.875658,
+    "longitude": 103.452005
+  },
+  {
+    "code": "21.02.06.2004",
+    "name": "Tanjung Batu Kecil",
+    "type": "village",
+    "parent_code": "21.02.06",
+    "latitude": 0.903068,
+    "longitude": 103.448449
+  },
+  {
+    "code": "21.02.07.1012",
+    "name": "Tanjung Berlian Kota",
+    "type": "village",
+    "parent_code": "21.02.07",
+    "latitude": 0.777969,
+    "longitude": 103.476521
+  },
+  {
+    "code": "21.02.07.2003",
+    "name": "Sungai Ungar Utara",
+    "type": "village",
+    "parent_code": "21.02.07",
+    "latitude": 0.743474,
+    "longitude": 103.48864
+  },
+  {
+    "code": "21.02.07.2004",
+    "name": "Teluk Radang",
+    "type": "village",
+    "parent_code": "21.02.07",
+    "latitude": 0.824853,
+    "longitude": 103.413018
+  },
+  {
+    "code": "21.02.07.2010",
+    "name": "Perayun",
+    "type": "village",
+    "parent_code": "21.02.07",
+    "latitude": 0.857322,
+    "longitude": 103.394872
+  },
+  {
+    "code": "21.02.07.2013",
+    "name": "Tanjung Berlian Barat",
+    "type": "village",
+    "parent_code": "21.02.07",
+    "latitude": 0.782381,
+    "longitude": 103.430568
+  },
+  {
+    "code": "21.02.08.1001",
+    "name": "Sawang",
+    "type": "village",
+    "parent_code": "21.02.08",
+    "latitude": 0.747593,
+    "longitude": 103.378953
+  },
+  {
+    "code": "21.02.08.2002",
+    "name": "Sawang Selatan",
+    "type": "village",
+    "parent_code": "21.02.08",
+    "latitude": 0.721836,
+    "longitude": 103.399948
+  },
+  {
+    "code": "21.02.08.2003",
+    "name": "Sawang Laut",
+    "type": "village",
+    "parent_code": "21.02.08",
+    "latitude": 0.780972,
+    "longitude": 103.370898
+  },
+  {
+    "code": "21.02.08.2004",
+    "name": "Kundur",
+    "type": "village",
+    "parent_code": "21.02.08",
+    "latitude": 0.825799,
+    "longitude": 103.367352
+  },
+  {
+    "code": "21.02.08.2005",
+    "name": "Gemuruh",
+    "type": "village",
+    "parent_code": "21.02.08",
+    "latitude": 0.877299,
+    "longitude": 103.382617
+  },
+  {
+    "code": "21.02.09.2002",
+    "name": "Sanglar",
+    "type": "village",
+    "parent_code": "21.02.09",
+    "latitude": 0.606613,
+    "longitude": 103.676445
+  },
+  {
+    "code": "21.02.09.2003",
+    "name": "Tanjung Kilang",
+    "type": "village",
+    "parent_code": "21.02.09",
+    "latitude": 0.530935,
+    "longitude": 103.586359
+  },
+  {
+    "code": "21.02.09.2004",
+    "name": "Semembang",
+    "type": "village",
+    "parent_code": "21.02.09",
+    "latitude": 0.517227,
+    "longitude": 103.62966
+  },
+  {
+    "code": "21.02.09.2005",
+    "name": "Telaga Tujuh",
+    "type": "village",
+    "parent_code": "21.02.09",
+    "latitude": 0.5041,
+    "longitude": 103.612554
+  },
+  {
+    "code": "21.02.10.1001",
+    "name": "Pasir Panjang",
+    "type": "village",
+    "parent_code": "21.02.10",
+    "latitude": 1.098621,
+    "longitude": 103.333063
+  },
+  {
+    "code": "21.02.10.1002",
+    "name": "Darussalam",
+    "type": "village",
+    "parent_code": "21.02.10",
+    "latitude": 1.062353,
+    "longitude": 103.361286
+  },
+  {
+    "code": "21.02.10.2003",
+    "name": "Pangke",
+    "type": "village",
+    "parent_code": "21.02.10",
+    "latitude": 1.03559,
+    "longitude": 103.344127
+  },
+  {
+    "code": "21.02.10.2004",
+    "name": "Pangke Barat",
+    "type": "village",
+    "parent_code": "21.02.10",
+    "latitude": 1.048491,
+    "longitude": 103.327594
+  },
+  {
+    "code": "21.02.11.1001",
+    "name": "Alai",
+    "type": "village",
+    "parent_code": "21.02.11",
+    "latitude": 0.662752,
+    "longitude": 103.497342
+  },
+  {
+    "code": "21.02.11.2002",
+    "name": "Batu Limau",
+    "type": "village",
+    "parent_code": "21.02.11",
+    "latitude": 0.629247,
+    "longitude": 103.473716
+  },
+  {
+    "code": "21.02.11.2003",
+    "name": "Ngal",
+    "type": "village",
+    "parent_code": "21.02.11",
+    "latitude": 0.681267,
+    "longitude": 103.557262
+  },
+  {
+    "code": "21.02.11.2004",
+    "name": "Sungai Buluh",
+    "type": "village",
+    "parent_code": "21.02.11",
+    "latitude": 0.641552,
+    "longitude": 103.475212
+  },
+  {
+    "code": "21.02.12.2001",
+    "name": "Sebele",
+    "type": "village",
+    "parent_code": "21.02.12",
+    "latitude": 0.814956,
+    "longitude": 103.490195
+  },
+  {
+    "code": "21.02.12.2002",
+    "name": "Lebuh",
+    "type": "village",
+    "parent_code": "21.02.12",
+    "latitude": 0.787086,
+    "longitude": 103.522433
+  },
+  {
+    "code": "21.02.12.2003",
+    "name": "Penarah",
+    "type": "village",
+    "parent_code": "21.02.12",
+    "latitude": 0.81707,
+    "longitude": 103.509911
+  },
+  {
+    "code": "21.02.12.2004",
+    "name": "Sungai Asam",
+    "type": "village",
+    "parent_code": "21.02.12",
+    "latitude": 0.852594,
+    "longitude": 103.45046
+  },
+  {
+    "code": "21.02.12.2005",
+    "name": "Tebias",
+    "type": "village",
+    "parent_code": "21.02.12",
+    "latitude": 0.841371,
+    "longitude": 103.436216
+  },
+  {
+    "code": "21.02.12.2006",
+    "name": "Degong",
+    "type": "village",
+    "parent_code": "21.02.12",
+    "latitude": 0.768697,
+    "longitude": 103.546141
+  },
+  {
+    "code": "21.02.13.2001",
+    "name": "Parit",
+    "type": "village",
+    "parent_code": "21.02.13",
+    "latitude": 0.948126,
+    "longitude": 103.448574
+  },
+  {
+    "code": "21.02.13.2002",
+    "name": "Tulang",
+    "type": "village",
+    "parent_code": "21.02.13",
+    "latitude": 0.924419,
+    "longitude": 103.39979
+  },
+  {
+    "code": "21.02.13.2003",
+    "name": "Selat Mendaun",
+    "type": "village",
+    "parent_code": "21.02.13",
+    "latitude": 0.934401,
+    "longitude": 103.467624
+  },
+  {
+    "code": "21.02.14.2001",
+    "name": "Sugie",
+    "type": "village",
+    "parent_code": "21.02.14",
+    "latitude": 0.817574,
+    "longitude": 103.773299
+  },
+  {
+    "code": "21.02.14.2002",
+    "name": "Niur Permai",
+    "type": "village",
+    "parent_code": "21.02.14",
+    "latitude": 0.871733,
+    "longitude": 103.743847
+  },
+  {
+    "code": "21.02.14.2003",
+    "name": "Keban",
+    "type": "village",
+    "parent_code": "21.02.14",
+    "latitude": 0.876335,
+    "longitude": 103.791733
+  },
+  {
+    "code": "21.02.14.2004",
+    "name": "Rawa Jaya",
+    "type": "village",
+    "parent_code": "21.02.14",
+    "latitude": 0.819252,
+    "longitude": 103.809289
+  },
+  {
+    "code": "21.02.14.2005",
+    "name": "Tanjung Pelanduk",
+    "type": "village",
+    "parent_code": "21.02.14",
+    "latitude": 0.865446,
+    "longitude": 103.852009
+  },
+  {
+    "code": "21.02.14.2006",
+    "name": "Buluh Patah",
+    "type": "village",
+    "parent_code": "21.02.14",
+    "latitude": 0.788584,
+    "longitude": 103.923164
+  },
+  {
+    "code": "21.02.14.2007",
+    "name": "Selat Mie",
+    "type": "village",
+    "parent_code": "21.02.14",
+    "latitude": 0.826545,
+    "longitude": 103.876811
+  },
+  {
+    "code": "21.03.04.1003",
+    "name": "Sabang Barat",
+    "type": "village",
+    "parent_code": "21.03.04",
+    "latitude": 3.081854,
+    "longitude": 107.744458
+  },
+  {
+    "code": "21.03.04.2001",
+    "name": "Sebelat",
+    "type": "village",
+    "parent_code": "21.03.04",
+    "latitude": 2.990406,
+    "longitude": 107.778599
+  },
+  {
+    "code": "21.03.04.2005",
+    "name": "Air Putih",
+    "type": "village",
+    "parent_code": "21.03.04",
+    "latitude": 2.981704,
+    "longitude": 107.767347
+  },
+  {
+    "code": "21.03.05.1008",
+    "name": "Sedanau",
+    "type": "village",
+    "parent_code": "21.03.05",
+    "latitude": 3.884012,
+    "longitude": 108.05702
+  },
+  {
+    "code": "21.03.05.2007",
+    "name": "Mekar Jaya",
+    "type": "village",
+    "parent_code": "21.03.05",
+    "latitude": 3.730527,
+    "longitude": 108.169603
+  },
+  {
+    "code": "21.03.05.2012",
+    "name": "Binjai",
+    "type": "village",
+    "parent_code": "21.03.05",
+    "latitude": 3.829127,
+    "longitude": 108.248073
+  },
+  {
+    "code": "21.03.05.2013",
+    "name": "Piantengah",
+    "type": "village",
+    "parent_code": "21.03.05",
+    "latitude": 3.717261,
+    "longitude": 108.131342
+  },
+  {
+    "code": "21.03.05.2015",
+    "name": "Selaut",
+    "type": "village",
+    "parent_code": "21.03.05",
+    "latitude": 3.897405,
+    "longitude": 107.90701
+  },
+  {
+    "code": "21.03.06.1003",
+    "name": "Serasan",
+    "type": "village",
+    "parent_code": "21.03.06",
+    "latitude": 2.515397,
+    "longitude": 109.026564
+  },
+  {
+    "code": "21.03.06.2002",
+    "name": "Kampung Hilir",
+    "type": "village",
+    "parent_code": "21.03.06",
+    "latitude": 2.501884,
+    "longitude": 109.018674
+  },
+  {
+    "code": "21.03.06.2005",
+    "name": "Batu Berlian",
+    "type": "village",
+    "parent_code": "21.03.06",
+    "latitude": 2.491262,
+    "longitude": 108.949606
+  },
+  {
+    "code": "21.03.06.2006",
+    "name": "Tanjung Setelung",
+    "type": "village",
+    "parent_code": "21.03.06",
+    "latitude": 2.492604,
+    "longitude": 109.003487
+  },
+  {
+    "code": "21.03.06.2007",
+    "name": "Tanjung Balau",
+    "type": "village",
+    "parent_code": "21.03.06",
+    "latitude": 2.478265,
+    "longitude": 109.019416
+  },
+  {
+    "code": "21.03.06.2010",
+    "name": "Pangkalan",
+    "type": "village",
+    "parent_code": "21.03.06",
+    "latitude": 2.524577,
+    "longitude": 109.047118
+  },
+  {
+    "code": "21.03.06.2011",
+    "name": "Jermalik",
+    "type": "village",
+    "parent_code": "21.03.06",
+    "latitude": 2.541306,
+    "longitude": 108.999544
+  },
+  {
+    "code": "21.03.07.1011",
+    "name": "Ranai Kota",
+    "type": "village",
+    "parent_code": "21.03.07",
+    "latitude": 3.950633,
+    "longitude": 108.384752
+  },
+  {
+    "code": "21.03.07.1016",
+    "name": "Ranai Darat",
+    "type": "village",
+    "parent_code": "21.03.07",
+    "latitude": 3.952261,
+    "longitude": 108.360959
+  },
+  {
+    "code": "21.03.07.1017",
+    "name": "Bandarsyah",
+    "type": "village",
+    "parent_code": "21.03.07",
+    "latitude": 3.930744,
+    "longitude": 108.347959
+  },
+  {
+    "code": "21.03.07.1019",
+    "name": "Batu Hitam",
+    "type": "village",
+    "parent_code": "21.03.07",
+    "latitude": 3.914188,
+    "longitude": 108.382482
+  },
+  {
+    "code": "21.03.07.2002",
+    "name": "Sungai Ulu",
+    "type": "village",
+    "parent_code": "21.03.07",
+    "latitude": 3.907511,
+    "longitude": 108.325473
+  },
+  {
+    "code": "21.03.07.2004",
+    "name": "Sepempang",
+    "type": "village",
+    "parent_code": "21.03.07",
+    "latitude": 3.977674,
+    "longitude": 108.365472
+  },
+  {
+    "code": "21.03.07.2014",
+    "name": "Batu Gajah",
+    "type": "village",
+    "parent_code": "21.03.07",
+    "latitude": 3.851032,
+    "longitude": 108.336832
+  },
+  {
+    "code": "21.03.08.2001",
+    "name": "Kelarik Utara",
+    "type": "village",
+    "parent_code": "21.03.08",
+    "latitude": 4.024819,
+    "longitude": 108.106822
+  },
+  {
+    "code": "21.03.08.2002",
+    "name": "Kelarik",
+    "type": "village",
+    "parent_code": "21.03.08",
+    "latitude": 3.956661,
+    "longitude": 108.00734
+  },
+  {
+    "code": "21.03.08.2004",
+    "name": "Kelarik Air Mali",
+    "type": "village",
+    "parent_code": "21.03.08",
+    "latitude": 4.007841,
+    "longitude": 107.981239
+  },
+  {
+    "code": "21.03.08.2005",
+    "name": "Teluk Buton",
+    "type": "village",
+    "parent_code": "21.03.08",
+    "latitude": 4.16769,
+    "longitude": 108.192956
+  },
+  {
+    "code": "21.03.08.2006",
+    "name": "Belakang Gunung",
+    "type": "village",
+    "parent_code": "21.03.08",
+    "latitude": 3.94693,
+    "longitude": 108.076201
+  },
+  {
+    "code": "21.03.08.2008",
+    "name": "Gunung Durian",
+    "type": "village",
+    "parent_code": "21.03.08",
+    "latitude": 3.961007,
+    "longitude": 108.03436
+  },
+  {
+    "code": "21.03.09.2001",
+    "name": "Subi",
+    "type": "village",
+    "parent_code": "21.03.09",
+    "latitude": 3.020547,
+    "longitude": 108.865015
+  },
+  {
+    "code": "21.03.09.2002",
+    "name": "Subi Besar",
+    "type": "village",
+    "parent_code": "21.03.09",
+    "latitude": 2.921753,
+    "longitude": 108.826777
+  },
+  {
+    "code": "21.03.09.2003",
+    "name": "Meliah",
+    "type": "village",
+    "parent_code": "21.03.09",
+    "latitude": 3.042835,
+    "longitude": 108.852798
+  },
+  {
+    "code": "21.03.09.2005",
+    "name": "Terayak",
+    "type": "village",
+    "parent_code": "21.03.09",
+    "latitude": 3.020694,
+    "longitude": 108.854133
+  },
+  {
+    "code": "21.03.09.2007",
+    "name": "Subi Besar Timur",
+    "type": "village",
+    "parent_code": "21.03.09",
+    "latitude": 2.917642,
+    "longitude": 108.862544
+  },
+  {
+    "code": "21.03.09.2008",
+    "name": "Meliah Selatan",
+    "type": "village",
+    "parent_code": "21.03.09",
+    "latitude": 3.028755,
+    "longitude": 108.8602
+  },
+  {
+    "code": "21.03.10.2001",
+    "name": "Tanjung Pala",
+    "type": "village",
+    "parent_code": "21.03.10",
+    "latitude": 4.742042,
+    "longitude": 107.99431
+  },
+  {
+    "code": "21.03.10.2002",
+    "name": "Air Payang",
+    "type": "village",
+    "parent_code": "21.03.10",
+    "latitude": 4.686995,
+    "longitude": 107.949322
+  },
+  {
+    "code": "21.03.10.2003",
+    "name": "Kadur",
+    "type": "village",
+    "parent_code": "21.03.10",
+    "latitude": 4.747952,
+    "longitude": 107.986701
+  },
+  {
+    "code": "21.03.11.2001",
+    "name": "Sabang Mawang",
+    "type": "village",
+    "parent_code": "21.03.11",
+    "latitude": 3.653502,
+    "longitude": 108.138886
+  },
+  {
+    "code": "21.03.11.2003",
+    "name": "Sededap",
+    "type": "village",
+    "parent_code": "21.03.11",
+    "latitude": 3.569622,
+    "longitude": 108.043104
+  },
+  {
+    "code": "21.03.11.2004",
+    "name": "Tanjung Batang",
+    "type": "village",
+    "parent_code": "21.03.11",
+    "latitude": 3.609838,
+    "longitude": 108.086083
+  },
+  {
+    "code": "21.03.11.2005",
+    "name": "Serantas",
+    "type": "village",
+    "parent_code": "21.03.11",
+    "latitude": 3.595746,
+    "longitude": 108.092106
+  },
+  {
+    "code": "21.03.11.2006",
+    "name": "Sabang Mawang Barat",
+    "type": "village",
+    "parent_code": "21.03.11",
+    "latitude": 3.671532,
+    "longitude": 108.121763
+  },
+  {
+    "code": "21.03.11.2010",
+    "name": "Teluk Labuh",
+    "type": "village",
+    "parent_code": "21.03.11",
+    "latitude": 3.588359,
+    "longitude": 108.041783
+  },
+  {
+    "code": "21.03.15.2001",
+    "name": "Tanjung",
+    "type": "village",
+    "parent_code": "21.03.15",
+    "latitude": 4.01426,
+    "longitude": 108.332115
+  },
+  {
+    "code": "21.03.15.2002",
+    "name": "Ceruk",
+    "type": "village",
+    "parent_code": "21.03.15",
+    "latitude": 3.998917,
+    "longitude": 108.289373
+  },
+  {
+    "code": "21.03.15.2003",
+    "name": "Kelanga",
+    "type": "village",
+    "parent_code": "21.03.15",
+    "latitude": 4.046669,
+    "longitude": 108.272605
+  },
+  {
+    "code": "21.03.15.2004",
+    "name": "Pengadah",
+    "type": "village",
+    "parent_code": "21.03.15",
+    "latitude": 4.101336,
+    "longitude": 108.222361
+  },
+  {
+    "code": "21.03.15.2005",
+    "name": "Sebadai Ulu",
+    "type": "village",
+    "parent_code": "21.03.15",
+    "latitude": 4.029102,
+    "longitude": 108.23317
+  },
+  {
+    "code": "21.03.15.2006",
+    "name": "Limau Manis",
+    "type": "village",
+    "parent_code": "21.03.15",
+    "latitude": 3.991183,
+    "longitude": 108.339428
+  },
+  {
+    "code": "21.03.15.2007",
+    "name": "Seleman",
+    "type": "village",
+    "parent_code": "21.03.15",
+    "latitude": 3.975675,
+    "longitude": 108.238813
+  },
+  {
+    "code": "21.03.16.2001",
+    "name": "Tapau",
+    "type": "village",
+    "parent_code": "21.03.16",
+    "latitude": 3.890778,
+    "longitude": 108.26182
+  },
+  {
+    "code": "21.03.16.2002",
+    "name": "Harapan Jaya",
+    "type": "village",
+    "parent_code": "21.03.16",
+    "latitude": 3.875569,
+    "longitude": 108.292715
+  },
+  {
+    "code": "21.03.16.2003",
+    "name": "Air Lengit",
+    "type": "village",
+    "parent_code": "21.03.16",
+    "latitude": 3.926512,
+    "longitude": 108.257614
+  },
+  {
+    "code": "21.03.18.2001",
+    "name": "Cemaga",
+    "type": "village",
+    "parent_code": "21.03.18",
+    "latitude": 3.771891,
+    "longitude": 108.308285
+  },
+  {
+    "code": "21.03.18.2002",
+    "name": "Cemaga Selatan (Setengar)",
+    "type": "village",
+    "parent_code": "21.03.18",
+    "latitude": 3.689667,
+    "longitude": 108.231346
+  },
+  {
+    "code": "21.03.18.2003",
+    "name": "Cemaga Utara (Singgang Bulan)",
+    "type": "village",
+    "parent_code": "21.03.18",
+    "latitude": 3.847378,
+    "longitude": 108.385297
+  },
+  {
+    "code": "21.03.18.2004",
+    "name": "Cemaga Tengah",
+    "type": "village",
+    "parent_code": "21.03.18",
+    "latitude": 3.815906,
+    "longitude": 108.369473
+  },
+  {
+    "code": "21.03.19.2001",
+    "name": "Arung Ayam",
+    "type": "village",
+    "parent_code": "21.03.19",
+    "latitude": 2.508732,
+    "longitude": 109.055061
+  },
+  {
+    "code": "21.03.19.2002",
+    "name": "Air Nusa",
+    "type": "village",
+    "parent_code": "21.03.19",
+    "latitude": 2.50526,
+    "longitude": 109.09862
+  },
+  {
+    "code": "21.03.19.2004",
+    "name": "Air Ringau",
+    "type": "village",
+    "parent_code": "21.03.19",
+    "latitude": 2.496092,
+    "longitude": 109.041678
+  },
+  {
+    "code": "21.03.19.2005",
+    "name": "Payak",
+    "type": "village",
+    "parent_code": "21.03.19",
+    "latitude": 2.525541,
+    "longitude": 109.094761
+  },
+  {
+    "code": "21.03.20.2001",
+    "name": "Batubi Jaya",
+    "type": "village",
+    "parent_code": "21.03.20",
+    "latitude": 3.854518,
+    "longitude": 108.159961
+  },
+  {
+    "code": "21.03.20.2002",
+    "name": "Gunung Putri",
+    "type": "village",
+    "parent_code": "21.03.20",
+    "latitude": 3.918478,
+    "longitude": 108.164361
+  },
+  {
+    "code": "21.03.20.2003",
+    "name": "Sedarat Baru",
+    "type": "village",
+    "parent_code": "21.03.20",
+    "latitude": 3.878055,
+    "longitude": 108.109727
+  },
+  {
+    "code": "21.03.20.2004",
+    "name": "Sedanau Timur",
+    "type": "village",
+    "parent_code": "21.03.20",
+    "latitude": 3.831667,
+    "longitude": 108.203665
+  },
+  {
+    "code": "21.03.20.2005",
+    "name": "Semedang",
+    "type": "village",
+    "parent_code": "21.03.20",
+    "latitude": 3.822545,
+    "longitude": 108.155759
+  },
+  {
+    "code": "21.03.21.2001",
+    "name": "Pulau Tiga",
+    "type": "village",
+    "parent_code": "21.03.21",
+    "latitude": 3.667428,
+    "longitude": 108.097296
+  },
+  {
+    "code": "21.03.21.2002",
+    "name": "Tanjung Kumbik Utara",
+    "type": "village",
+    "parent_code": "21.03.21",
+    "latitude": 3.684383,
+    "longitude": 108.101969
+  },
+  {
+    "code": "21.03.21.2003",
+    "name": "Setumuk",
+    "type": "village",
+    "parent_code": "21.03.21",
+    "latitude": 3.668383,
+    "longitude": 108.072247
+  },
+  {
+    "code": "21.03.21.2004",
+    "name": "Selading",
+    "type": "village",
+    "parent_code": "21.03.21",
+    "latitude": 3.647597,
+    "longitude": 108.05881
+  },
+  {
+    "code": "21.03.22.2001",
+    "name": "Air Kumpai",
+    "type": "village",
+    "parent_code": "21.03.22",
+    "latitude": 3.010945,
+    "longitude": 107.782685
+  },
+  {
+    "code": "21.03.22.2002",
+    "name": "Batu Belanak",
+    "type": "village",
+    "parent_code": "21.03.22",
+    "latitude": 2.997116,
+    "longitude": 107.800907
+  },
+  {
+    "code": "21.03.22.2003",
+    "name": "Gunung Jambat",
+    "type": "village",
+    "parent_code": "21.03.22",
+    "latitude": 2.995082,
+    "longitude": 107.789038
+  },
+  {
+    "code": "21.03.23.2001",
+    "name": "Pulau Panjang",
+    "type": "village",
+    "parent_code": "21.03.23",
+    "latitude": 2.747515,
+    "longitude": 108.90562
+  },
+  {
+    "code": "21.03.23.2002",
+    "name": "Pulau Kerdau",
+    "type": "village",
+    "parent_code": "21.03.23",
+    "latitude": 2.686406,
+    "longitude": 108.631314
+  },
+  {
+    "code": "21.03.24.2001",
+    "name": "Kelarik Barat",
+    "type": "village",
+    "parent_code": "21.03.24",
+    "latitude": 4.131748,
+    "longitude": 107.856893
+  },
+  {
+    "code": "21.03.24.2002",
+    "name": "Seluan Barat",
+    "type": "village",
+    "parent_code": "21.03.24",
+    "latitude": 4.138299,
+    "longitude": 107.852807
+  },
+  {
+    "code": "21.04.01.1001",
+    "name": "Dabo",
+    "type": "village",
+    "parent_code": "21.04.01",
+    "latitude": -0.49163,
+    "longitude": 104.5638
+  },
+  {
+    "code": "21.04.01.1007",
+    "name": "Dabo Lama",
+    "type": "village",
+    "parent_code": "21.04.01",
+    "latitude": -0.496396,
+    "longitude": 104.547176
+  },
+  {
+    "code": "21.04.01.1012",
+    "name": "Sungailumpur",
+    "type": "village",
+    "parent_code": "21.04.01",
+    "latitude": -0.476765,
+    "longitude": 104.566258
+  },
+  {
+    "code": "21.04.01.2008",
+    "name": "Batu Berdaun",
+    "type": "village",
+    "parent_code": "21.04.01",
+    "latitude": -0.545842,
+    "longitude": 104.502906
+  },
+  {
+    "code": "21.04.01.2009",
+    "name": "Tanjung Harapan",
+    "type": "village",
+    "parent_code": "21.04.01",
+    "latitude": -0.479904,
+    "longitude": 104.585089
+  },
+  {
+    "code": "21.04.01.2010",
+    "name": "Batu Kacang",
+    "type": "village",
+    "parent_code": "21.04.01",
+    "latitude": -0.484292,
+    "longitude": 104.506564
+  },
+  {
+    "code": "21.04.02.1010",
+    "name": "Daik",
+    "type": "village",
+    "parent_code": "21.04.02",
+    "latitude": -0.195941,
+    "longitude": 104.593378
+  },
+  {
+    "code": "21.04.02.2001",
+    "name": "Pekajang",
+    "type": "village",
+    "parent_code": "21.04.02",
+    "latitude": -1.149581,
+    "longitude": 105.337238
+  },
+  {
+    "code": "21.04.02.2002",
+    "name": "Kelombok",
+    "type": "village",
+    "parent_code": "21.04.02",
+    "latitude": -0.270078,
+    "longitude": 104.636353
+  },
+  {
+    "code": "21.04.02.2003",
+    "name": "Mepar",
+    "type": "village",
+    "parent_code": "21.04.02",
+    "latitude": -0.226025,
+    "longitude": 104.548328
+  },
+  {
+    "code": "21.04.02.2006",
+    "name": "Kelumu",
+    "type": "village",
+    "parent_code": "21.04.02",
+    "latitude": -0.229197,
+    "longitude": 104.479652
+  },
+  {
+    "code": "21.04.02.2007",
+    "name": "Mentuda",
+    "type": "village",
+    "parent_code": "21.04.02",
+    "latitude": -0.126668,
+    "longitude": 104.508089
+  },
+  {
+    "code": "21.04.02.2008",
+    "name": "Merawang",
+    "type": "village",
+    "parent_code": "21.04.02",
+    "latitude": -0.202583,
+    "longitude": 104.567469
+  },
+  {
+    "code": "21.04.02.2009",
+    "name": "Panggak Darat",
+    "type": "village",
+    "parent_code": "21.04.02",
+    "latitude": -0.160023,
+    "longitude": 104.592337
+  },
+  {
+    "code": "21.04.02.2011",
+    "name": "Panggak Laut",
+    "type": "village",
+    "parent_code": "21.04.02",
+    "latitude": -0.199056,
+    "longitude": 104.639273
+  },
+  {
+    "code": "21.04.02.2012",
+    "name": "Musai",
+    "type": "village",
+    "parent_code": "21.04.02",
+    "latitude": -0.178049,
+    "longitude": 104.682262
+  },
+  {
+    "code": "21.04.02.2019",
+    "name": "Nerekeh",
+    "type": "village",
+    "parent_code": "21.04.02",
+    "latitude": -0.180874,
+    "longitude": 104.651857
+  },
+  {
+    "code": "21.04.03.1001",
+    "name": "Senayang",
+    "type": "village",
+    "parent_code": "21.04.03",
+    "latitude": 0.063867,
+    "longitude": 104.632138
+  },
+  {
+    "code": "21.04.03.2002",
+    "name": "Mamut",
+    "type": "village",
+    "parent_code": "21.04.03",
+    "latitude": 0.100141,
+    "longitude": 104.5179
+  },
+  {
+    "code": "21.04.03.2012",
+    "name": "Laboh",
+    "type": "village",
+    "parent_code": "21.04.03",
+    "latitude": 0.107937,
+    "longitude": 104.637116
+  },
+  {
+    "code": "21.04.03.2013",
+    "name": "Penaah",
+    "type": "village",
+    "parent_code": "21.04.03",
+    "latitude": -0.092963,
+    "longitude": 104.814689
+  },
+  {
+    "code": "21.04.03.2015",
+    "name": "Baran",
+    "type": "village",
+    "parent_code": "21.04.03",
+    "latitude": 0.176028,
+    "longitude": 104.524142
+  },
+  {
+    "code": "21.04.04.1006",
+    "name": "Raya",
+    "type": "village",
+    "parent_code": "21.04.04",
+    "latitude": -0.451508,
+    "longitude": 104.456696
+  },
+  {
+    "code": "21.04.04.2001",
+    "name": "Bakong",
+    "type": "village",
+    "parent_code": "21.04.04",
+    "latitude": -0.399854,
+    "longitude": 104.336397
+  },
+  {
+    "code": "21.04.04.2002",
+    "name": "Kuala Raya",
+    "type": "village",
+    "parent_code": "21.04.04",
+    "latitude": -0.421697,
+    "longitude": 104.400706
+  },
+  {
+    "code": "21.04.04.2003",
+    "name": "Marok Tua",
+    "type": "village",
+    "parent_code": "21.04.04",
+    "latitude": -0.54721,
+    "longitude": 104.336771
+  },
+  {
+    "code": "21.04.04.2005",
+    "name": "Sungai Buluh",
+    "type": "village",
+    "parent_code": "21.04.04",
+    "latitude": -0.374568,
+    "longitude": 104.456009
+  },
+  {
+    "code": "21.04.04.2007",
+    "name": "Sungai Raya",
+    "type": "village",
+    "parent_code": "21.04.04",
+    "latitude": -0.481785,
+    "longitude": 104.434568
+  },
+  {
+    "code": "21.04.04.2008",
+    "name": "Sungai Harapan",
+    "type": "village",
+    "parent_code": "21.04.04",
+    "latitude": -0.413096,
+    "longitude": 104.461574
+  },
+  {
+    "code": "21.04.04.2009",
+    "name": "Jagoh",
+    "type": "village",
+    "parent_code": "21.04.04",
+    "latitude": -0.354479,
+    "longitude": 104.466167
+  },
+  {
+    "code": "21.04.04.2012",
+    "name": "Tinjul",
+    "type": "village",
+    "parent_code": "21.04.04",
+    "latitude": -0.464466,
+    "longitude": 104.372891
+  },
+  {
+    "code": "21.04.04.2013",
+    "name": "Langkap",
+    "type": "village",
+    "parent_code": "21.04.04",
+    "latitude": -0.459669,
+    "longitude": 104.313343
+  },
+  {
+    "code": "21.04.04.2014",
+    "name": "Tanjung Irat",
+    "type": "village",
+    "parent_code": "21.04.04",
+    "latitude": -0.439583,
+    "longitude": 104.282809
+  },
+  {
+    "code": "21.04.04.2015",
+    "name": "Bukit Belah",
+    "type": "village",
+    "parent_code": "21.04.04",
+    "latitude": -0.437295,
+    "longitude": 104.428369
+  },
+  {
+    "code": "21.04.05.1007",
+    "name": "Pancur",
+    "type": "village",
+    "parent_code": "21.04.05",
+    "latitude": -0.074714,
+    "longitude": 104.651889
+  },
+  {
+    "code": "21.04.05.2001",
+    "name": "Bukit Harapan",
+    "type": "village",
+    "parent_code": "21.04.05",
+    "latitude": -0.198076,
+    "longitude": 104.749064
+  },
+  {
+    "code": "21.04.05.2002",
+    "name": "Duara",
+    "type": "village",
+    "parent_code": "21.04.05",
+    "latitude": -0.038746,
+    "longitude": 104.600663
+  },
+  {
+    "code": "21.04.05.2003",
+    "name": "Limbung",
+    "type": "village",
+    "parent_code": "21.04.05",
+    "latitude": -0.198856,
+    "longitude": 104.828746
+  },
+  {
+    "code": "21.04.05.2004",
+    "name": "Resun",
+    "type": "village",
+    "parent_code": "21.04.05",
+    "latitude": -0.12553,
+    "longitude": 104.598795
+  },
+  {
+    "code": "21.04.05.2005",
+    "name": "Sekanah",
+    "type": "village",
+    "parent_code": "21.04.05",
+    "latitude": -0.01804,
+    "longitude": 104.585408
+  },
+  {
+    "code": "21.04.05.2008",
+    "name": "Linau",
+    "type": "village",
+    "parent_code": "21.04.05",
+    "latitude": -0.143603,
+    "longitude": 104.706911
+  },
+  {
+    "code": "21.04.05.2009",
+    "name": "Sungaibesar",
+    "type": "village",
+    "parent_code": "21.04.05",
+    "latitude": -0.056583,
+    "longitude": 104.579646
+  },
+  {
+    "code": "21.04.05.2010",
+    "name": "Rantau Panjang",
+    "type": "village",
+    "parent_code": "21.04.05",
+    "latitude": -0.096606,
+    "longitude": 104.599254
+  },
+  {
+    "code": "21.04.05.2012",
+    "name": "Resun Pesisir",
+    "type": "village",
+    "parent_code": "21.04.05",
+    "latitude": -0.120479,
+    "longitude": 104.665894
+  },
+  {
+    "code": "21.04.06.2001",
+    "name": "Berindat",
+    "type": "village",
+    "parent_code": "21.04.06",
+    "latitude": -0.456671,
+    "longitude": 104.535874
+  },
+  {
+    "code": "21.04.06.2002",
+    "name": "Sedamai",
+    "type": "village",
+    "parent_code": "21.04.06",
+    "latitude": -0.426823,
+    "longitude": 104.528962
+  },
+  {
+    "code": "21.04.06.2003",
+    "name": "Lanjut",
+    "type": "village",
+    "parent_code": "21.04.06",
+    "latitude": -0.408768,
+    "longitude": 104.52207
+  },
+  {
+    "code": "21.04.06.2004",
+    "name": "Kote",
+    "type": "village",
+    "parent_code": "21.04.06",
+    "latitude": -0.383808,
+    "longitude": 104.50629
+  },
+  {
+    "code": "21.04.06.2005",
+    "name": "Persing",
+    "type": "village",
+    "parent_code": "21.04.06",
+    "latitude": -0.436061,
+    "longitude": 104.55086
+  },
+  {
+    "code": "21.04.06.2006",
+    "name": "Pelakak",
+    "type": "village",
+    "parent_code": "21.04.06",
+    "latitude": -0.355958,
+    "longitude": 104.486183
+  },
+  {
+    "code": "21.04.07.2001",
+    "name": "Bukitlangkap",
+    "type": "village",
+    "parent_code": "21.04.07",
+    "latitude": -0.188097,
+    "longitude": 104.718642
+  },
+  {
+    "code": "21.04.07.2002",
+    "name": "Keton",
+    "type": "village",
+    "parent_code": "21.04.07",
+    "latitude": -0.243725,
+    "longitude": 104.793976
+  },
+  {
+    "code": "21.04.07.2003",
+    "name": "Pekaka",
+    "type": "village",
+    "parent_code": "21.04.07",
+    "latitude": -0.24098,
+    "longitude": 104.768596
+  },
+  {
+    "code": "21.04.07.2004",
+    "name": "Kerandin",
+    "type": "village",
+    "parent_code": "21.04.07",
+    "latitude": -0.216696,
+    "longitude": 104.735965
+  },
+  {
+    "code": "21.04.07.2005",
+    "name": "Sungai Pinang",
+    "type": "village",
+    "parent_code": "21.04.07",
+    "latitude": -0.277855,
+    "longitude": 104.834802
+  },
+  {
+    "code": "21.04.07.2006",
+    "name": "Kudung",
+    "type": "village",
+    "parent_code": "21.04.07",
+    "latitude": -0.293325,
+    "longitude": 104.886709
+  },
+  {
+    "code": "21.04.07.2007",
+    "name": "Teluk",
+    "type": "village",
+    "parent_code": "21.04.07",
+    "latitude": -0.245871,
+    "longitude": 104.890519
+  },
+  {
+    "code": "21.04.07.2008",
+    "name": "Belungkur",
+    "type": "village",
+    "parent_code": "21.04.07",
+    "latitude": -0.288236,
+    "longitude": 104.971026
+  },
+  {
+    "code": "21.04.08.2001",
+    "name": "Selayar",
+    "type": "village",
+    "parent_code": "21.04.08",
+    "latitude": -0.294621,
+    "longitude": 104.417826
+  },
+  {
+    "code": "21.04.08.2002",
+    "name": "Penuba",
+    "type": "village",
+    "parent_code": "21.04.08",
+    "latitude": -0.311322,
+    "longitude": 104.452166
+  },
+  {
+    "code": "21.04.08.2003",
+    "name": "Penuba Timur",
+    "type": "village",
+    "parent_code": "21.04.08",
+    "latitude": -0.299828,
+    "longitude": 104.47236
+  },
+  {
+    "code": "21.04.08.2004",
+    "name": "Pantai Harapan",
+    "type": "village",
+    "parent_code": "21.04.08",
+    "latitude": -0.313356,
+    "longitude": 104.42723
+  },
+  {
+    "code": "21.04.09.2001",
+    "name": "Marok Kecil",
+    "type": "village",
+    "parent_code": "21.04.09",
+    "latitude": -0.556661,
+    "longitude": 104.438323
+  },
+  {
+    "code": "21.04.09.2002",
+    "name": "Pulau Lalang",
+    "type": "village",
+    "parent_code": "21.04.09",
+    "latitude": -0.742571,
+    "longitude": 104.576989
+  },
+  {
+    "code": "21.04.09.2003",
+    "name": "Resang",
+    "type": "village",
+    "parent_code": "21.04.09",
+    "latitude": -0.616159,
+    "longitude": 104.380373
+  },
+  {
+    "code": "21.04.10.2001",
+    "name": "Busung Panjang",
+    "type": "village",
+    "parent_code": "21.04.10",
+    "latitude": -0.34714,
+    "longitude": 104.2462
+  },
+  {
+    "code": "21.04.10.2002",
+    "name": "Posek",
+    "type": "village",
+    "parent_code": "21.04.10",
+    "latitude": -0.39411,
+    "longitude": 104.200005
+  },
+  {
+    "code": "21.04.10.2003",
+    "name": "Suak Buaya",
+    "type": "village",
+    "parent_code": "21.04.10",
+    "latitude": -0.350778,
+    "longitude": 104.157854
+  },
+  {
+    "code": "21.04.11.2001",
+    "name": "Benan",
+    "type": "village",
+    "parent_code": "21.04.11",
+    "latitude": 0.476881,
+    "longitude": 104.414001
+  },
+  {
+    "code": "21.04.11.2002",
+    "name": "Mensanak",
+    "type": "village",
+    "parent_code": "21.04.11",
+    "latitude": 0.398029,
+    "longitude": 104.534195
+  },
+  {
+    "code": "21.04.11.2003",
+    "name": "Pulau Bukit",
+    "type": "village",
+    "parent_code": "21.04.11",
+    "latitude": 0.448481,
+    "longitude": 104.394606
+  },
+  {
+    "code": "21.04.11.2004",
+    "name": "Pulau Duyung",
+    "type": "village",
+    "parent_code": "21.04.11",
+    "latitude": 0.364327,
+    "longitude": 104.47054
+  },
+  {
+    "code": "21.04.11.2005",
+    "name": "Pulau Medang",
+    "type": "village",
+    "parent_code": "21.04.11",
+    "latitude": 0.382851,
+    "longitude": 104.426749
+  },
+  {
+    "code": "21.04.12.2001",
+    "name": "Temiang",
+    "type": "village",
+    "parent_code": "21.04.12",
+    "latitude": 0.341612,
+    "longitude": 104.377018
+  },
+  {
+    "code": "21.04.12.2002",
+    "name": "Tajur Biru",
+    "type": "village",
+    "parent_code": "21.04.12",
+    "latitude": 0.275435,
+    "longitude": 104.437367
+  },
+  {
+    "code": "21.04.12.2003",
+    "name": "Pulau Batang",
+    "type": "village",
+    "parent_code": "21.04.12",
+    "latitude": 0.298523,
+    "longitude": 104.342237
+  },
+  {
+    "code": "21.04.13.2001",
+    "name": "Batu Belubang",
+    "type": "village",
+    "parent_code": "21.04.13",
+    "latitude": 0.174967,
+    "longitude": 104.224198
+  },
+  {
+    "code": "21.04.13.2002",
+    "name": "Cempa",
+    "type": "village",
+    "parent_code": "21.04.13",
+    "latitude": 0.139125,
+    "longitude": 104.312111
+  },
+  {
+    "code": "21.04.13.2003",
+    "name": "Pasir Panjang",
+    "type": "village",
+    "parent_code": "21.04.13",
+    "latitude": 0.123071,
+    "longitude": 104.410818
+  },
+  {
+    "code": "21.04.13.2004",
+    "name": "Tanjung Kelit",
+    "type": "village",
+    "parent_code": "21.04.13",
+    "latitude": 0.046886,
+    "longitude": 104.482965
+  },
+  {
+    "code": "21.04.13.2005",
+    "name": "Tanjung Lipat",
+    "type": "village",
+    "parent_code": "21.04.13",
+    "latitude": 0.098084,
+    "longitude": 104.482271
+  },
+  {
+    "code": "21.04.13.2006",
+    "name": "Rejai",
+    "type": "village",
+    "parent_code": "21.04.13",
+    "latitude": 0.159593,
+    "longitude": 104.4404
+  },
+  {
+    "code": "21.05.01.1001",
+    "name": "Terempa",
+    "type": "village",
+    "parent_code": "21.05.01",
+    "latitude": 3.216664,
+    "longitude": 106.221145
+  },
+  {
+    "code": "21.05.01.2002",
+    "name": "Terempa Barat",
+    "type": "village",
+    "parent_code": "21.05.01",
+    "latitude": 3.207084,
+    "longitude": 106.20775
+  },
+  {
+    "code": "21.05.01.2003",
+    "name": "Tarempa Selatan",
+    "type": "village",
+    "parent_code": "21.05.01",
+    "latitude": 3.175109,
+    "longitude": 106.232726
+  },
+  {
+    "code": "21.05.01.2004",
+    "name": "Tarempa Timur",
+    "type": "village",
+    "parent_code": "21.05.01",
+    "latitude": 3.234391,
+    "longitude": 106.246098
+  },
+  {
+    "code": "21.05.01.2005",
+    "name": "Pesisir Timur",
+    "type": "village",
+    "parent_code": "21.05.01",
+    "latitude": 3.201651,
+    "longitude": 106.2529
+  },
+  {
+    "code": "21.05.01.2006",
+    "name": "Sri Tanjung",
+    "type": "village",
+    "parent_code": "21.05.01",
+    "latitude": 3.224966,
+    "longitude": 106.20889
+  },
+  {
+    "code": "21.05.01.2007",
+    "name": "Tarempa Barat Daya",
+    "type": "village",
+    "parent_code": "21.05.01",
+    "latitude": 3.215459,
+    "longitude": 106.214192
+  },
+  {
+    "code": "21.05.02.2002",
+    "name": "Tebang",
+    "type": "village",
+    "parent_code": "21.05.02",
+    "latitude": 3.320339,
+    "longitude": 106.288813
+  },
+  {
+    "code": "21.05.02.2003",
+    "name": "Ladan",
+    "type": "village",
+    "parent_code": "21.05.02",
+    "latitude": 3.343089,
+    "longitude": 106.292152
+  },
+  {
+    "code": "21.05.02.2005",
+    "name": "Piabung",
+    "type": "village",
+    "parent_code": "21.05.02",
+    "latitude": 3.280492,
+    "longitude": 106.288328
+  },
+  {
+    "code": "21.05.02.2006",
+    "name": "Langir",
+    "type": "village",
+    "parent_code": "21.05.02",
+    "latitude": 3.297317,
+    "longitude": 106.275607
+  },
+  {
+    "code": "21.05.02.2007",
+    "name": "Candi",
+    "type": "village",
+    "parent_code": "21.05.02",
+    "latitude": 3.301945,
+    "longitude": 106.285858
+  },
+  {
+    "code": "21.05.02.2008",
+    "name": "Putik",
+    "type": "village",
+    "parent_code": "21.05.02",
+    "latitude": 3.369308,
+    "longitude": 106.308396
+  },
+  {
+    "code": "21.05.02.2015",
+    "name": "Belibak",
+    "type": "village",
+    "parent_code": "21.05.02",
+    "latitude": 3.322525,
+    "longitude": 106.399115
+  },
+  {
+    "code": "21.05.03.2001",
+    "name": "Nyamuk",
+    "type": "village",
+    "parent_code": "21.05.03",
+    "latitude": 3.074544,
+    "longitude": 106.356117
+  },
+  {
+    "code": "21.05.03.2002",
+    "name": "Batu Belah",
+    "type": "village",
+    "parent_code": "21.05.03",
+    "latitude": 3.173912,
+    "longitude": 106.414804
+  },
+  {
+    "code": "21.05.03.2003",
+    "name": "Munjan",
+    "type": "village",
+    "parent_code": "21.05.03",
+    "latitude": 3.098213,
+    "longitude": 106.345733
+  },
+  {
+    "code": "21.05.03.2004",
+    "name": "Serat",
+    "type": "village",
+    "parent_code": "21.05.03",
+    "latitude": 3.101812,
+    "longitude": 106.311487
+  },
+  {
+    "code": "21.05.03.2005",
+    "name": "Air Putih",
+    "type": "village",
+    "parent_code": "21.05.03",
+    "latitude": 3.124977,
+    "longitude": 106.273374
+  },
+  {
+    "code": "21.05.03.2006",
+    "name": "Temburun",
+    "type": "village",
+    "parent_code": "21.05.03",
+    "latitude": 3.153607,
+    "longitude": 106.284783
+  },
+  {
+    "code": "21.05.04.2001",
+    "name": "Kiabu",
+    "type": "village",
+    "parent_code": "21.05.04",
+    "latitude": 2.744641,
+    "longitude": 106.207795
+  },
+  {
+    "code": "21.05.04.2002",
+    "name": "Telaga",
+    "type": "village",
+    "parent_code": "21.05.04",
+    "latitude": 3.05203,
+    "longitude": 105.974578
+  },
+  {
+    "code": "21.05.04.2003",
+    "name": "Mengkait",
+    "type": "village",
+    "parent_code": "21.05.04",
+    "latitude": 2.948102,
+    "longitude": 106.145348
+  },
+  {
+    "code": "21.05.04.2004",
+    "name": "Tiangau",
+    "type": "village",
+    "parent_code": "21.05.04",
+    "latitude": 3.155712,
+    "longitude": 106.215219
+  },
+  {
+    "code": "21.05.04.2005",
+    "name": "Telaga Kecil",
+    "type": "village",
+    "parent_code": "21.05.04",
+    "latitude": 3.087237,
+    "longitude": 105.956597
+  },
+  {
+    "code": "21.05.04.2006",
+    "name": "Lingai",
+    "type": "village",
+    "parent_code": "21.05.04",
+    "latitude": 3.134087,
+    "longitude": 106.10022
+  },
+  {
+    "code": "21.05.04.2007",
+    "name": "Air Bini",
+    "type": "village",
+    "parent_code": "21.05.04",
+    "latitude": 3.114176,
+    "longitude": 106.242026
+  },
+  {
+    "code": "21.05.05.2001",
+    "name": "Kuala Maras",
+    "type": "village",
+    "parent_code": "21.05.05",
+    "latitude": 2.950075,
+    "longitude": 105.806891
+  },
+  {
+    "code": "21.05.05.2002",
+    "name": "Ulu Maras",
+    "type": "village",
+    "parent_code": "21.05.05",
+    "latitude": 2.918296,
+    "longitude": 105.751312
+  },
+  {
+    "code": "21.05.05.2003",
+    "name": "Bukit Padi",
+    "type": "village",
+    "parent_code": "21.05.05",
+    "latitude": 2.954972,
+    "longitude": 105.752448
+  },
+  {
+    "code": "21.05.05.2004",
+    "name": "Genting Pulur",
+    "type": "village",
+    "parent_code": "21.05.05",
+    "latitude": 2.862429,
+    "longitude": 105.742406
+  },
+  {
+    "code": "21.05.06.1005",
+    "name": "Letung",
+    "type": "village",
+    "parent_code": "21.05.06",
+    "latitude": 2.994289,
+    "longitude": 105.706503
+  },
+  {
+    "code": "21.05.06.2001",
+    "name": "Mampok",
+    "type": "village",
+    "parent_code": "21.05.06",
+    "latitude": 2.955438,
+    "longitude": 105.721404
+  },
+  {
+    "code": "21.05.06.2002",
+    "name": "Rewak",
+    "type": "village",
+    "parent_code": "21.05.06",
+    "latitude": 3.033344,
+    "longitude": 105.714547
+  },
+  {
+    "code": "21.05.06.2006",
+    "name": "Air Biru",
+    "type": "village",
+    "parent_code": "21.05.06",
+    "latitude": 2.881302,
+    "longitude": 105.705176
+  },
+  {
+    "code": "21.05.06.2008",
+    "name": "Batu Berapit",
+    "type": "village",
+    "parent_code": "21.05.06",
+    "latitude": 2.984667,
+    "longitude": 105.717504
+  },
+  {
+    "code": "21.05.06.2009",
+    "name": "Landak",
+    "type": "village",
+    "parent_code": "21.05.06",
+    "latitude": 3.006985,
+    "longitude": 105.696404
+  },
+  {
+    "code": "21.05.07.2001",
+    "name": "Air Asuk",
+    "type": "village",
+    "parent_code": "21.05.07",
+    "latitude": 3.252346,
+    "longitude": 106.296729
+  },
+  {
+    "code": "21.05.07.2002",
+    "name": "Air Sena",
+    "type": "village",
+    "parent_code": "21.05.07",
+    "latitude": 3.23809,
+    "longitude": 106.28665
+  },
+  {
+    "code": "21.05.07.2003",
+    "name": "Teluk Siantan",
+    "type": "village",
+    "parent_code": "21.05.07",
+    "latitude": 3.261106,
+    "longitude": 106.268828
+  },
+  {
+    "code": "21.05.07.2004",
+    "name": "Lidi",
+    "type": "village",
+    "parent_code": "21.05.07",
+    "latitude": 3.277624,
+    "longitude": 106.304247
+  },
+  {
+    "code": "21.05.07.2005",
+    "name": "Liuk",
+    "type": "village",
+    "parent_code": "21.05.07",
+    "latitude": 3.251047,
+    "longitude": 106.303688
+  },
+  {
+    "code": "21.05.07.2006",
+    "name": "Teluk Sunting",
+    "type": "village",
+    "parent_code": "21.05.07",
+    "latitude": 3.272775,
+    "longitude": 106.255435
+  },
+  {
+    "code": "21.05.08.2001",
+    "name": "Mubur",
+    "type": "village",
+    "parent_code": "21.05.08",
+    "latitude": 3.355265,
+    "longitude": 106.215373
+  },
+  {
+    "code": "21.05.08.2002",
+    "name": "Piasan",
+    "type": "village",
+    "parent_code": "21.05.08",
+    "latitude": 3.30701,
+    "longitude": 106.217614
+  },
+  {
+    "code": "21.05.08.2003",
+    "name": "Bayat",
+    "type": "village",
+    "parent_code": "21.05.08",
+    "latitude": 3.323402,
+    "longitude": 106.188924
+  },
+  {
+    "code": "21.05.09.2001",
+    "name": "Impol",
+    "type": "village",
+    "parent_code": "21.05.09",
+    "latitude": 3.086477,
+    "longitude": 105.719824
+  },
+  {
+    "code": "21.05.09.2002",
+    "name": "Keramut",
+    "type": "village",
+    "parent_code": "21.05.09",
+    "latitude": 3.098588,
+    "longitude": 105.640066
+  },
+  {
+    "code": "21.05.09.2003",
+    "name": "Sunggak",
+    "type": "village",
+    "parent_code": "21.05.09",
+    "latitude": 3.100663,
+    "longitude": 105.694607
+  },
+  {
+    "code": "21.05.10.2001",
+    "name": "Payalaman",
+    "type": "village",
+    "parent_code": "21.05.10",
+    "latitude": 3.331227,
+    "longitude": 106.268411
+  },
+  {
+    "code": "21.05.10.2002",
+    "name": "Payamaram",
+    "type": "village",
+    "parent_code": "21.05.10",
+    "latitude": 3.340327,
+    "longitude": 106.254318
+  },
+  {
+    "code": "21.05.10.2003",
+    "name": "Batu Ampar",
+    "type": "village",
+    "parent_code": "21.05.10",
+    "latitude": 3.370643,
+    "longitude": 106.271751
+  },
+  {
+    "code": "21.05.10.2004",
+    "name": "Matak",
+    "type": "village",
+    "parent_code": "21.05.10",
+    "latitude": 3.31842,
+    "longitude": 106.242486
+  },
+  {
+    "code": "21.05.10.2005",
+    "name": "Teluk Bayur",
+    "type": "village",
+    "parent_code": "21.05.10",
+    "latitude": 3.303959,
+    "longitude": 106.25746
+  },
+  {
+    "code": "21.71.01.1002",
+    "name": "Pemping",
+    "type": "village",
+    "parent_code": "21.71.01",
+    "latitude": 1.101048,
+    "longitude": 103.783756
+  },
+  {
+    "code": "21.71.01.1003",
+    "name": "Kasu",
+    "type": "village",
+    "parent_code": "21.71.01",
+    "latitude": 1.034464,
+    "longitude": 103.813814
+  },
+  {
+    "code": "21.71.01.1004",
+    "name": "Pulau Terung",
+    "type": "village",
+    "parent_code": "21.71.01",
+    "latitude": 0.971743,
+    "longitude": 103.784112
+  },
+  {
+    "code": "21.71.01.1005",
+    "name": "Pecong",
+    "type": "village",
+    "parent_code": "21.71.01",
+    "latitude": 0.989038,
+    "longitude": 103.818616
+  },
+  {
+    "code": "21.71.01.1006",
+    "name": "Tanjung Sari",
+    "type": "village",
+    "parent_code": "21.71.01",
+    "latitude": 1.158547,
+    "longitude": 103.889772
+  },
+  {
+    "code": "21.71.01.1007",
+    "name": "Sekanak Raya",
+    "type": "village",
+    "parent_code": "21.71.01",
+    "latitude": 1.137774,
+    "longitude": 103.873218
+  },
+  {
+    "code": "21.71.02.1001",
+    "name": "Tanjung Sengkuang",
+    "type": "village",
+    "parent_code": "21.71.02",
+    "latitude": 1.178026,
+    "longitude": 104.018567
+  },
+  {
+    "code": "21.71.02.1002",
+    "name": "Sungai Jodoh",
+    "type": "village",
+    "parent_code": "21.71.02",
+    "latitude": 1.156297,
+    "longitude": 104.003565
+  },
+  {
+    "code": "21.71.02.1003",
+    "name": "Batu Merah",
+    "type": "village",
+    "parent_code": "21.71.02",
+    "latitude": 1.175176,
+    "longitude": 104.006591
+  },
+  {
+    "code": "21.71.02.1004",
+    "name": "Kampung Seraya",
+    "type": "village",
+    "parent_code": "21.71.02",
+    "latitude": 1.154801,
+    "longitude": 104.014631
+  },
+  {
+    "code": "21.71.03.1001",
+    "name": "Sungai Harapan",
+    "type": "village",
+    "parent_code": "21.71.03",
+    "latitude": 1.10877,
+    "longitude": 103.949739
+  },
+  {
+    "code": "21.71.03.1002",
+    "name": "Tanjung Pinggir",
+    "type": "village",
+    "parent_code": "21.71.03",
+    "latitude": 1.128341,
+    "longitude": 103.94052
+  },
+  {
+    "code": "21.71.03.1003",
+    "name": "Tanjung Riau",
+    "type": "village",
+    "parent_code": "21.71.03",
+    "latitude": 1.082627,
+    "longitude": 103.944903
+  },
+  {
+    "code": "21.71.03.1005",
+    "name": "Tiban Indah",
+    "type": "village",
+    "parent_code": "21.71.03",
+    "latitude": 1.120284,
+    "longitude": 103.988754
+  },
+  {
+    "code": "21.71.03.1006",
+    "name": "Tiban Baru",
+    "type": "village",
+    "parent_code": "21.71.03",
+    "latitude": 1.100275,
+    "longitude": 103.969049
+  },
+  {
+    "code": "21.71.03.1007",
+    "name": "Tiban Lama",
+    "type": "village",
+    "parent_code": "21.71.03",
+    "latitude": 1.096301,
+    "longitude": 103.997522
+  },
+  {
+    "code": "21.71.03.1008",
+    "name": "Patam Lestari",
+    "type": "village",
+    "parent_code": "21.71.03",
+    "latitude": 1.123101,
+    "longitude": 103.966773
+  },
+  {
+    "code": "21.71.04.1001",
+    "name": "Sambau",
+    "type": "village",
+    "parent_code": "21.71.04",
+    "latitude": 1.172116,
+    "longitude": 104.097294
+  },
+  {
+    "code": "21.71.04.1002",
+    "name": "Batu Besar",
+    "type": "village",
+    "parent_code": "21.71.04",
+    "latitude": 1.12859,
+    "longitude": 104.124213
+  },
+  {
+    "code": "21.71.04.1003",
+    "name": "Kabil",
+    "type": "village",
+    "parent_code": "21.71.04",
+    "latitude": 1.065253,
+    "longitude": 104.121867
+  },
+  {
+    "code": "21.71.04.1004",
+    "name": "Ngenang",
+    "type": "village",
+    "parent_code": "21.71.04",
+    "latitude": 1.02471,
+    "longitude": 104.1639
+  },
+  {
+    "code": "21.71.05.1001",
+    "name": "Bulang Lintang",
+    "type": "village",
+    "parent_code": "21.71.05",
+    "latitude": 0.997037,
+    "longitude": 103.868121
+  },
+  {
+    "code": "21.71.05.1002",
+    "name": "Pulau Buluh",
+    "type": "village",
+    "parent_code": "21.71.05",
+    "latitude": 1.014646,
+    "longitude": 103.912853
+  },
+  {
+    "code": "21.71.05.1003",
+    "name": "Temoyong",
+    "type": "village",
+    "parent_code": "21.71.05",
+    "latitude": 0.909753,
+    "longitude": 103.957079
+  },
+  {
+    "code": "21.71.05.1004",
+    "name": "Batu Legong",
+    "type": "village",
+    "parent_code": "21.71.05",
+    "latitude": 0.97389,
+    "longitude": 103.941125
+  },
+  {
+    "code": "21.71.05.1005",
+    "name": "Pantai Gelam",
+    "type": "village",
+    "parent_code": "21.71.05",
+    "latitude": 0.946019,
+    "longitude": 103.9136
+  },
+  {
+    "code": "21.71.05.1006",
+    "name": "Pulau Setokok",
+    "type": "village",
+    "parent_code": "21.71.05",
+    "latitude": 0.945552,
+    "longitude": 104.061984
+  },
+  {
+    "code": "21.71.06.1001",
+    "name": "Kampung Pelita",
+    "type": "village",
+    "parent_code": "21.71.06",
+    "latitude": 1.141445,
+    "longitude": 104.019855
+  },
+  {
+    "code": "21.71.06.1003",
+    "name": "Lubuk Baja Kota",
+    "type": "village",
+    "parent_code": "21.71.06",
+    "latitude": 1.143049,
+    "longitude": 104.011263
+  },
+  {
+    "code": "21.71.06.1004",
+    "name": "Batu Selicin",
+    "type": "village",
+    "parent_code": "21.71.06",
+    "latitude": 1.136725,
+    "longitude": 104.007533
+  },
+  {
+    "code": "21.71.06.1005",
+    "name": "Tanjung Uma",
+    "type": "village",
+    "parent_code": "21.71.06",
+    "latitude": 1.136774,
+    "longitude": 103.996464
+  },
+  {
+    "code": "21.71.06.1006",
+    "name": "Baloi Indah",
+    "type": "village",
+    "parent_code": "21.71.06",
+    "latitude": 1.123216,
+    "longitude": 104.009041
+  },
+  {
+    "code": "21.71.07.1001",
+    "name": "Muka Kuning",
+    "type": "village",
+    "parent_code": "21.71.07",
+    "latitude": 1.073932,
+    "longitude": 104.056133
+  },
+  {
+    "code": "21.71.07.1002",
+    "name": "Duriangkang",
+    "type": "village",
+    "parent_code": "21.71.07",
+    "latitude": 1.013514,
+    "longitude": 104.051206
+  },
+  {
+    "code": "21.71.07.1003",
+    "name": "Mangsang",
+    "type": "village",
+    "parent_code": "21.71.07",
+    "latitude": 1.033532,
+    "longitude": 104.039901
+  },
+  {
+    "code": "21.71.07.1004",
+    "name": "Tanjung Piayu",
+    "type": "village",
+    "parent_code": "21.71.07",
+    "latitude": 1.023196,
+    "longitude": 104.07837
+  },
+  {
+    "code": "21.71.08.1001",
+    "name": "Sijantung",
+    "type": "village",
+    "parent_code": "21.71.08",
+    "latitude": 0.766025,
+    "longitude": 104.208567
+  },
+  {
+    "code": "21.71.08.1002",
+    "name": "Karas",
+    "type": "village",
+    "parent_code": "21.71.08",
+    "latitude": 0.741561,
+    "longitude": 104.257407
+  },
+  {
+    "code": "21.71.08.1003",
+    "name": "Galang Baru",
+    "type": "village",
+    "parent_code": "21.71.08",
+    "latitude": 0.67309,
+    "longitude": 104.271909
+  },
+  {
+    "code": "21.71.08.1004",
+    "name": "Sembulang",
+    "type": "village",
+    "parent_code": "21.71.08",
+    "latitude": 0.829867,
+    "longitude": 104.202637
+  },
+  {
+    "code": "21.71.08.1005",
+    "name": "Rempang Cate",
+    "type": "village",
+    "parent_code": "21.71.08",
+    "latitude": 0.896705,
+    "longitude": 104.141385
+  },
+  {
+    "code": "21.71.08.1006",
+    "name": "Subang Mas",
+    "type": "village",
+    "parent_code": "21.71.08",
+    "latitude": 0.934373,
+    "longitude": 104.174486
+  },
+  {
+    "code": "21.71.08.1007",
+    "name": "Pulau Abang",
+    "type": "village",
+    "parent_code": "21.71.08",
+    "latitude": 0.569737,
+    "longitude": 104.199302
+  },
+  {
+    "code": "21.71.08.1008",
+    "name": "Air Raja",
+    "type": "village",
+    "parent_code": "21.71.08",
+    "latitude": 0.966529,
+    "longitude": 104.158916
+  },
+  {
+    "code": "21.71.09.1001",
+    "name": "Bengkong Indah",
+    "type": "village",
+    "parent_code": "21.71.09",
+    "latitude": 1.148803,
+    "longitude": 104.027872
+  },
+  {
+    "code": "21.71.09.1002",
+    "name": "Bengkong Laut",
+    "type": "village",
+    "parent_code": "21.71.09",
+    "latitude": 1.155822,
+    "longitude": 104.027082
+  },
+  {
+    "code": "21.71.09.1003",
+    "name": "Sadai",
+    "type": "village",
+    "parent_code": "21.71.09",
+    "latitude": 1.148332,
+    "longitude": 104.042914
+  },
+  {
+    "code": "21.71.09.1004",
+    "name": "Tanjung Buntung",
+    "type": "village",
+    "parent_code": "21.71.09",
+    "latitude": 1.167433,
+    "longitude": 104.032717
+  },
+  {
+    "code": "21.71.10.1001",
+    "name": "Baloi Permai",
+    "type": "village",
+    "parent_code": "21.71.10",
+    "latitude": 1.105857,
+    "longitude": 104.054771
+  },
+  {
+    "code": "21.71.10.1002",
+    "name": "Taman Baloi",
+    "type": "village",
+    "parent_code": "21.71.10",
+    "latitude": 1.115257,
+    "longitude": 104.032326
+  },
+  {
+    "code": "21.71.10.1003",
+    "name": "Teluk Tering",
+    "type": "village",
+    "parent_code": "21.71.10",
+    "latitude": 1.126184,
+    "longitude": 104.046382
+  },
+  {
+    "code": "21.71.10.1004",
+    "name": "Belian",
+    "type": "village",
+    "parent_code": "21.71.10",
+    "latitude": 1.121034,
+    "longitude": 104.081645
+  },
+  {
+    "code": "21.71.10.1005",
+    "name": "Sukajadi",
+    "type": "village",
+    "parent_code": "21.71.10",
+    "latitude": 1.104409,
+    "longitude": 104.026528
+  },
+  {
+    "code": "21.71.10.1006",
+    "name": "Sungai Panas",
+    "type": "village",
+    "parent_code": "21.71.10",
+    "latitude": 1.132816,
+    "longitude": 104.027367
+  },
+  {
+    "code": "21.71.11.1001",
+    "name": "Tembesi",
+    "type": "village",
+    "parent_code": "21.71.11",
+    "latitude": 1.016835,
+    "longitude": 104.012663
+  },
+  {
+    "code": "21.71.11.1002",
+    "name": "Sungai Binti",
+    "type": "village",
+    "parent_code": "21.71.11",
+    "latitude": 1.035431,
+    "longitude": 103.934734
+  },
+  {
+    "code": "21.71.11.1003",
+    "name": "Sungai Lekop",
+    "type": "village",
+    "parent_code": "21.71.11",
+    "latitude": 1.024375,
+    "longitude": 103.945418
+  },
+  {
+    "code": "21.71.11.1004",
+    "name": "Sagulung Kota",
+    "type": "village",
+    "parent_code": "21.71.11",
+    "latitude": 1.044076,
+    "longitude": 103.949807
+  },
+  {
+    "code": "21.71.11.1005",
+    "name": "Sungai Langkai",
+    "type": "village",
+    "parent_code": "21.71.11",
+    "latitude": 1.037622,
+    "longitude": 103.969284
+  },
+  {
+    "code": "21.71.11.1006",
+    "name": "Sungai Pelunggut",
+    "type": "village",
+    "parent_code": "21.71.11",
+    "latitude": 1.018844,
+    "longitude": 103.963826
+  },
+  {
+    "code": "21.71.12.1001",
+    "name": "Tanjung Uncang",
+    "type": "village",
+    "parent_code": "21.71.12",
+    "latitude": 1.061897,
+    "longitude": 103.912595
+  },
+  {
+    "code": "21.71.12.1002",
+    "name": "Buliang",
+    "type": "village",
+    "parent_code": "21.71.12",
+    "latitude": 1.053747,
+    "longitude": 103.973814
+  },
+  {
+    "code": "21.71.12.1003",
+    "name": "Kibing",
+    "type": "village",
+    "parent_code": "21.71.12",
+    "latitude": 1.063156,
+    "longitude": 103.989081
+  },
+  {
+    "code": "21.71.12.1004",
+    "name": "Bukit Tempayan",
+    "type": "village",
+    "parent_code": "21.71.12",
+    "latitude": 1.051011,
+    "longitude": 103.961532
+  },
+  {
+    "code": "21.72.01.1001",
+    "name": "Tanjung Pinang Barat",
+    "type": "village",
+    "parent_code": "21.72.01",
+    "latitude": 0.915871,
+    "longitude": 104.442207
+  },
+  {
+    "code": "21.72.01.1002",
+    "name": "Kemboja",
+    "type": "village",
+    "parent_code": "21.72.01",
+    "latitude": 0.926379,
+    "longitude": 104.450249
+  },
+  {
+    "code": "21.72.01.1003",
+    "name": "Kampung Baru",
+    "type": "village",
+    "parent_code": "21.72.01",
+    "latitude": 0.908194,
+    "longitude": 104.449538
+  },
+  {
+    "code": "21.72.01.1004",
+    "name": "Bukit Cermin",
+    "type": "village",
+    "parent_code": "21.72.01",
+    "latitude": 0.921186,
+    "longitude": 104.448256
+  },
+  {
+    "code": "21.72.02.1001",
+    "name": "Melayu Kota Piring",
+    "type": "village",
+    "parent_code": "21.72.02",
+    "latitude": 0.917364,
+    "longitude": 104.485281
+  },
+  {
+    "code": "21.72.02.1002",
+    "name": "Kampung Bulang",
+    "type": "village",
+    "parent_code": "21.72.02",
+    "latitude": 0.919471,
+    "longitude": 104.471838
+  },
+  {
+    "code": "21.72.02.1003",
+    "name": "Air Raja",
+    "type": "village",
+    "parent_code": "21.72.02",
+    "latitude": 0.951831,
+    "longitude": 104.501737
+  },
+  {
+    "code": "21.72.02.1004",
+    "name": "Batu IX",
+    "type": "village",
+    "parent_code": "21.72.02",
+    "latitude": 0.901002,
+    "longitude": 104.51203
+  },
+  {
+    "code": "21.72.02.1005",
+    "name": "Pinang Kencana",
+    "type": "village",
+    "parent_code": "21.72.02",
+    "latitude": 0.930078,
+    "longitude": 104.530433
+  },
+  {
+    "code": "21.72.03.1001",
+    "name": "Tanjung Pinang Kota",
+    "type": "village",
+    "parent_code": "21.72.03",
+    "latitude": 0.929327,
+    "longitude": 104.441566
+  },
+  {
+    "code": "21.72.03.1003",
+    "name": "Senggarang",
+    "type": "village",
+    "parent_code": "21.72.03",
+    "latitude": 0.964446,
+    "longitude": 104.432536
+  },
+  {
+    "code": "21.72.03.1004",
+    "name": "Penyengat",
+    "type": "village",
+    "parent_code": "21.72.03",
+    "latitude": 0.928069,
+    "longitude": 104.417715
+  },
+  {
+    "code": "21.72.03.1005",
+    "name": "Kampung Bugis",
+    "type": "village",
+    "parent_code": "21.72.03",
+    "latitude": 0.957419,
+    "longitude": 104.472198
+  },
+  {
+    "code": "21.72.04.1001",
+    "name": "Tanjung Pinang Timur",
+    "type": "village",
+    "parent_code": "21.72.04",
+    "latitude": 0.915275,
+    "longitude": 104.45828
+  },
+  {
+    "code": "21.72.04.1002",
+    "name": "Dompak",
+    "type": "village",
+    "parent_code": "21.72.04",
+    "latitude": 0.869699,
+    "longitude": 104.491928
+  },
+  {
+    "code": "21.72.04.1003",
+    "name": "Tanjung Ayun Sakti",
+    "type": "village",
+    "parent_code": "21.72.04",
+    "latitude": 0.903019,
+    "longitude": 104.461209
+  },
+  {
+    "code": "21.72.04.1004",
+    "name": "Sei Jang",
+    "type": "village",
+    "parent_code": "21.72.04",
+    "latitude": 0.899704,
+    "longitude": 104.474969
+  },
+  {
+    "code": "21.72.04.1005",
+    "name": "Tanjung Unggat",
+    "type": "village",
+    "parent_code": "21.72.04",
+    "latitude": 0.924293,
+    "longitude": 104.46227
+  }
+]

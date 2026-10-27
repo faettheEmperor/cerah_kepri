@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 use App\Services\ActivityAdvice;
 use App\Services\ClimateInsight;
 
@@ -14,6 +16,24 @@ Route::get('/', function () {
 
 Route::get('/api/weather/regions', function () {
     return response()->json(DB::table('regions')->where('active', true)->orderBy('code')->get());
+});
+
+Route::get('/api/news', function () {
+    $articles = Cache::remember('news:latest', now()->addMinutes(5), fn () =>
+        DB::table('news_articles')->orderByDesc('published_at')->limit((int) config('news.display_limit', 12))
+            ->get(['source_name', 'title', 'summary', 'url', 'published_at', 'matched_keywords'])
+            ->map(fn ($article) => [
+                'source' => $article->source_name,
+                'title' => $article->title,
+                'summary' => $article->summary,
+                'url' => $article->url,
+                'published_at' => $article->published_at,
+                'keywords' => json_decode($article->matched_keywords, true) ?: [],
+            ])
+            ->values()
+    );
+
+    return response()->json(['articles' => $articles]);
 });
 
 Route::get('/api/weather/map', function () {
@@ -34,13 +54,84 @@ Route::get('/api/weather/map', function () {
             $join->on('forecast.region_code', '=', 'r.code')->on('forecast.valid_at', '=', 'next_forecast.next_at')->on('forecast.fetched_at', '=', 'next_forecast.latest_at')->where('forecast.kind', '=', 'forecast');
         })
         ->where('r.active', true)
-        ->select('r.code', 'r.name', 'r.parent_code', 'r.latitude', 'r.longitude', 'w.temperature_c', 'w.weather_code', 'w.is_day', 'w.valid_at', 'w.rain_mm', 'w.wind_speed_kmh', 'w.pm2_5_ug_m3', 'forecast.precipitation_probability')
+        ->select('r.code', 'r.name', 'r.parent_code', 'r.latitude', 'r.longitude', 'w.temperature_c', 'w.relative_humidity', 'w.visibility_m', 'w.weather_code', 'w.is_day', 'w.valid_at', 'w.rain_mm', 'w.wind_speed_kmh', 'w.pm2_5_ug_m3', 'w.us_aqi', 'forecast.precipitation_probability')
         ->orderBy('r.code')->get();
 
     return response()->json($points);
 });
 
-Route::get('/api/weather/regions/{code}', function (string $code, ActivityAdvice $activityAdvice, ClimateInsight $climateInsight) {
+Route::get('/api/weather/boundaries/{level}/{code}', function (string $level, string $code, \Illuminate\Http\Request $request) {
+    abort_unless(in_array($level, ['municipalities', 'districts', 'villages'], true), 404);
+    abort_unless(match ($level) {
+        'municipalities' => preg_match('/^21$/', $code) === 1,
+        'districts' => preg_match('/^21\.\d{2}$/', $code) === 1,
+        'villages' => preg_match('/^21\.\d{2}\.\d{2}$/', $code) === 1,
+        default => false,
+    }, 404);
+
+    // BIG layers: 0 kabupaten/kota, 1 kecamatan, 2 kelurahan/desa.
+    $layer = match ($level) {'municipalities' => 0, 'districts' => 1, 'villages' => 2};
+    $url = "https://geoservices.big.go.id/gis/rest/services/BAPANAS/Batas_Administrasi/MapServer/{$layer}/query";
+    $cacheKey = "weather-boundaries:v4:{$level}:{$code}";
+    if (! $request->boolean('refresh') && ($cached = Cache::get($cacheKey)) !== null) {
+        return response()->json($cached)->header('Cache-Control', 'public, max-age=86400');
+    }
+    $digits = preg_replace('/\D/', '', $code);
+    // BIG is not consistent about dotted PUM codes, so match dotted and compact forms.
+    $where = match ($level) {
+        'municipalities' => "(KDPBPS = '{$code}' OR KDPPUM = '{$code}' OR KDPKAB LIKE '{$code}.%' OR KDPKAB LIKE '{$digits}%')",
+        'districts' => "(KDPKAB = '{$code}' OR KDPKAB = '{$digits}' OR KDCPUM LIKE '{$code}.%' OR KDCPUM LIKE '{$digits}%')",
+        default => "(KDCPUM = '{$code}' OR KDCPUM = '{$digits}' OR KDCPUM LIKE '{$code}.%' OR KDCPUM LIKE '{$digits}%')",
+    };
+    $query = [
+        'where' => $where,
+        'outFields' => 'OBJECTID,KDBBPS,KDCBPS,KDCPUM,KDEBPS,KDEPUM,KDPKAB,KDPPUM,WADMKC,WADMKD,WADMKK,WADMPR',
+        'returnGeometry' => 'true',
+        'returnZ' => 'false',
+        'returnM' => 'false',
+        'outSR' => '4326',
+        'maxAllowableOffset' => $level === 'municipalities' ? 0.002 : ($level === 'districts' ? 0.0015 : 0.0002),
+        'geometryPrecision' => 4,
+        'resultRecordCount' => 100,
+        'f' => 'geojson',
+    ];
+
+    $geoJson = null;
+    $lastError = null;
+    try {
+        $response = Http::acceptJson()->connectTimeout(8)->timeout(25)->get($url, $query);
+        if (! $response->successful()) {
+            $lastError = 'BIG menolak permintaan batas wilayah (HTTP '.$response->status().').';
+        } else {
+            $candidate = $response->json();
+            if (($candidate['type'] ?? null) !== 'FeatureCollection' || ! is_array($candidate['features'] ?? null)) {
+                $lastError = data_get($candidate, 'error.message') ?? 'BIG mengembalikan format data batas yang tidak dikenali.';
+            } else {
+                $candidate['features'] = array_values(array_filter($candidate['features'], fn ($feature) =>
+                    in_array($feature['geometry']['type'] ?? null, ['Polygon', 'MultiPolygon'], true)
+                ));
+                if (! empty($candidate['features'])) {
+                    $geoJson = $candidate;
+                    Cache::put($cacheKey, $geoJson, now()->addDay());
+                } else {
+                    $lastError = 'BIG belum mengembalikan batas wilayah untuk kode ini.';
+                }
+            }
+        }
+    } catch (\Throwable $exception) {
+        report($exception);
+        $lastError = 'BIG tidak dapat dijangkau untuk memuat batas wilayah.';
+    }
+
+    if (! $geoJson) {
+        return response()->json(['message' => $lastError ?? 'BIG belum mengembalikan batas wilayah untuk kode ini.'], 502)
+            ->header('Cache-Control', 'no-store');
+    }
+
+    return response()->json($geoJson)->header('Cache-Control', 'public, max-age=86400');
+})->where('code', '[0-9.]+');
+
+Route::get('/api/weather/regions/{code}', function (string $code, ActivityAdvice $activityAdvice) {
     $region = DB::table('regions')->where('code', $code)->where('active', true)->first();
     abort_unless($region, 404);
 
@@ -52,25 +143,81 @@ Route::get('/api/weather/regions/{code}', function (string $code, ActivityAdvice
     }
     if ($current && $latestFetchedAt && $current->fetched_at === $latestFetchedAt) {
         $currentForecast = DB::table('weather_observations')->where('region_code', $code)->where('kind', 'forecast')->where('fetched_at', $latestFetchedAt)->where('valid_at', $current->valid_at)->first();
-        if ($currentForecast && ($current->pm2_5_ug_m3 === null || $current->pm2_5_ug_m3 === '')) {
-            $current->pm2_5_ug_m3 = $currentForecast->pm2_5_ug_m3;
+        if ($currentForecast) {
+            $current->precipitation_probability = $currentForecast->precipitation_probability;
+            if ($current->us_aqi === null || $current->us_aqi === '') {
+                $current->us_aqi = $currentForecast->us_aqi;
+            }
+            if ($current->pm2_5_ug_m3 === null || $current->pm2_5_ug_m3 === '') {
+                $current->pm2_5_ug_m3 = $currentForecast->pm2_5_ug_m3;
+            }
+            if ($current->us_aqi === null || $current->us_aqi === '') {
+                $current->us_aqi = $currentForecast->us_aqi;
+            }
         }
     }
     $forecastRun = DB::table('weather_observations')->where('region_code', $code)->where('kind', 'forecast')->max('fetched_at');
     $forecast = $forecastRun
         ? DB::table('weather_observations')->where('region_code', $code)->where('kind', 'forecast')->where('fetched_at', $forecastRun)->orderBy('valid_at')->get()
         : collect();
-    $coastalVillages = ['21.72.03.1001', '21.72.03.1003', '21.72.03.1004', '21.72.03.1005', '21.72.04.1004', '21.72.04.1005'];
-    $hasCoastalAdvice = $region->type === 'city' || in_array($region->code, $coastalVillages, true);
-    $marineCurrent = $hasCoastalAdvice
-        ? DB::table('marine_observations')->where('region_code', '21.72')->where('kind', 'current')->orderByDesc('fetched_at')->first()
-        : null;
-    $marineRun = $region->type === 'city'
-        ? DB::table('marine_observations')->where('region_code', '21.72')->where('kind', 'forecast')->max('fetched_at')
-        : null;
-    $marineForecast = $marineRun
-        ? DB::table('marine_observations')->where('region_code', '21.72')->where('kind', 'forecast')->where('fetched_at', $marineRun)->orderBy('valid_at')->get()
-        : collect();
+    $historyToday = now('Asia/Jakarta')->startOfDay();
+    $historyDays = $region->type === 'village' ? 30 : 7;
+    $historyEnd = $historyToday->copy()->subDay()->toDateString();
+    $historyStart = $historyToday->copy()->subDays($historyDays)->toDateString();
+    $weatherHistory = collect();
+    if (in_array($region->type, ['district', 'village'], true)) {
+        $directHistory = DB::table('climate_daily_summaries')
+            ->where('region_code', $code)
+            ->whereBetween('observed_on', [$historyStart, $historyEnd])
+            ->get()->keyBy('observed_on');
+
+        if ($region->type === 'district') {
+            $villageCodes = DB::table('regions')->where('parent_code', $code)->where('type', 'village')->where('active', true)->pluck('code');
+            $villageHistory = $villageCodes->isEmpty()
+                ? collect()
+                : DB::table('climate_daily_summaries')->whereIn('region_code', $villageCodes)
+                    ->whereBetween('observed_on', [$historyStart, $historyEnd])->get()->groupBy('observed_on');
+
+            for ($daysAgo = 7; $daysAgo >= 1; $daysAgo--) {
+                $date = $historyToday->copy()->subDays($daysAgo)->toDateString();
+                $villageRows = $villageHistory->get($date, collect());
+                $localSummary = null;
+                if ($villageRows->isNotEmpty()) {
+                    $temperaturesMax = $villageRows->pluck('temperature_max_c')->filter(fn ($value) => $value !== null)->map(fn ($value) => (float) $value);
+                    $temperaturesMin = $villageRows->pluck('temperature_min_c')->filter(fn ($value) => $value !== null)->map(fn ($value) => (float) $value);
+                    $rainValues = $villageRows->pluck('precipitation_mm')->filter(fn ($value) => $value !== null)->map(fn ($value) => (float) $value);
+                    $weatherCodes = $villageRows->pluck('weather_code')->filter(fn ($value) => $value !== null)->countBy()->sortDesc();
+                    $localSummary = (object) [
+                        'observed_on' => $date,
+                        'temperature_max_c' => $temperaturesMax->isNotEmpty() ? $temperaturesMax->max() : null,
+                        'temperature_min_c' => $temperaturesMin->isNotEmpty() ? $temperaturesMin->min() : null,
+                        // Rain is a depth; average across villages instead of summing spatially.
+                        'precipitation_mm' => $rainValues->count() >= (int) ceil($villageCodes->count() * 0.75) && $rainValues->isNotEmpty() ? $rainValues->avg() : null,
+                        'weather_code' => $weatherCodes->isNotEmpty() ? (int) $weatherCodes->keys()->first() : null,
+                        'source' => 'open_meteo_current_village_aggregate',
+                    ];
+                }
+
+                $historical = $directHistory->get($date);
+                if ($historical && $historical->source === 'open_meteo_era5') {
+                    $weatherHistory->push((object) [
+                        'observed_on' => $date,
+                        'temperature_max_c' => $historical->temperature_max_c ?? $localSummary?->temperature_max_c,
+                        'temperature_min_c' => $historical->temperature_min_c ?? $localSummary?->temperature_min_c,
+                        'precipitation_mm' => $historical->precipitation_mm ?? $localSummary?->precipitation_mm,
+                        'weather_code' => $historical->weather_code ?? $localSummary?->weather_code,
+                        'source' => 'open_meteo_era5',
+                    ]);
+                } elseif ($localSummary) {
+                    $weatherHistory->push($localSummary);
+                } elseif ($historical) {
+                    $weatherHistory->push($historical);
+                }
+            }
+        } else {
+            $weatherHistory = $directHistory->sortBy('observed_on')->values();
+        }
+    }
     $adviceWeather = $current;
     if ($current && $forecast->isNotEmpty()) {
         $adviceWeather = (object) array_merge(
@@ -117,35 +264,50 @@ Route::get('/api/weather/regions/{code}', function (string $code, ActivityAdvice
         'wilayah' => $region,
         'cuaca_saat_ini' => $current,
         'prakiraan_7_hari' => $forecast,
-        'kondisi_laut_kota' => $region->type === 'city' ? [
-            'saat_ini' => $marineCurrent,
-            'prakiraan_7_hari' => $marineForecast,
-            'catatan' => 'Informasi laut bersifat umum dan bukan untuk keputusan keselamatan navigasi.',
-        ] : null,
-        'saran_aktivitas' => $activityAdvice->forWeather($adviceWeather, $marineCurrent),
+        'riwayat_7_hari' => $region->type === 'district' ? $weatherHistory : collect(),
+        'riwayat_30_hari' => $region->type === 'village' ? $weatherHistory : collect(),
+        'saran_aktivitas' => $activityAdvice->forWeather($adviceWeather),
         'diperbarui_pada' => $current?->fetched_at,
         'ditarik_pada' => $latestFetchedAt,
-        'iklim' => $climateInsight->forRegion($code),
     ]);
 })->where('code', '[0-9.]+');
 
-Route::get('/api/climate/regions/{code}', function (string $code, ClimateInsight $climateInsight) {
+Route::get('/api/climate/regions/{code}', function (string $code, \Illuminate\Http\Request $request, ClimateInsight $climateInsight) {
     abort_unless(DB::table('regions')->where('code', $code)->where('active', true)->exists(), 404);
+    $days = (int) $request->query('days', 30);
+    abort_unless(in_array($days, [7, 30, 90, 365], true), 422);
 
-    return response()->json($climateInsight->forRegion($code));
+    $summary = Cache::remember("climate-summary:v1:{$code}:{$days}", now()->addMinutes(15), fn () => $climateInsight->forRegion($code, $days));
+
+    return response()->json($summary);
 })->where('code', '[0-9.]+');
 
-Route::get('/api/climate/summary/{code}', function (string $code, ClimateInsight $climateInsight) {
+Route::get('/api/climate/summary/{code}', function (string $code, \Illuminate\Http\Request $request, ClimateInsight $climateInsight) {
     abort_unless(DB::table('regions')->where('code', $code)->where('active', true)->exists(), 404);
+    $days = (int) $request->query('days', 30);
+    abort_unless(in_array($days, [7, 30, 90, 365], true), 422);
 
-    return response()->json($climateInsight->forRegion($code));
+    $summary = Cache::remember("climate-summary:v1:{$code}:{$days}", now()->addMinutes(15), fn () => $climateInsight->forRegion($code, $days));
+
+    return response()->json($summary);
 })->where('code', '[0-9.]+');
 
-Route::post('/api/weather/refresh', function () {
-    $exitCode = Artisan::call('weather:sync');
+Route::post('/api/weather/refresh', function (\Illuminate\Http\Request $request) {
+    $validated = $request->validate([
+        'region_code' => ['required', 'string', 'max:20'],
+    ]);
+    $region = DB::table('regions')->where('code', $validated['region_code'])->where('active', true)->first();
+    if (! $region) {
+        return response()->json(['success' => false, 'message' => 'Pilih wilayah aktif yang ingin diperbarui.'], 422);
+    }
+
+    $exitCode = Artisan::call('weather:sync', ['--region' => $region->code]);
+    $commandOutput = trim(Artisan::output());
 
     return response()->json([
         'success' => $exitCode === 0,
-        'message' => $exitCode === 0 ? 'Data cuaca berhasil diperbarui.' : 'Pembaruan gagal. Data sebelumnya tetap ditampilkan.',
+        'message' => $exitCode === 0
+            ? "Data cuaca {$region->name} berhasil diperbarui."
+            : ($commandOutput !== '' ? $commandOutput : 'Pembaruan gagal. Data sebelumnya tetap ditampilkan.'),
     ], $exitCode === 0 ? 200 : 502);
 })->middleware('throttle:3,1');

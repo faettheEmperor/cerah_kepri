@@ -8,6 +8,10 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 
-Schedule::command('weather:sync')->everyThirtyMinutes()->withoutOverlapping();
+// Weather updates are requested for the selected region from the page. Avoid
+// synchronizing all 505 Kepri points on a single public API quota.
+Schedule::command('weather:aggregate-daily')->everyThirtyMinutes()->withoutOverlapping();
+Schedule::command('news:sync')->everyThirtyMinutes()->withoutOverlapping();
 Schedule::command('weather:prune')->hourly()->withoutOverlapping();
 Schedule::command('climate:sync-history --years=10')->monthlyOn(2, '03:20')->withoutOverlapping();
+Schedule::command('climate:sync-history --recent-days=10')->dailyAt('05:30')->withoutOverlapping();
