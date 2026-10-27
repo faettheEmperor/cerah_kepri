@@ -1,6 +1,8 @@
-# Panduan Menjalankan Cerah Tanjungpinang
+# Panduan Menjalankan CERAH (Windows/XAMPP)
 
 Panduan ini untuk menjalankan website secara lokal di Windows/XAMPP. Website lokal hanya dapat dibuka di komputer sendiri kecuali server dikonfigurasi khusus untuk akses jaringan atau internet.
+
+Untuk memahami susunan kode, sumber data, endpoint, dan kontribusi GitHub, baca juga [README.md](README.md). Aplikasi mencakup wilayah Provinsi Kepulauan Riau; nama “Tanjungpinang” pada judul panduan ini adalah nama awal project.
 
 ## Yang perlu aktif
 
@@ -14,7 +16,7 @@ Panduan ini untuk menjalankan website secara lokal di Windows/XAMPP. Website lok
 
 Tekan `Win + R`, ketik `services.msc`, lalu tekan Enter. Cari layanan **postgresql-x64-18** dan pastikan statusnya **Running/Berjalan**. Jika berhenti, klik kanan layanan itu lalu pilih **Start/Mulai**.
 
-Database `cerah_weather`, migrasi tabel, dan data wilayah Kepulauan Riau sudah dibuat. Jadi langkah `migrate --seed` hanya diperlukan saat menyiapkan database baru atau setelah database dihapus, bukan setiap kali membuka website.
+Jika database `cerah_weather` sudah ada, tidak perlu membuatnya ulang. Migration dan seeder juga tidak perlu dijalankan setiap kali membuka website. Untuk database baru, ikuti bagian **Menyiapkan database dari awal** di bawah.
 
 ### 2. Buka terminal proyek
 
@@ -47,7 +49,7 @@ cd C:\xampp\htdocs\cerahv1
 & "C:\xampp\php\php.exe" artisan schedule:work
 ```
 
-Biarkan terminal ini terbuka jika ingin menjalankan pekerjaan terjadwal. Scheduler mengolah ringkasan harian, mengambil RSS berita setiap 30 menit, membersihkan snapshot lama, dan memperbarui arsip historis. Pengambilan cuaca Open-Meteo dilakukan untuk wilayah yang dipilih, bukan untuk semua 505 wilayah sekaligus, agar tidak menghabiskan kuota API.
+Biarkan terminal ini terbuka jika ingin menjalankan pekerjaan terjadwal. Scheduler mengolah ringkasan harian dan mengambil RSS berita setiap 30 menit, membersihkan snapshot dan log lama setiap jam, memperbarui jendela arsip historis terbaru setiap hari, serta mencoba mengisi arsip historis panjang setiap bulan. Scheduler **tidak** mengambil cuaca saat ini untuk semua wilayah setiap 30 menit. Pengambilan cuaca Open-Meteo dilakukan untuk wilayah yang dipilih agar kuota API tidak cepat habis.
 
 ### 5. Ambil data saat itu juga (opsional)
 
@@ -127,4 +129,36 @@ cd C:\xampp\htdocs\cerahv1
 & "C:\xampp\php\php.exe" artisan weather:sync --region=21.72.04.1004
 ```
 
-Perintah contoh mengisi data cuaca Sei Jang. Wilayah lain dapat diperbarui satu per satu lewat tombol website atau dengan mengganti kode wilayah setelah `--region=`. Jangan menjalankan `migrate:fresh` pada database yang berisi data penting karena perintah itu menghapus semua tabel sebelum membuat ulang.
+Perintah `migrate --seed` membuat tabel dan mengisi daftar wilayah dari `database/seeders/data/kepri_regions.json`. Untuk memperbarui daftar wilayah saja, gunakan `artisan db:seed --class=RegionSeeder`. Seeder wilayah aman dijalankan ulang karena memperbarui data berdasarkan kode wilayah. Perintah contoh cuaca mengisi Sei Jang; wilayah lain dapat diperbarui satu per satu lewat tombol website atau dengan mengganti kode setelah `--region=`. Jangan menjalankan `migrate:fresh` pada database yang berisi data penting karena perintah itu menghapus semua tabel sebelum membuat ulang.
+
+## Memindahkan data historis lokal ke server
+
+Langkah ini memindahkan hanya isi tabel `climate_daily_summaries`. Siapkan kode terbaru di server, isi `.env` server di sana, lalu jalankan migration dan seeder wilayah terlebih dahulu:
+
+```sh
+php artisan migrate --force
+php artisan db:seed --class=RegionSeeder --force
+```
+
+Di PowerShell lokal, buat arsip data. Contoh ini memakai PostgreSQL 18; sesuaikan lokasi `pg_dump.exe` jika PostgreSQL-mu ada di folder lain. Perintah akan meminta password bila diperlukan.
+
+```powershell
+& "C:\Program Files\PostgreSQL\18\bin\pg_dump.exe" -h 127.0.0.1 -p 5432 -U postgres -d cerah_weather --data-only --table=public.climate_daily_summaries --format=custom --file="$env:USERPROFILE\Downloads\cerah-climate-data.dump"
+```
+
+Pindahkan file `cerah-climate-data.dump` ke folder sementara server melalui SFTP, jangan ke folder publik dan jangan commit ke GitHub. Setelah tabel wilayah ada, pulihkan data ke database server:
+
+```sh
+pg_restore --data-only --no-owner --no-privileges --dbname=NAMA_DATABASE /lokasi-aman/cerah-climate-data.dump
+```
+
+Impor langsung cocok untuk tabel tujuan yang masih kosong. Jika server sudah memiliki histori, buat backup server dahulu: impor bisa gagal karena pasangan kode wilayah dan tanggal yang sama sudah ada. Untuk menggabungkan data, gunakan tabel staging lalu upsert berdasarkan `region_code` dan `observed_on`; jangan kosongkan tabel produksi tanpa memahami dampaknya.
+
+Verifikasi hasil di PostgreSQL:
+
+```sql
+SELECT COUNT(*) AS jumlah, MIN(observed_on) AS tanggal_awal, MAX(observed_on) AS tanggal_akhir
+FROM climate_daily_summaries;
+```
+
+Hapus arsip sementara dari server setelah verifikasi.
