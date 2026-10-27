@@ -1,4 +1,4 @@
-# Cerah Tanjungpinang
+# Cerah Kepri
 
 Pengambilan prakiraan cuaca Open-Meteo untuk wilayah Kepulauan Riau, termasuk Kota Tanjungpinang.
 
