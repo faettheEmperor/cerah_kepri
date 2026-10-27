@@ -56,10 +56,3 @@ Waktu disimpan dan ditampilkan dalam zona `Asia/Jakarta`. Snapshot cuaca diperta
 Data prakiraan cuaca dan kualitas udara PM2.5 berasal dari [Open-Meteo](https://open-meteo.com/). Data historis harian curah hujan dan suhu bersumber dari arsip model ERA5 melalui Open-Meteo. Titik koordinat wilayah menjadi estimasi berbasis lokasi, bukan pengukuran stasiun cuaca di setiap kelurahan. Tampilkan atribusi Open-Meteo pada antarmuka publik dan tinjau ketentuan lisensi/penggunaan sebelum deployment.
 
 Berita disaring dari RSS [ANTARA Kepri](https://kepri.antaranews.com/rss/) menggunakan daftar kata kunci di `config/news.php`. Judul, ringkasan singkat, tanggal terbit, atribusi sumber, dan tautan asli ditampilkan pada halaman Berita.
-
-## Cakupan dan batasan
-
-- Prakiraan darat disimpan untuk Kota Tanjungpinang, empat kecamatan, dan 18 kelurahan yang terdaftar di seeder.
-- Prakiraan laut tidak termasuk dalam cakupan data aplikasi.
-- Insight musim dihitung dari arsip hujan dan suhu yang tersedia. Hasilnya merupakan ringkasan historis, bukan prediksi resmi musim atau peringatan cuaca.
-- Saran aktivitas dibuat dari ambang parameter cuaca dan kualitas udara. Informasi ini bukan advis keselamatan resmi untuk pelayaran maupun penerbangan.
