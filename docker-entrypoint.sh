@@ -11,6 +11,12 @@ if [ ! -f /var/www/html/.env ]; then
     cp /var/www/html/.env.example /var/www/html/.env
 fi
 
+# Sanitasi .env: Pastikan nilai yang memiliki spasi dibungkus tanda petik ganda agar phpdotenv tidak error
+if [ -f /var/www/html/.env ]; then
+    sed -i 's/^APP_NAME=Cerah Tanjungpinang.*/APP_NAME="Cerah Tanjungpinang"/' /var/www/html/.env || true
+    sed -i -E 's/^([A-Za-z0-9_]+)=([^"'\'' \t\r\n][^#\r\n]* [^#\r\n]*)$/\1="\2"/' /var/www/html/.env || true
+fi
+
 # 2. Pastikan APP_KEY terpasang (jika belum ada di env)
 if [ -z "$APP_KEY" ]; then
     if ! grep -q "^APP_KEY=base64:" /var/www/html/.env; then
