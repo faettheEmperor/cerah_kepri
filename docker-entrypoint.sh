@@ -65,7 +65,8 @@ else
 fi
 
 # 8. Optimasi cache produksi Laravel
-echo "⚡ Mengoptimalkan cache Laravel (config, route, view)..."
+echo "⚡ Mengoptimalkan cache Laravel (package, config, route, view)..."
+php artisan package:discover --ansi || true
 php artisan config:cache || true
 php artisan route:cache || true
 php artisan view:cache || true

@@ -29,7 +29,8 @@ RUN composer install \
     --no-dev \
     --no-interaction \
     --prefer-dist \
-    --optimize-autoloader
+    --optimize-autoloader \
+    --no-scripts
 
 # ==============================================================================
 # Tahap 3: Production Runner (PHP 8.3-FPM + Nginx + Supervisor)
