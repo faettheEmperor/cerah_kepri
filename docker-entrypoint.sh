@@ -62,10 +62,12 @@ done
 # 7. Jalankan migrasi & seeder jika database terhubung
 if [ $DB_CONNECTED -eq 1 ]; then
     echo "📦 Menyelaraskan tabel database (php artisan migrate)..."
-    php artisan migrate --force || echo "⚠️ Peringatan pada migrasi, melanjutkan..."
-
-    echo "🌱 Memeriksa dan mengisi data wilayah Kepri (RegionSeeder)..."
-    php artisan db:seed --class=RegionSeeder --force || echo "⚠️ Seeding wilayah selesai/dilewati."
+    if php artisan migrate --force; then
+        echo "🌱 Memeriksa dan mengisi data wilayah Kepri (RegionSeeder)..."
+        php artisan db:seed --class=RegionSeeder --force || echo "⚠️ Seeding wilayah selesai/dilewati."
+    else
+        echo "⚠️ Migrasi database belum berhasil dijalankan. Seeder dilewati sementara."
+    fi
 else
     echo "⚠️ Database belum siap saat startup container. Migrasi dilewati sementara."
 fi
