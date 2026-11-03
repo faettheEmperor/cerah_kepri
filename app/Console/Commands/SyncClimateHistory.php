@@ -19,7 +19,7 @@ class SyncClimateHistory extends Command
     {
         $logId = ProcessingLog::start('climate_history', 'Riwayat historis Open-Meteo');
         $years = max(1, min(25, (int) $this->option('years')));
-        $recentDays = max(0, min(14, (int) $this->option('recent-days')));
+        $recentDays = max(0, min(45, (int) $this->option('recent-days')));
         $today = Carbon::now('Asia/Jakarta');
         $endDate = $today->copy()->subDays(6);
         $startDate = $recentDays > 0

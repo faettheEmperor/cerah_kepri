@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f4f7f5">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Cuaca Tanjungpinang — Cerah</title>
+    <title>Cuaca Kepulauan Riau — Cerah</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -87,9 +87,150 @@
         .weather-reading-wrap{position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:flex-end;gap:6px;white-space:nowrap}.weather-reading-wrap>span:first-child{font:inherit;color:inherit}.weather-reading-wrap.weather-reading-open{z-index:1002}.weather-indicator{display:inline-flex;align-items:center;justify-content:center;width:18px;min-height:22px;padding:2px 0;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer}.weather-indicator[aria-expanded="true"]{position:relative;z-index:1002}.weather-indicator:focus-visible{outline:2px solid #8bc8ed;outline-offset:3px;border-radius:10px}.weather-color-dot{width:12px;height:12px;flex:0 0 12px;border:1px solid #ffffff85;border-radius:50%;box-shadow:inset 0 1px 2px #ffffff70,0 1px 3px #173b5c30}.aqi-tone-good{background:#32c783}.aqi-tone-moderate{background:#f3c640}.aqi-tone-sensitive{background:#ff814b}.aqi-tone-unhealthy{background:#e64b5f}.aqi-tone-very-unhealthy{background:#8652c8}.aqi-tone-hazardous{background:#79545b}.visibility-tone-excellent{background:#32c783}.visibility-tone-good{background:#32c783}.visibility-tone-moderate{background:#f3c640}.visibility-tone-poor{background:#ff814b}.visibility-tone-danger{background:#e64b5f}.weather-category{position:absolute;right:-6px;bottom:calc(100% + 7px);z-index:1003;width:max-content;max-width:min(230px,72vw);padding:7px 10px;border:1px solid #dce8f1;border-radius:10px;background:#fff;color:#25445e;box-shadow:0 7px 22px #173b5c2e;font-size:11px;font-weight:700;line-height:1.35;text-align:center;white-space:normal;overflow-wrap:anywhere}.weather-category:after{content:"";position:absolute;right:9px;top:100%;width:8px;height:8px;border-right:1px solid #dce8f1;border-bottom:1px solid #dce8f1;background:#fff;transform:translateY(-50%) rotate(45deg)}.weather-category[hidden]{display:none!important}.weather-category-aqi{width:min(340px,82vw);padding:12px 14px;border-radius:13px;text-align:left;white-space:normal}.weather-category-aqi strong{display:block;margin-bottom:5px;color:#1d3d59;font-size:12px}.weather-category-aqi span{display:block;color:#526a7e;font-size:11px;font-weight:500;line-height:1.5}.hero-metric-value{display:inline-flex;align-items:center;justify-content:flex-end;gap:6px}.map-popup-aqi{display:flex;align-items:center;justify-content:flex-end;gap:5px;min-width:0}.map-popup-reading .weather-reading-wrap{font:inherit;color:inherit}.map-popup-reading .weather-color-dot{width:12px;height:12px;flex-basis:12px}@media(max-width:640px){.weather-color-dot{width:11px;height:11px;flex-basis:11px}}
         .news-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.news-card{display:flex;min-width:0;min-height:205px;flex-direction:column;padding:17px 18px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:var(--shadow)}.news-card-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#74879a;font-size:10px;font-weight:650}.news-card-source{color:#2879b5;font-weight:800}.news-card-title{margin:12px 0 7px;color:var(--ink);font-size:14px;font-weight:800;line-height:1.45}.news-card-summary{display:-webkit-box;overflow:hidden;color:#6f8298;font-size:11px;line-height:1.55;-webkit-box-orient:vertical;-webkit-line-clamp:4}.news-card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:12px}.news-card-tag{padding:4px 7px;border-radius:7px;background:#edf6fd;color:#3b789f;font-size:9px;font-weight:750}.news-card:hover{border-color:#bfd9eb;transform:translateY(-1px)}.news-empty{grid-column:1/-1;min-height:90px;justify-content:center;color:var(--muted);font-size:12px;text-align:center}.news-attribution{margin:9px 3px 0;color:#8493a1;font-size:10px;line-height:1.5}@media(max-width:900px){.news-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:640px){.news-grid{grid-template-columns:1fr;gap:9px}.news-card{min-height:0;padding:14px}.news-card-title{font-size:13px}.news-card-summary{-webkit-line-clamp:3}.news-section .section-head{align-items:flex-start}}
         .advice-card{align-items:flex-start;gap:13px;padding:16px;border-radius:17px;box-shadow:0 5px 18px #25476408}.advice-emoji{width:38px;height:38px;flex:0 0 38px;background:#eef6fc;color:#2878ad}.advice-emoji svg{width:21px;height:21px}.advice-content{flex:1;min-width:0}.advice-heading{display:flex;flex-direction:column;align-items:flex-start;gap:6px}.advice-title{color:var(--ink);font-size:14px;font-weight:800;line-height:1.35}.status{margin:0;padding:4px 9px;border:1px solid transparent;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:.2px;text-transform:none}.status:before{width:6px;height:6px;border-radius:50%;background:currentColor;content:""}.status.baik{border-color:#ccebdc;background:#effaf4;color:#218154}.status.waspada{border-color:#f2dfb6;background:#fff8e8;color:#96670d}.status.saran{border-color:#d8e7f2;background:#f1f7fb;color:#426c89}.status.informasi{border-color:#dce5ee;background:#f5f8fb;color:#63788e}.advice-message{margin:11px 0 0;color:#435c72;font-size:12px;line-height:1.6}.advice-reason{margin-top:11px;padding-top:9px;border-top:1px solid #edf1f5}.advice-reason-label{display:block;margin-bottom:6px;color:#8293a3;font-size:9px;font-weight:800;letter-spacing:.55px;text-transform:uppercase}.advice-reason-list{display:flex;flex-wrap:wrap;gap:5px}.advice-reason-chip{padding:4px 7px;border-radius:7px;background:#f4f7fa;color:#61768a;font-size:10px;line-height:1.35}.advice-empty{grid-column:1/-1;justify-content:center}@media(max-width:640px){.advice-card{gap:10px;padding:13px}.advice-emoji{width:34px;height:34px;flex-basis:34px}.advice-title{font-size:13px}.advice-message{font-size:11px}.advice-reason-chip{font-size:9px}}
+        /* CERAH: tampilan Saran Aktivitas lebih lapang, faktor cuaca selalu terlihat */
+        #activity-advice .content-grid {display:block}
+        #activity-advice .advice-list {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;align-items:stretch}
+        #activity-advice .advice-card {display:grid;grid-template-columns:40px minmax(0,1fr);align-content:start;gap:13px;min-width:0;min-height:150px;padding:18px 19px;border:1px solid #dce8f2;border-radius:19px;background:#fff;box-shadow:0 7px 21px rgba(38,79,112,.055)}
+        #activity-advice .advice-card:last-child:nth-child(odd) {grid-column:1/-1}
+        #activity-advice .advice-card:last-child:nth-child(odd) .advice-content {max-width:950px}
+        #activity-advice .advice-emoji {width:40px;height:40px;flex:none;border-radius:13px;background:#edf6fd;color:#2476bd}
+        #activity-advice .advice-emoji svg {width:22px;height:22px}
+        #activity-advice .advice-content {min-width:0;width:100%}
+        #activity-advice .advice-heading {display:flex;flex-direction:row;justify-content:space-between;align-items:center;flex-wrap:wrap;column-gap:10px;row-gap:7px;min-height:32px}
+        #activity-advice .advice-title {min-width:0;color:#173856;font-size:13px;line-height:1.45;font-weight:800}
+        #activity-advice .status {flex:0 0 auto;margin:0;font-size:10px}
+        #activity-advice .advice-message {margin:9px 0 0;color:#516a81;font-size:12px;line-height:1.65;overflow-wrap:break-word}
+        /* Faktor cuaca selalu terlihat, tanpa klik atau accordion */
+        #activity-advice .advice-reason {margin-top:12px;padding-top:11px;border-top:1px solid #e9eff5}
+        #activity-advice .advice-reason-label {display:block;margin-bottom:8px;color:#6f869a;font-size:10px;font-weight:800;letter-spacing:.45px;text-transform:uppercase}
+        #activity-advice .advice-reason-list {display:flex;flex-wrap:wrap;align-items:flex-start;gap:6px}
+        #activity-advice .advice-reason-chip {padding:5px 8px;border:1px solid #e4edf4;border-radius:7px;background:#f4f8fb;color:#536e83;font-size:10px;line-height:1.45;overflow-wrap:anywhere}
+        #activity-advice .advice-card.advice-empty {grid-column:1/-1;min-height:90px;display:flex;align-items:center}
+        @media(max-width:860px) {#activity-advice .advice-list {grid-template-columns:1fr;gap:12px}#activity-advice .advice-card:last-child:nth-child(odd) {grid-column:auto}}
+        @media(max-width:640px) {#activity-advice .advice-card {grid-template-columns:36px minmax(0,1fr);gap:11px;min-height:0;padding:15px 14px;border-radius:16px}#activity-advice .advice-emoji {width:36px;height:36px;border-radius:11px}#activity-advice .advice-title {font-size:12px}#activity-advice .advice-message {font-size:11px;margin-top:8px}#activity-advice .advice-reason {margin-top:10px}#activity-advice .advice-list {gap:10px}}
+
+        /* ===== CERAH Loader: tampil sekali di awal + indikator jaringan ===== */
+        .cerah-splash {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            background: radial-gradient(circle at 50% 30%, #fff 0%, #edf6fd 48%, #dfedf8 100%);
+            opacity: 1;
+            visibility: visible;
+            transition: opacity .38s ease, visibility .38s ease;
+        }
+        .cerah-splash.is-hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .cerah-splash-content {
+            display: flex;
+            width: min(360px, 100%);
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .cerah-splash-icon {
+            display: grid;
+            width: 105px;
+            height: 105px;
+            place-items: center;
+            border: 1px solid #dcebf6;
+            border-radius: 29px;
+            background: #fff;
+            box-shadow: 0 16px 48px rgba(28, 101, 155, .14);
+            animation: cerah-float 2.3s ease-in-out infinite;
+        }
+        .cerah-splash-icon img {
+            width: 77px;
+            height: 77px;
+            object-fit: contain;
+        }
+        .cerah-splash-title {
+            margin: 20px 0 0;
+            color: #175b98;
+            font: 800 28px/1.2 'Plus Jakarta Sans', sans-serif;
+            letter-spacing: 2px;
+        }
+        .cerah-splash-subtitle {
+            margin: 8px 0 20px;
+            color: #637f98;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+        .cerah-splash-dots {
+            display: flex;
+            gap: 9px;
+            justify-content: center;
+        }
+        .cerah-splash-dots span {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #2c87c1;
+            animation: cerah-dot 1.1s ease-in-out infinite;
+        }
+        .cerah-splash-dots span:nth-child(2) {animation-delay: .14s; background: #50acd5}
+        .cerah-splash-dots span:nth-child(3) {animation-delay: .28s; background: #e3b93d}
+        .cerah-network-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            overflow: hidden;
+            z-index: 99998;
+            opacity: 0;
+            pointer-events: none;
+            background: #d9ebf8;
+            transition: opacity .18s ease;
+        }
+        .cerah-network-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 38%;
+            background: linear-gradient(90deg, #1971b0, #5bb7da);
+            animation: cerah-loading-line 1.25s ease-in-out infinite;
+        }
+        html.cerah-network-busy .cerah-network-bar {opacity: 1}
+        @keyframes cerah-float {0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)}}
+        @keyframes cerah-dot {0%,80%,100%{transform:translateY(0);opacity:.5} 40%{transform:translateY(-7px);opacity:1}}
+        @keyframes cerah-loading-line {0%{transform:translateX(-115%)} 100%{transform:translateX(380%)}}
+        @media (prefers-reduced-motion: reduce) {
+            .cerah-splash-icon, .cerah-splash-dots span, .cerah-network-bar::before {animation: none}
+            .cerah-splash {transition: none}
+        }
+    </style>
+
+    <style>
+        /* Tanggal saat ini selalu mengikuti WIB; waktu pengamatan ditampilkan terpisah. */
+        .hero-calendar-date{display:block}
+        .hero-observation-date{display:block;margin-top:3px;color:#ffebc5;font-size:10px;line-height:1.4}
+        .hero-observation-date[hidden]{display:none!important}
     </style>
 </head>
 <body>
+<div id="cerah-splash" class="cerah-splash" role="status" aria-live="polite" aria-label="Memuat CERAH">
+    <div class="cerah-splash-content">
+        <div class="cerah-splash-icon"><img src="{{ asset('images/cerah-logo.png') }}" alt="" aria-hidden="true"></div>
+        <strong class="cerah-splash-title">CERAH</strong>
+        <p class="cerah-splash-subtitle">Menyiapkan informasi cuaca Kepulauan Riau...</p>
+        <div class="cerah-splash-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+    </div>
+</div>
+<div class="cerah-network-bar" aria-hidden="true"></div>
+<noscript><style>.cerah-splash{display:none!important}</style></noscript>
+<script>
+// Pengaman: loader awal tidak akan menutupi situs selamanya jika API gagal atau izin lokasi tertunda.
+window.setTimeout(() => document.getElementById('cerah-splash')?.classList.add('is-hidden'), 12000);
+</script>
 <div class="shell">
     <header class="topbar">
         <a class="brand" href="/" aria-label="Cerah, beranda">
@@ -181,6 +322,40 @@
 </div>
 <script>
 (() => {
+    // Loader awal: ditutup setelah respons cuaca pertama selesai (berhasil maupun gagal).
+    function dismissCerahSplash() {
+        document.getElementById('cerah-splash')?.classList.add('is-hidden');
+    }
+
+    // Loader kecil saat API sedang diakses, tidak menghalangi interaksi pengguna.
+    let pendingCerahRequests = 0;
+    let cerahProgressTimer = null;
+    function beginCerahRequest() {
+        pendingCerahRequests++;
+        if (pendingCerahRequests === 1) {
+            cerahProgressTimer = window.setTimeout(() => {
+                if (pendingCerahRequests > 0) document.documentElement.classList.add('cerah-network-busy');
+                cerahProgressTimer = null;
+            }, 250);
+        }
+    }
+    function finishCerahRequest() {
+        pendingCerahRequests = Math.max(0, pendingCerahRequests - 1);
+        if (pendingCerahRequests === 0) {
+            window.clearTimeout(cerahProgressTimer);
+            cerahProgressTimer = null;
+            document.documentElement.classList.remove('cerah-network-busy');
+        }
+    }
+    async function fetchWithLoader(...args) {
+        beginCerahRequest();
+        try {
+            return await fetch(...args);
+        } finally {
+            finishCerahRequest();
+        }
+    }
+
     const regionsUrl = @json($regionsEndpoint);
     const mapWeatherUrl = @json(url('/api/weather/map'));
     const mapBoundaryUrl = @json(url('/api/weather/boundaries'));
@@ -217,6 +392,10 @@
         return hour >= 6 && hour < 18;
     }
     function condition(code, isDay, at) {
+        // Null dari API bukan kode 0 (cerah). Jangan tampilkan data kosong sebagai cuaca cerah.
+        if (code === null || code === undefined || code === '' || !Number.isFinite(Number(code))) {
+            return {label:'Belum tersedia', icon:icons.clouds};
+        }
         const n = Number(code);
         const day = localIsDay(isDay, at ?? new Date());
         if ([0].includes(n)) return {label:day ? 'Cerah' : 'Cerah Malam', icon:day ? icons.sun : icons.moon};
@@ -226,7 +405,9 @@
         if ([51,53,55,56,57].includes(n)) return {label:'Gerimis', icon:icons.drizzle};
         if ([61,63,65,66,67].includes(n)) return {label:'Hujan', icon:icons.rain};
         if ([71,73,75,77,85,86].includes(n)) return {label:'Hujan Salju', icon:icons.snow};
-        if ([80,81,82].includes(n)) return {label:'Hujan Lokal', icon:icons.rain};
+        if (n === 80) return {label:'Hujan Ringan', icon:icons.rain};
+        if (n === 81) return {label:'Hujan Sedang', icon:icons.rain};
+        if (n === 82) return {label:'Hujan Sangat Lebat', icon:icons.rain};
         if ([95,96,99].includes(n)) return {label:'Hujan Petir', icon:icons.storm};
         return {label:'Kondisi Cuaca', icon:icons.partly};
     }
@@ -370,7 +551,7 @@
     }
     async function loadMapWeather() {
         try {
-            const response = await fetch(mapWeatherUrl, {headers:{Accept:'application/json'},cache:'no-store'});
+            const response = await fetchWithLoader(mapWeatherUrl, {headers:{Accept:'application/json'},cache:'no-store'});
             if (!response.ok) throw new Error('Data peta belum tersedia.');
             mapWeatherData = await response.json();
             renderWeatherMap();
@@ -404,7 +585,7 @@
             for (let attempt = 0; attempt < 3; attempt++) {
                 try {
                     const refreshParam = forceRefresh ? '?refresh=1' : '';
-                    const response = await fetch(`${mapBoundaryUrl}/${level}/${encodeURIComponent(code)}${refreshParam}`, {headers:{Accept:'application/geo+json, application/json'}, cache:'no-store'});
+                    const response = await fetchWithLoader(`${mapBoundaryUrl}/${level}/${encodeURIComponent(code)}${refreshParam}`, {headers:{Accept:'application/geo+json, application/json'}, cache:'no-store'});
                     if (!response.ok) {
                         let detail = '';
                         try { detail = (await response.json()).message ?? ''; } catch (error) {}
@@ -445,10 +626,18 @@
         return digits;
     }
     function mapFeatureRegion(feature, level) {
-        const props = feature.properties ?? {};
-        const fields = level === 'municipalities' ? ['kdpkab','kdbbps'] : level === 'districts' ? ['kdcpum','kdcbps'] : ['kdepum','kdebps'];
+        // Batas BIG bisa membawa kode BPS dan kode administrasi PUM yang tidak sama.
+        // Pilih kode yang benar-benar cocok dengan tabel regions terlebih dahulu.
+        const fields = level === 'municipalities'
+            ? ['kdbbps','kdpkab','kdppum']
+            : level === 'districts'
+                ? ['kdcbps','kdcpum']
+                : ['kdebps','kdepum'];
         const nameFields = level === 'municipalities' ? ['wadmkk','namobj'] : level === 'districts' ? ['wadmkc','namobj'] : ['wadmkd','namobj'];
-        const code = fields.map(field => normalizedAdminCode(featureProperty(feature, field))).find(Boolean) ?? '';
+        const codes = fields.map(field => normalizedAdminCode(featureProperty(feature, field))).filter(Boolean);
+        const normalizeCode = value => String(value ?? '').replace(/\D/g, '');
+        const matchingCode = codes.find(code => regions.some(item => normalizeCode(item.code) === normalizeCode(code)));
+        const code = matchingCode ?? codes[0] ?? '';
         const name = nameFields.map(field => featureProperty(feature, field)).find(Boolean) ?? 'Wilayah';
         const type = level === 'municipalities' ? 'Kabupaten/Kota' : level === 'districts' ? 'Kecamatan' : 'Kelurahan/Desa';
         return {code, name:String(name), type};
@@ -460,12 +649,28 @@
         return `hsl(${Math.abs(hash) % 360} 43% 79%)`;
     }
     function mapWeatherForBoundary(region) {
-        const normalized = region.code.replace(/\D/g, '');
-        return mapWeatherData.find(item => item.code.replace(/\D/g, '') === normalized) ?? null;
+        const normalizeCode = value => String(value ?? '').replace(/\D/g, '');
+        const byCode = mapWeatherData.find(item => normalizeCode(item.code) === normalizeCode(region.code));
+        if (byCode) return byCode;
+        // Cadangan ketika kode PUM di batas BIG berbeda dari kode BPS pada database.
+        // Nama harus cocok dalam kecamatan yang sedang dibuka, bukan seluruh Kepri.
+        const mapNode = mapPath[mapPath.length - 1];
+        if (mapNode?.level !== 'villages') return null;
+        const normalizeName = value => String(value ?? '').trim().toLocaleLowerCase('id').replace(/\s+/g, ' ');
+        const matchingRegion = regions.find(item => item.type === 'village'
+            && item.parent_code === mapNode.code
+            && normalizeName(item.name) === normalizeName(region.name));
+        return matchingRegion
+            ? (mapWeatherData.find(item => item.code === matchingRegion.code) ?? null)
+            : null;
     }
     function mapWeatherPopup(region, values) {
         const name = `<button type="button" class="map-popup-title-button" data-map-region-code="${escapeHtml(region.code)}">${escapeHtml(region.name)}</button>`;
-        if (!values) return `<div class="map-popup"><div class="map-popup-head">${name}<span class="map-popup-time">${escapeHtml(region.type)}</span></div><p class="map-popup-unavailable">Data cuaca wilayah ini belum tersedia.</p></div>`;
+        const hasWeather = values && [
+            values.temperature_c, values.relative_humidity, values.weather_code,
+            values.visibility_m, values.us_aqi, values.wind_speed_kmh
+        ].some(value => value !== null && value !== undefined && value !== '');
+        if (!hasWeather) return `<div class="map-popup"><div class="map-popup-head">${name}<span class="map-popup-time">${escapeHtml(region.type)}</span></div><p class="map-popup-unavailable">Data cuaca terkini belum tersedia. Sinkronkan data cuaca wilayah ini terlebih dahulu.</p></div>`;
         const info = condition(values.weather_code, values.is_day, values.valid_at);
         const observedAt = values.valid_at ? new Intl.DateTimeFormat('id-ID', {hour:'2-digit', minute:'2-digit', timeZone:'Asia/Jakarta'}).format(new Date(values.valid_at)) : '—';
         return `<div class="map-popup"><div class="map-popup-head">${name}<span class="map-popup-time">${observedAt} WIB</span></div><div class="map-popup-current"><span class="map-popup-condition"><span class="map-popup-icon">${info.icon}</span>${escapeHtml(info.label)}</span><strong class="map-popup-temp">${values.temperature_c == null ? '—' : `${number(values.temperature_c,1)}°C`}</strong></div><div class="map-popup-details"><div class="map-popup-detail"><span>Kelembapan</span><b>${values.relative_humidity == null ? '—' : `${number(values.relative_humidity)}%`}</b></div><div class="map-popup-detail"><span>Peluang hujan</span><b>${values.precipitation_probability == null ? '—' : `${number(values.precipitation_probability)}%`}</b></div><div class="map-popup-detail"><span>Jarak Pandang</span><b class="map-popup-reading">${visibilityReading(values.visibility_m)}</b></div><div class="map-popup-detail"><span>Kualitas Udara (AQI)</span><b class="map-popup-reading">${aqiReading(values.us_aqi)}</b></div></div></div>`;
@@ -782,6 +987,36 @@
         }, {enableHighAccuracy:true, timeout:20000, maximumAge:30000}));
     }
 
+    // Tanggal kalender tidak boleh mengikuti timestamp data cuaca yang mungkin terlambat.
+    const fullDateWib = value => new Intl.DateTimeFormat('id-ID', {
+        weekday:'long', day:'numeric', month:'long', year:'numeric', timeZone:'Asia/Jakarta'
+    }).format(value);
+
+    function dayKeyWib(value) {
+        const parts = new Intl.DateTimeFormat('en-US', {
+            year:'numeric', month:'2-digit', day:'2-digit', timeZone:'Asia/Jakarta'
+        }).formatToParts(value);
+        const read = type => parts.find(part => part.type === type)?.value || '';
+        return `${read('year')}-${read('month')}-${read('day')}`;
+    }
+
+    function updateHeroCalendarDate() {
+        const todayLabel = document.getElementById('hero-calendar-date');
+        const observationLabel = document.getElementById('hero-observation-date');
+        const today = new Date();
+        if (todayLabel) todayLabel.textContent = fullDateWib(today);
+        if (!observationLabel) return;
+
+        const raw = observationLabel.dataset.validAt;
+        const observation = raw ? new Date(raw) : null;
+        const hasValidDate = observation && !Number.isNaN(observation.getTime());
+        const fromEarlierDay = hasValidDate && dayKeyWib(observation) !== dayKeyWib(today);
+        observationLabel.hidden = !fromEarlierDay && Boolean(hasValidDate);
+        observationLabel.textContent = fromEarlierDay
+            ? `Data cuaca terakhir: ${fullDateWib(observation)}`
+            : (hasValidDate ? '' : 'Data cuaca terakhir belum tersedia');
+    }
+
     function renderHero(data) {
         const region = data.wilayah;
         const current = data.cuaca_saat_ini;
@@ -795,8 +1030,9 @@
         const airClass = classifyUsAqi(usAqi);
         const rainChance = current?.precipitation_probability == null ? null : Number(current.precipitation_probability);
         document.getElementById('hero-content').innerHTML = `
-            <div class="hero-today"><div class="hero-current"><div class="hero-current-meta"><div class="hero-place"><span class="hero-place-main">${escapeHtml(place)}</span>${placeContext ? `<span class="hero-place-context">${escapeHtml(placeContext)}</span>` : ''}</div><div class="hero-date">${timestamp ? new Intl.DateTimeFormat('id-ID',{weekday:'long',day:'numeric',month:'long',timeZone:'Asia/Jakarta'}).format(timestamp) : 'Data cuaca terbaru'}</div></div><div class="hero-current-weather"><div class="temp-row"><span class="weather-symbol">${info.icon}</span><div class="temperature">${number(current?.temperature_c)}<sup>°</sup></div></div><div class="condition">${info.label}</div><div class="feels">Terasa seperti ${number(current?.apparent_temperature_c)}°C</div></div></div>
+            <div class="hero-today"><div class="hero-current"><div class="hero-current-meta"><div class="hero-place"><span class="hero-place-main">${escapeHtml(place)}</span>${placeContext ? `<span class="hero-place-context">${escapeHtml(placeContext)}</span>` : ''}</div><div class="hero-date"><span class="hero-calendar-date" id="hero-calendar-date"></span><span class="hero-observation-date" id="hero-observation-date" data-valid-at="${escapeHtml(current?.valid_at ?? '')}" hidden></span></div></div><div class="hero-current-weather"><div class="temp-row"><span class="weather-symbol">${info.icon}</span><div class="temperature">${number(current?.temperature_c)}<sup>°</sup></div></div><div class="condition">${info.label}</div><div class="feels">Terasa seperti ${number(current?.apparent_temperature_c)}°C</div></div></div>
             <div class="hero-metrics">${heroMetric('Kelembapan','humidity',`${number(current?.relative_humidity)}%`)}${heroMetric('Curah Hujan','rain',`${number(current?.rain_mm,1)} mm`)}${heroMetric('Jarak Pandang','visibility',visibilityReading(current?.visibility_m))}${heroMetric('Kualitas Udara (US AQI)','air',aqiReading(usAqi),`quality-${airClass.tone}`)}</div></div>`;
+        updateHeroCalendarDate();
         const freshness = data.ditarik_pada ? new Date(data.ditarik_pada) : (data.diperbarui_pada ? new Date(data.diperbarui_pada) : null);
         document.getElementById('live-label').textContent = freshness ? `Diperbarui ${localHour(freshness)}` : 'Menunggu data cuaca';
     }
@@ -884,7 +1120,7 @@
 
     async function loadNews() {
         try {
-            const response = await fetch(newsUrl, {headers:{Accept:'application/json'},cache:'no-store'});
+            const response = await fetchWithLoader(newsUrl, {headers:{Accept:'application/json'},cache:'no-store'});
             if (!response.ok) throw new Error('Berita belum dapat dimuat.');
             const data = await response.json();
             renderNews(data.articles);
@@ -916,17 +1152,27 @@
 
     function renderDays(history) {
         if (!history?.length) { document.getElementById('days-grid').innerHTML = '<tr><td colspan="4" class="empty">Riwayat cuaca belum tersedia. Jalankan sinkronisasi data historis terlebih dahulu.</td></tr>'; return; }
-        document.getElementById('days-grid').innerHTML = history.map(item => {
+        const orderedHistory = [...history].sort((a, b) => String(b.observed_on ?? '').localeCompare(String(a.observed_on ?? '')));
+        document.getElementById('days-grid').innerHTML = orderedHistory.map(item => {
             const date = dateParts(item.observed_on);
             const dateLabel = new Intl.DateTimeFormat('id-ID',{timeZone:'Asia/Jakarta',weekday:'short',day:'numeric',month:'short'}).format(date);
             const info = item.weather_code == null
                 ? { icon: '☁️', label: 'Kondisi belum tersedia' }
                 : condition(item.weather_code, 1, item.observed_on);
+            const isTodayForecast = item.source === 'open_meteo_today_forecast';
+            const isRecentModel = item.source === 'open_meteo_recent_model';
+            const detailLabel = isTodayForecast ? ' · prakiraan hari ini' : isRecentModel ? ' ' : '';
             const max = item.temperature_max_c == null ? '—' : number(item.temperature_max_c);
             const min = item.temperature_min_c == null ? '—' : number(item.temperature_min_c);
+            const temperatureText = item.temperature_max_c != null && item.temperature_min_c != null
+                ? `${max}–${min}`
+                : item.temperature_max_c != null ? `Maks ${max}` : item.temperature_min_c != null ? `Min ${min}` : '—';
             const rain = item.precipitation_mm == null ? '—' : number(item.precipitation_mm,1);
-            return `<tr><td>${dateLabel}</td><td><div class="history-weather"><span class="history-weather-icon">${info.icon}</span><span class="history-weather-label">${escapeHtml(info.label)}</span></div></td><td>${max}–${min}</td><td>${rain}</td></tr>`;
+            return `<tr><td>${dateLabel}</td><td><div class="history-weather"><span class="history-weather-icon">${info.icon}</span><span class="history-weather-label">${escapeHtml(info.label + detailLabel)}</span></div></td><td>${temperatureText}</td><td>${rain}</td></tr>`;
         }).join('');
+        // Always show newest available date when reloading/changing a region.
+        const historyScroll = document.querySelector('.history-table-scroll');
+        if (historyScroll) historyScroll.scrollTop = 0;
     }
 
     function renderHours(forecast) {
@@ -956,6 +1202,7 @@
         kuliner_tepi_laut:['M4 27h26M6 27l11-17 11 17M17 10v17M5 33c4-3 7 3 11 0s7 3 12 0','Kuliner Tepi Laut'],
         olahraga_rekreasi:['M18 5a3 3 0 1 0 0 .01M18 10l-7 8 7 4 5-6m-12 0-5 8m12-4 4 9m-7-11-4 11','Olahraga & Rekreasi'],
         pertanian_sayur:['M17 31V13m0 8c-8 0-11-4-11-10 7 0 11 3 11 10Zm0-3c0-7 4-11 11-11 0 7-4 11-11 11ZM7 32h20','Pertanian Sayur Lokal'],
+        perjalanan_darat:['M5 23l4-10h16l4 10v9H5v-9Zm3-10 2-5h14l3 5M10 29h.01M24 29h.01M10 23h14','Perjalanan Darat & Berkendara'],
     };
     function renderAdvice(advice) {
         const entries = Object.entries(advice ?? {});
@@ -963,8 +1210,11 @@
             const [path,title] = adviceTitles[key] ?? ['M17 4v28M3 18h28','Aktivitas'];
             const statusInfo = ({baik:['baik','Baik'],waspada:['waspada','Waspada'],saran:['saran','Disarankan'],informasi:['informasi','Informasi']})[item.status] ?? ['informasi','Informasi'];
             const reasons = String(item.reason ?? '').split('·').map(reason => reason.trim()).filter(Boolean);
-            const reasonsHtml = reasons.length ? `<div class="advice-reason"><span class="advice-reason-label">Pertimbangan cuaca</span><div class="advice-reason-list">${reasons.map(reason => `<span class="advice-reason-chip">${escapeHtml(reason)}</span>`).join('')}</div></div>` : '';
-            return `<article class="advice-card"><div class="advice-emoji"><svg viewBox="0 0 34 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${path}"/></svg></div><div class="advice-content"><div class="advice-heading"><div class="advice-title">${escapeHtml(title)}</div><span class="status ${statusInfo[0]}">${statusInfo[1]}</span></div><p class="advice-message">${escapeHtml(item.message)}</p>${reasonsHtml}</div></article>`;
+            // Semua faktor cuaca langsung terlihat di setiap kartu.
+            const reasonsHtml = reasons.length
+                ? `<div class="advice-reason"><span class="advice-reason-label">Pertimbangan cuaca</span><div class="advice-reason-list">${reasons.map(reason => `<span class="advice-reason-chip">${escapeHtml(reason)}</span>`).join('')}</div></div>`
+                : '';
+            return `<article class="advice-card"><div class="advice-emoji"><svg viewBox="0 0 34 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${path}"/></svg></div><div class="advice-content"><div class="advice-heading"><div class="advice-title">${escapeHtml(title)}</div><span class="status ${statusInfo[0]}">${statusInfo[1]}</span></div><p class="advice-message">${escapeHtml(item.message ?? '')}</p>${reasonsHtml}</div></article>`;
         }).join('') : '<div class="advice-card advice-empty"><div class="advice-message">Saran aktivitas belum tersedia.</div></div>';
     }
     function renderRegionWeather(region, data) {
@@ -1004,7 +1254,7 @@
             document.getElementById('live-label').textContent = 'Memuat data cuaca…';
         }
         try {
-            const response = await fetch(`${regionsUrl}/${encodeURIComponent(region.code)}`, {headers:{Accept:'application/json'},cache:'no-store',signal:controller.signal});
+            const response = await fetchWithLoader(`${regionsUrl}/${encodeURIComponent(region.code)}`, {headers:{Accept:'application/json'},cache:'no-store',signal:controller.signal});
             if (!response.ok) throw new Error(response.status === 404 ? 'Data cuaca belum tersedia untuk wilayah ini.' : 'Data cuaca belum dapat dimuat.');
             const data = await response.json();
             if (!isLatest()) return;
@@ -1016,7 +1266,10 @@
             errorBanner.classList.add('show');
             if (!cached) document.getElementById('hero-content').innerHTML = '<div class="loading">Data cuaca belum tersedia untuk wilayah ini.</div>';
         } finally {
-            if (isLatest()) refresh.disabled = false;
+            if (isLatest()) {
+                refresh.disabled = false;
+                dismissCerahSplash();
+            }
         }
     }
 
@@ -1035,7 +1288,7 @@
             renderClimateChart(null);
             return;
         }
-        document.getElementById('climate-coverage').textContent = `Data sampai ${new Intl.DateTimeFormat('id-ID',{timeZone:'Asia/Jakarta',day:'numeric',month:'short',year:'numeric'}).format(dateParts(climate.data_sampai))}`;
+        document.getElementById('climate-coverage').textContent = `${climate.hari_ini_prakiraan ? 'Termasuk prakiraan ' : 'Data sampai '}${new Intl.DateTimeFormat('id-ID',{timeZone:'Asia/Jakarta',day:'numeric',month:'short',year:'numeric'}).format(dateParts(climate.data_sampai))}`;
         document.getElementById('climate-rain').textContent = `${number(climate.hujan_30_hari_mm,1)} mm`;
         const rainDelta = climate.hujan_vs_normal_persen;
         const rainNote = rainDelta == null
@@ -1052,16 +1305,29 @@
         document.getElementById('climate-humidity-note').textContent = climate.normal_kelembapan_bulan_ini == null
             ? 'Normal historis belum cukup untuk pembanding'
             : `Baseline historis ${number(climate.normal_kelembapan_bulan_ini)}%`;
-        document.getElementById('climate-dry-days').textContent = climate.wilayah_agregat ? 'Per kelurahan' : (climate.hari_tanpa_hujan == null ? 'Belum diketahui' : `${climate.hari_tanpa_hujan} hari`);
+        document.getElementById('climate-dry-days').textContent = climate.wilayah_agregat
+            ? 'Per kelurahan'
+            : climate.hari_tanpa_hujan == null
+                ? 'Belum tersedia'
+                : `${climate.hari_tanpa_hujan} hari`;
+        // Total 30 hari tidak harus beruntun. Rekor bulanan adalah statistik
+        // tambahan yang tetap menunjukkan rentetan terpanjang pada bulan ini.
+        const bulanRekorHth = new Intl.DateTimeFormat('id-ID', {
+            month: 'long', year: 'numeric', timeZone: 'Asia/Jakarta'
+        }).format(dateParts(climate.bulan_rekor_hth ?? climate.dianalisis_sampai));
+        const jumlahDataHth = Number(climate.hari_tercakup_30_hari ?? 0);
+        const cakupanHth = jumlahDataHth < 30 ? ` · data ${jumlahDataHth}/30 hari` : '';
+        const rekorHth = climate.hari_kering_terpanjang_bulan_ini == null
+            ? 'belum ada data' : `${climate.hari_kering_terpanjang_bulan_ini} hari`;
         document.getElementById('climate-dry-note').textContent = climate.wilayah_agregat
-            ? `${climate.jumlah_kelurahan} kelurahan memiliki data HTH`
-            : `Rekor bulan ini ${climate.hari_kering_terpanjang_bulan_ini ?? '—'} hari · dihitung s.d. ${climate.dianalisis_sampai}`;
+            ? `HTH dihitung per kelurahan (${climate.jumlah_kelurahan} kelurahan)`
+            : `Total hari tanpa hujan selama 30 hari terakhir${cakupanHth} · Rekor ${bulanRekorHth}: ${rekorHth} berturut-turut`;
         document.getElementById('climate-source').textContent = climate.sumber;
         document.querySelector('.climate-chart-card').hidden = Boolean(climate.wilayah_agregat);
         renderClimateChart(climate);
         document.getElementById('climate-disclaimer').textContent = climate.wilayah_agregat
             ? 'Angka hujan dan suhu merupakan rata-rata ringkasan kelurahan; HTH ditampilkan per kelurahan agar variasi lokal tidak tertutup oleh rata-rata.'
-            : `Data historis berbasis reanalisis model, bukan pengukuran langsung di tiap kelurahan. ${climate.definisi_hth}`;
+            : `Data menggunakan reanalisis ERA5 dan model cuaca terbaru, bukan pengukuran langsung tiap kelurahan. ${climate.definisi_hth}`;
     }
 
     function renderClimateChart(climate) {
@@ -1171,7 +1437,7 @@
         const cached = climateResponseCache.get(cacheKey);
         if (cached) renderClimate(cached);
         try {
-            const response = await fetch(`${climateEndpoint}/${encodeURIComponent(region.code)}?days=${days}`, {headers:{Accept:'application/json'},cache:'no-store',signal:controller.signal});
+            const response = await fetchWithLoader(`${climateEndpoint}/${encodeURIComponent(region.code)}?days=${days}`, {headers:{Accept:'application/json'},cache:'no-store',signal:controller.signal});
             if (!response.ok) throw new Error('Ringkasan iklim belum dapat dimuat.');
             const climate = await response.json();
             climateResponseCache.set(cacheKey, climate);
@@ -1200,7 +1466,7 @@
         document.getElementById('live-label').textContent = 'Memperbarui cuaca…';
         errorBanner.classList.remove('show');
         try {
-            const response = await fetch(refreshUrl, {
+            const response = await fetchWithLoader(refreshUrl, {
                 method:'POST',
                 headers:{Accept:'application/json', 'Content-Type':'application/json', 'X-CSRF-TOKEN':document.querySelector('meta[name="csrf-token"]')?.content ?? ''},
                 body:JSON.stringify({region_code:currentRegion()?.code}),
@@ -1220,17 +1486,21 @@
 
     async function start() {
         try {
-            const response = await fetch(regionsUrl, {headers:{Accept:'application/json'},cache:'no-store'});
+            const response = await fetchWithLoader(regionsUrl, {headers:{Accept:'application/json'},cache:'no-store'});
             if (!response.ok) throw new Error('Daftar wilayah belum dapat dimuat.');
             regions = await response.json();
             renderLocationPicker();
             setViewMode(currentRegion());
             initWeatherMap();
             void loadNews();
+            // Jangan menunggu izin lokasi untuk memuat cuaca pertama.
+            // Jika pengguna memberi izin, locateUser akan memilih wilayah yang lebih tepat.
+            void loadWeather();
             await locateUser();
         } catch (error) {
             errorBanner.textContent = `${error.message} Periksa koneksi aplikasi dan database.`;
             errorBanner.classList.add('show');
+            dismissCerahSplash();
         }
     }
 
@@ -1322,7 +1592,25 @@
         window.requestAnimationFrame(() => document.getElementById('current-hero-wrap').scrollIntoView({behavior:'smooth', block:'start'}));
     });
     start();
-    window.setInterval(loadWeather, 5 * 60 * 1000);
+    // Sinkronisasi backend dan pembacaan API adalah proses terpisah.
+    // Tanggal di layar diperbarui setiap menit tanpa perlu reload browser.
+    let lastCalendarDayWib = dayKeyWib(new Date());
+    function checkCalendarRollover() {
+        updateHeroCalendarDate();
+        const currentDay = dayKeyWib(new Date());
+        if (currentDay !== lastCalendarDayWib) {
+            lastCalendarDayWib = currentDay;
+            weatherResponseCache.clear();
+            climateResponseCache.clear();
+            if (currentRegion()) void loadWeather();
+        }
+    }
+    window.setInterval(checkCalendarRollover, 60 * 1000);
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) checkCalendarRollover();
+    });
+    // Data baru dari PostgreSQL tampil tanpa refresh manual saat situs terbuka.
+    window.setInterval(() => { if (!document.hidden) void loadWeather(); }, 5 * 60 * 1000);
 })();
 </script>
 </body>
