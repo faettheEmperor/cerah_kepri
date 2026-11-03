@@ -44,7 +44,7 @@ class ClimateInsight
                         'hujan_vs_normal_persen' => $summaries->filter(fn ($item) => ($item['hujan_vs_normal_persen'] ?? null) !== null)->avg('hujan_vs_normal_persen'),
                         'harapan_hujan_terkoreksi_mm' => $summaries->filter(fn ($item) => ($item['harapan_hujan_terkoreksi_mm'] ?? null) !== null)->avg('harapan_hujan_terkoreksi_mm'),
                         'rentang_normal_tahun' => 'per kelurahan',
-                        'sumber' => 'Rata-rata estimasi titik Open-Meteo ERA5 pada kelurahan yang memiliki data.',
+                        'sumber' => 'Rata-rata estimasi titik model Open-Meteo (ERA5 dan Forecast API) pada kelurahan yang memiliki data.',
                         'data_sampai' => $summaries->min('data_sampai'),
                         'dianalisis_sampai' => $summaries->min('dianalisis_sampai'),
                         'seri_30_hari' => [],
@@ -54,12 +54,18 @@ class ClimateInsight
             return ['tersedia' => false, 'pesan' => 'Data historis kelurahan belum disinkronkan.'];
         }
         $today = Carbon::today('Asia/Jakarta');
+        // Periode 30 hari kalender yang sudah SELESAI, tidak termasuk hari ini.
+        $windowEnd = $today->copy()->subDay();
+        $windowStart = $windowEnd->copy()->subDays(29);
         $latestDate = DB::table('climate_daily_summaries')->where('region_code', $code)->max('observed_on');
         if (! $latestDate) {
             return ['tersedia' => false, 'pesan' => 'Data historis iklim belum disinkronkan.'];
         }
 
-        $latest = Carbon::parse($latestDate, 'Asia/Jakarta');
+        // HTH dan ringkasan 30 hari hanya menggunakan hari yang sudah selesai.
+        // Baris hari ini bersumber dari prakiraan penuh hari, bukan realisasi final.
+        $asOf = min($latestDate, $windowEnd->toDateString());
+        $latest = Carbon::parse($asOf, 'Asia/Jakarta');
         $chartStart = $today->copy()->subDays(max(1, $chartDays) - 1)->toDateString();
         $chartSeries = DB::table('climate_daily_summaries')
             ->where('region_code', $code)
@@ -67,25 +73,29 @@ class ClimateInsight
             ->orderBy('observed_on')
             ->get();
         $recent = DB::table('climate_daily_summaries')
-            ->where('region_code', $code)->whereBetween('observed_on', [$today->copy()->subDays(29)->toDateString(), $latestDate])
+            ->where('region_code', $code)->whereBetween('observed_on', [$windowStart->toDateString(), $windowEnd->toDateString()])
             ->orderByDesc('observed_on')->get();
-        $monthStart = $today->copy()->startOfMonth();
+        // Latest ERA5 date may be in the previous calendar month.
+        $monthStart = $latest->copy()->startOfMonth();
         $climatology = DB::table('climate_daily_summaries')
             ->where('region_code', $code)
-            ->whereMonth('observed_on', Carbon::parse($latestDate, 'Asia/Jakarta')->month)
+            ->whereMonth('observed_on', $latest->month)
             ->whereBetween('observed_on', [$today->copy()->subYears(10)->toDateString(), $latestDate])
             ->selectRaw('EXTRACT(YEAR FROM observed_on) AS year, SUM(precipitation_mm) AS rain_mm, AVG(temperature_mean_c) AS temperature_c, AVG(relative_humidity_mean) AS humidity')
             ->groupByRaw('EXTRACT(YEAR FROM observed_on)')->get();
 
-        $asOf = min($latestDate, $today->toDateString());
-        $lastObservedRainyDay = DB::table('climate_daily_summaries')
-            ->where('region_code', $code)->where('observed_on', '<=', $asOf)
-            ->where('precipitation_mm', '>=', 1)->max('observed_on');
-        $dryDays = $lastObservedRainyDay
-            ? Carbon::parse($lastObservedRainyDay, 'Asia/Jakarta')->diffInDays(Carbon::parse($asOf, 'Asia/Jakarta'))
-            : null;
+        // Jumlah HTH selama 30 hari terakhir (tidak harus berturut-turut).
+        // Hanya hari dengan curah hujan TERISI dan < 1 mm yang dihitung.
+        // Hari ini dan tanggal tanpa data sama sekali tidak ikut dihitung.
+        $completeRecent = $recent
+            ->filter(fn ($row) => $row->precipitation_mm !== null)
+            ->unique('observed_on')
+            ->values();
+        $dryDays = $completeRecent->isEmpty()
+            ? null
+            : $completeRecent->filter(fn ($row) => (float) $row->precipitation_mm < 1)->count();
+        $dryDaysLowerBound = false; // Kompatibilitas dengan konsumen API lama.
 
-        $completeRecent = $recent->filter(fn ($row) => $row->precipitation_mm !== null);
         $currentRain = $completeRecent->sum(fn ($row) => (float) $row->precipitation_mm);
         $wetDays = $completeRecent->filter(fn ($row) => (float) $row->precipitation_mm >= 1)->count();
         $meanTemp = $recent->filter(fn ($row) => $row->temperature_mean_c !== null)->avg('temperature_mean_c');
@@ -96,17 +106,45 @@ class ClimateInsight
         $normalHumidity = $monthlyAverages->filter(fn ($row) => $row->humidity !== null)->avg('humidity');
         $expectedRain = $normalRain > 0 ? $normalRain * $completeRecent->count() / Carbon::parse($latestDate)->daysInMonth : null;
         $rainRatio = $expectedRain > 0 ? $currentRain / $expectedRain : null;
-        $monthRows = $recent->filter(fn ($row) => (string) $row->observed_on >= $monthStart->toDateString() && (string) $row->observed_on <= $asOf)->sortBy('observed_on');
-        $longestDryRun = 0;
-        $dryRun = 0;
-        foreach ($monthRows as $row) {
-            if ($row->precipitation_mm === null) {
+        // Rekor terpanjang beruntun tetap statistik terpisah dari TOTAL HTH 30 hari.
+        // Bulan REKOR wajib mengikuti bulan kalender saat ini (WIB), bukan bulan
+        // terakhir di dataset. Tidak ada data pada bulan ini = null, bukan 0.
+        $recordMonthStart = $today->copy()->startOfMonth();
+        $recordEnd = $windowEnd->copy();
+        if ($recordEnd->gt(Carbon::parse($asOf, 'Asia/Jakarta'))) {
+            $recordEnd = Carbon::parse($asOf, 'Asia/Jakarta');
+        }
+        $longestDryRun = null;
+        if ($recordEnd->gte($recordMonthStart)) {
+            $monthRows = DB::table('climate_daily_summaries')
+                ->where('region_code', $code)
+                ->whereBetween('observed_on', [
+                    $recordMonthStart->toDateString(), $recordEnd->toDateString()
+                ])
+                ->orderBy('observed_on')
+                ->get(['observed_on', 'precipitation_mm'])
+                ->keyBy('observed_on');
+
+            $hasMonthlyRainData = $monthRows->contains(
+                fn ($row) => $row->precipitation_mm !== null
+            );
+            if ($hasMonthlyRainData) {
+                $longestDryRun = 0;
                 $dryRun = 0;
-            } elseif ((float) $row->precipitation_mm < 1) {
-                $dryRun++;
-                $longestDryRun = max($longestDryRun, $dryRun);
-            } else {
-                $dryRun = 0;
+                for (
+                    $date = $recordMonthStart->copy();
+                    $date->lte($recordEnd);
+                    $date->addDay()
+                ) {
+                    $row = $monthRows->get($date->toDateString());
+                    if ($row !== null && $row->precipitation_mm !== null
+                        && (float) $row->precipitation_mm < 1) {
+                        $dryRun++;
+                        $longestDryRun = max($longestDryRun, $dryRun);
+                    } else {
+                        $dryRun = 0;
+                    }
+                }
             }
         }
         $monthlyLabel = match (true) {
@@ -121,10 +159,15 @@ class ClimateInsight
             'tersedia' => true,
             'data_sampai' => $latestDate,
             'dianalisis_sampai' => $asOf,
-            'sumber' => 'Open-Meteo ERA5 · reanalisis titik wilayah (resolusi sekitar 25 km)',
+            'hari_ini_prakiraan' => $latestDate === $today->toDateString(),
+            'sumber' => 'Open-Meteo ERA5 untuk historis; Forecast API untuk hari terbaru. Hari ini berupa prakiraan, bukan data harian final.',
             'hari_tanpa_hujan' => $dryDays,
+            'hth_periode_mulai' => $windowStart->toDateString(),
+            'hth_periode_sampai' => $windowEnd->toDateString(),
+            'bulan_rekor_hth' => $recordMonthStart->toDateString(),
+            'hth_batas_bawah' => $dryDaysLowerBound,
             'estimasi_hth' => true,
-            'definisi_hth' => 'Beruntun sejak hujan harian ≥ 1 mm; data historis umumnya tertinggal sekitar 5 hari.',
+            'definisi_hth' => 'HTH adalah jumlah seluruh hari dengan curah hujan < 1 mm dalam 30 hari kalender terakhir yang sudah selesai (tidak harus berurutan). Hari berjalan tidak dihitung; hari tanpa data tidak dianggap kering. Semua nilai merupakan estimasi model, bukan pengukuran langsung.',
             'hujan_30_hari_mm' => round($currentRain, 1),
             'hari_basah_30_hari' => $wetDays,
             'suhu_rata_rata_30_hari_c' => $meanTemp === null ? null : round((float) $meanTemp, 1),

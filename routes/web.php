@@ -162,8 +162,8 @@ Route::get('/api/weather/regions/{code}', function (string $code, ActivityAdvice
         : collect();
     $historyToday = now('Asia/Jakarta')->startOfDay();
     $historyDays = $region->type === 'village' ? 30 : 7;
-    $historyEnd = $historyToday->copy()->subDay()->toDateString();
-    $historyStart = $historyToday->copy()->subDays($historyDays)->toDateString();
+    $historyEnd = $historyToday->toDateString();
+    $historyStart = $historyToday->copy()->subDays($historyDays - 1)->toDateString();
     $weatherHistory = collect();
     if (in_array($region->type, ['district', 'village'], true)) {
         $directHistory = DB::table('climate_daily_summaries')
@@ -178,7 +178,7 @@ Route::get('/api/weather/regions/{code}', function (string $code, ActivityAdvice
                 : DB::table('climate_daily_summaries')->whereIn('region_code', $villageCodes)
                     ->whereBetween('observed_on', [$historyStart, $historyEnd])->get()->groupBy('observed_on');
 
-            for ($daysAgo = 7; $daysAgo >= 1; $daysAgo--) {
+            for ($daysAgo = 6; $daysAgo >= 0; $daysAgo--) {
                 $date = $historyToday->copy()->subDays($daysAgo)->toDateString();
                 $villageRows = $villageHistory->get($date, collect());
                 $localSummary = null;
@@ -194,19 +194,22 @@ Route::get('/api/weather/regions/{code}', function (string $code, ActivityAdvice
                         // Rain is a depth; average across villages instead of summing spatially.
                         'precipitation_mm' => $rainValues->count() >= (int) ceil($villageCodes->count() * 0.75) && $rainValues->isNotEmpty() ? $rainValues->avg() : null,
                         'weather_code' => $weatherCodes->isNotEmpty() ? (int) $weatherCodes->keys()->first() : null,
-                        'source' => 'open_meteo_current_village_aggregate',
+                        'source' => $villageRows->contains(fn ($row) => $row->source === 'open_meteo_today_forecast')
+                            ? 'open_meteo_today_forecast'
+                            : ($villageRows->contains(fn ($row) => $row->source === 'open_meteo_recent_model')
+                                ? 'open_meteo_recent_model' : 'open_meteo_era5'),
                     ];
                 }
 
                 $historical = $directHistory->get($date);
-                if ($historical && $historical->source === 'open_meteo_era5') {
+                if ($historical && in_array($historical->source, ['open_meteo_era5', 'open_meteo_today_forecast', 'open_meteo_recent_model'], true)) {
                     $weatherHistory->push((object) [
                         'observed_on' => $date,
                         'temperature_max_c' => $historical->temperature_max_c ?? $localSummary?->temperature_max_c,
                         'temperature_min_c' => $historical->temperature_min_c ?? $localSummary?->temperature_min_c,
                         'precipitation_mm' => $historical->precipitation_mm ?? $localSummary?->precipitation_mm,
                         'weather_code' => $historical->weather_code ?? $localSummary?->weather_code,
-                        'source' => 'open_meteo_era5',
+                        'source' => $historical->source,
                     ]);
                 } elseif ($localSummary) {
                     $weatherHistory->push($localSummary);
@@ -277,7 +280,7 @@ Route::get('/api/climate/regions/{code}', function (string $code, \Illuminate\Ht
     $days = (int) $request->query('days', 30);
     abort_unless(in_array($days, [7, 30, 90, 365], true), 422);
 
-    $summary = Cache::remember("climate-summary:v1:{$code}:{$days}", now()->addMinutes(15), fn () => $climateInsight->forRegion($code, $days));
+    $summary = Cache::remember("climate-summary:v2:{$code}:{$days}", now()->addMinutes(15), fn () => $climateInsight->forRegion($code, $days));
 
     return response()->json($summary);
 })->where('code', '[0-9.]+');
@@ -287,7 +290,7 @@ Route::get('/api/climate/summary/{code}', function (string $code, \Illuminate\Ht
     $days = (int) $request->query('days', 30);
     abort_unless(in_array($days, [7, 30, 90, 365], true), 422);
 
-    $summary = Cache::remember("climate-summary:v1:{$code}:{$days}", now()->addMinutes(15), fn () => $climateInsight->forRegion($code, $days));
+    $summary = Cache::remember("climate-summary:v2:{$code}:{$days}", now()->addMinutes(15), fn () => $climateInsight->forRegion($code, $days));
 
     return response()->json($summary);
 })->where('code', '[0-9.]+');

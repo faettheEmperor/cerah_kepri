@@ -122,6 +122,30 @@ class ActivityAdvice
             ])
         );
 
+        // Saran tambahan ke-8: berlaku untuk wilayah pesisir maupun nonpesisir.
+        // Risiko ini merupakan indikator prakiraan, bukan penilaian resmi kondisi jalan.
+        $roadRisk = $storm
+            || $maxHourlyRain >= 5
+            || $wind >= 37
+            || ($visibility !== null && $visibility < 2000);
+        $roadRainAvailable = isset($weather->max_rain_hourly_mm) || isset($weather->rain_mm);
+        $roadChanceAvailable = isset($weather->rain_chance_24h) || isset($weather->precipitation_probability);
+        $roadWindAvailable = isset($weather->max_wind_24h_kmh) || isset($weather->wind_speed_kmh);
+
+        $advice['perjalanan_darat'] = $this->item(
+            $roadRisk ? 'waspada' : 'informasi',
+            $roadRisk
+                ? 'Waspadai hujan lebat, petir, angin kencang, atau jarak pandang rendah. Kurangi kecepatan, jaga jarak, dan hentikan perjalanan bila kondisi tidak aman.'
+                : 'Periksa kondisi jalan, genangan, dan perkembangan cuaca sebelum bepergian. Kondisi sepanjang rute dapat berbeda dari prakiraan titik wilayah.',
+            $this->joinReasons([
+                $roadChanceAvailable ? 'peluang hujan maks. '.$chance.'%' : 'peluang hujan belum tersedia',
+                $roadRainAvailable ? 'hujan per jam maks. '.number_format($maxHourlyRain, 1, ',', '.').' mm' : 'hujan per jam belum tersedia',
+                $roadWindAvailable ? 'angin maks. '.number_format($wind, 1, ',', '.').' km/jam' : 'data angin belum tersedia',
+                $visibility === null ? 'jarak pandang belum tersedia' : 'jarak pandang min. '.number_format($visibility / 1000, 1, ',', '.').' km',
+                $storm ? 'potensi badai petir' : null,
+            ])
+        );
+
         return $advice;
     }
 
